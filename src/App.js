@@ -6,15 +6,19 @@ import './App.css';
 class App extends Component {
 
   state = {
-    realmData: []
+    nexus: []
   }
 
-componentDidMount(){
-  fetch(`https://apiKey=XKM451xgfMyCk-1dnc26vFLGS9yDM6oe/item/{enus}/{kromcrush}`)
-    .then(response => response.json())
-    .then(kromcrushData => this.setState({realmData: console.log(kromcrushData)}))
-}
 
+  componentDidMount(){
+    fetch("http://localhost:9000")
+      .then(response => response.json())
+      .then(nexus => this.setState({
+        nexus:nexus
+      }))
+  }
+
+  
   render () {
     return (
       <div className="App">
@@ -34,7 +38,7 @@ componentDidMount(){
               <div className="card h-100">
                 <h2 className="card-header">Realm: Kromcrush</h2>
                 <div className="card-body">
-                  <p className="card-text">Auction House postings for Kromcrush</p>
+                  <p className="card-text">AH postings</p>
                 </div>
                 <div className="card-footer" class="d-flex justify-content-center">
                   <Button variant="btn btn-primary">Click me</Button>
@@ -49,7 +53,7 @@ componentDidMount(){
            <div className="card h-100">
              <h4 className="card-header" class="d-flex justify-content-center">AH Table</h4>
              <div className="card-body">
-               <Table striped bordered hover>
+               <Table striped bordered hover nexus={this.state.nexus}>
                 <thead>
                   <tr>
                     <th>#</th>
