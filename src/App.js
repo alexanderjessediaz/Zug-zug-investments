@@ -16,17 +16,22 @@ class App extends Component {
 
 
   componentDidMount(){
-    fetch("http://localhost:9000")
-      .then(response => response.json())
-      .then(blackLotusObject => this.setState({
-        blackLotusObject:blackLotusObject,
-        BLData:blackLotusObject.data,
-        BLStats:blackLotusObject.data.stats,
-        BLCurrent:blackLotusObject.data.stats.current
-      }))
+    this.timer = setInterval(()=> this.getNexusData(), 10000)
   }
-
-  
+      async getNexusData(){
+        
+        fetch("http://localhost:9000", {method: "GET"})
+          .then((response) => response.json())
+          .then((blackLotusObject => this.setState({
+            blackLotusObject:blackLotusObject,
+            BLData:blackLotusObject.data,
+            BLStats:blackLotusObject.data.stats,
+            BLCurrent:blackLotusObject.data.stats.current
+          })))
+          .catch((error) => {
+            console.error(error)
+          })
+      }
   
   render () {
     return (

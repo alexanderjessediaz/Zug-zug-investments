@@ -4,9 +4,13 @@ import { Table } from 'react-bootstrap';
 class CommoditiesTable extends Component {
 
   blackLotusCurrentPrice = () => {
-    return this.props.BLCurrent.minBuyout
+    const gold = this.props.BLCurrent.minBuyout / 10000 + "g"
+    // const silver = this.props.BLCurrent.minBuyout / 100000 + "s"
+    return (
+      gold
+      )
   }
-
+  
   blackLotusCurrentQuantity = () => {
     return this.props.BLCurrent.quantity
   }
@@ -23,7 +27,7 @@ class CommoditiesTable extends Component {
                   <tr>
                     <th>Item Number</th>
                     <th>Item Name</th>
-                    <th>Average Price</th>
+                    <th>Current Minimum Price</th>
                     <th>Quantity</th>
                   </tr>
                 </thead>
