@@ -8,12 +8,32 @@ class CommoditiesTable extends Component {
     // const silver = this.props.BLCurrent.minBuyout / 100000 + "s"
     return (
       gold
-      )
+    )
   }
   
   blackLotusCurrentQuantity = () => {
     return this.props.BLCurrent.quantity
   }
+
+
+  moonclothCurrentPrice = () => {
+    const gold = this.props.MCCurrent.minBuyout / 10000 + "g"
+    return gold
+  }
+  moonclothCurrentQuantity = () => {
+    return this.props.MCCurrent.quantity
+
+  }
+
+  arcaniteBarCurrentPrice = () => {
+    const gold = this.props.ABCurrent.minBuyout / 10000 + "g"
+    return gold
+  }
+  arcaniteBarCurrentQuantity = () => {
+    return this.props.ABCurrent.quantity
+  }
+
+
 
   render(){
     return (
@@ -37,6 +57,18 @@ class CommoditiesTable extends Component {
                     <td>Black Lotus</td>
                     <td> {this.blackLotusCurrentPrice()} </td>
                     <td> {this.blackLotusCurrentQuantity()} </td>
+                  </tr>
+                  <tr>
+                    <td>2</td>
+                    <td>Mooncloth</td>
+                    <td> {this.moonclothCurrentPrice()} </td>
+                    <td> {this.moonclothCurrentQuantity()} </td>
+                  </tr>
+                  <tr>
+                    <td>3</td>
+                    <td>Arcanite Bar</td>
+                    <td> {this.arcaniteBarCurrentPrice()} </td>
+                    <td> {this.arcaniteBarCurrentQuantity()} </td>
                   </tr>
                 </tbody>
                </Table>

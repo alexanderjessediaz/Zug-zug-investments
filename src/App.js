@@ -11,16 +11,22 @@ class App extends Component {
     blackLotusObject: [],
     BLData: [],
     BLStats: [],
-    BLCurrent: []
+    BLCurrent: [],
+    moonclothObject: [],
+    MCCurrent: [],
+    arcaniteBarData: [],
+    ABCurrent: []
   }
 
 
   componentDidMount(){
-    this.timer = setInterval(()=> this.getNexusData(), 10000)
+    this.timer = setInterval(()=> this.getBlackLotusData(), 10000)
+    this.timer = setInterval(()=> this.getMoonclothData(), 10000)
+    this.timer = setInterval(()=> this.getArcaniteBarData(), 10000)
   }
-      async getNexusData(){
+      async getBlackLotusData(){
         
-        fetch("http://localhost:9000", {method: "GET"})
+        fetch("http://localhost:9000/BlackLotus", {method: "GET"})
           .then((response) => response.json())
           .then((blackLotusObject => this.setState({
             blackLotusObject:blackLotusObject,
@@ -31,7 +37,31 @@ class App extends Component {
           .catch((error) => {
             console.error(error)
           })
-      }
+      };
+      async getMoonclothData(){
+        
+        fetch("http://localhost:9000/MoonCloth", {method: "GET"})
+          .then((response) => response.json())
+          .then((moonclothObject => this.setState({
+            moonclothObject:moonclothObject,
+            MCCurrent:moonclothObject.data.stats.current
+          })))
+          .catch((error) => {
+            console.error(error)
+          })
+      };
+      async getArcaniteBarData(){
+        
+        fetch("http://localhost:9000/ArcaniteBar", {method: "GET"})
+          .then((response) => response.json())
+          .then((arcaniteBarData => this.setState({
+            arcaniteBarData:arcaniteBarData,
+            ABCurrent:arcaniteBarData.data.stats.current
+          })))
+          .catch((error) => {
+            console.error(error)
+          })
+      };
   
   render () {
     return (
@@ -39,9 +69,9 @@ class App extends Component {
         <MainNavbar />
         <Jumbo />
         <CommoditiesTable
-          BLData={this.state.BLData} 
-          BLStats={this.state.BLStats}
+          MCCurrent={this.state.MCCurrent}
           BLCurrent={this.state.BLCurrent}
+          ABCurrent={this.state.ABCurrent}
         />
       </div>
     );
