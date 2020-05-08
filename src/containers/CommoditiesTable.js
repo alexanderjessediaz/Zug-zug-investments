@@ -1,16 +1,14 @@
-import React, { Component } from 'react';
-import { Table } from 'react-bootstrap';
+import React, { Component } from 'react'
+import { Table } from 'react-bootstrap'
 
 class CommoditiesTable extends Component {
 
   blackLotusCurrentPrice = () => {
     const gold = this.props.BLCurrent.minBuyout / 10000 + "g"
-    // const silver = this.props.BLCurrent.minBuyout / 100000 + "s"
     return (
       gold
     )
   }
-  
   blackLotusCurrentQuantity = () => {
     return this.props.BLCurrent.quantity
   }
@@ -33,6 +31,15 @@ class CommoditiesTable extends Component {
     return this.props.ABCurrent.quantity
   }
 
+  woolclothCurrentPrice = () => {
+    const gold = this.props.WCCurrent.minBuyout / 10000 + "g"
+    return gold
+  }
+
+  woolclothCurrentQuantity = () => {
+    return this.props.WCCurrent.quantity
+  }
+
 
 
   render(){
@@ -40,9 +47,8 @@ class CommoditiesTable extends Component {
       <div className="row mb-4">
          <div className="col-sm-12 grid-margin">
            <div className="card h-100">
-             <h4 className="card-header" class="d-flex justify-content-center">Kromcrush Prices</h4>
              <div className="card-body"> 
-                <Table striped bordered hover>
+                <Table striped bordered hover responsive="sm">
                 <thead>
                   <tr>
                     <th>Item Number</th>
@@ -69,6 +75,12 @@ class CommoditiesTable extends Component {
                     <td>Arcanite Bar</td>
                     <td> {this.arcaniteBarCurrentPrice()} </td>
                     <td> {this.arcaniteBarCurrentQuantity()} </td>
+                  </tr>
+                  <tr>
+                    <td>4</td>
+                    <td>Woolcloth</td>
+                    <td> {this.woolclothCurrentPrice()} </td>
+                    <td> {this.woolclothCurrentQuantity()} </td>
                   </tr>
                 </tbody>
                </Table>

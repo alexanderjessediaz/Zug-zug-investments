@@ -1,5 +1,5 @@
-import React from 'react';
-import { Navbar, Nav } from 'react-bootstrap';
+import React from 'react'
+import { Navbar, Nav } from 'react-bootstrap'
 
  const MainNavbar = () =>{
     return (
@@ -15,8 +15,6 @@ import { Navbar, Nav } from 'react-bootstrap';
               Zug-Zug
             </Navbar.Brand>
                   <Nav className="mr-auto" class="d-flex justify-content-end">
-                    <Nav.Link href="#" >Sign Up</Nav.Link>
-                    <Nav.Link href="#" >Sign In</Nav.Link>
                   </Nav>
           </Navbar>
         </header>
