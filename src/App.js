@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import CommoditiesTable from "./containers/CommoditiesTable.js"
 import MainNavbar from "./containers/MainNavbar.js"
 import Jumbo from './containers/Jumbo.js'
-// import ChartContainer from "./containers/ChartContainer"
 
 
 class App extends Component {
@@ -12,6 +11,7 @@ class App extends Component {
     BLPriceData: [],
     MCCurrent: [],
     ABCurrent: [],
+    WCCurrent:[]
   }
 
 
@@ -19,6 +19,7 @@ class App extends Component {
     this.timer = setInterval(()=> this.getBlackLotusData(), 10000)
     this.timer = setInterval(()=> this.getMoonclothData(), 10000)
     this.timer = setInterval(()=> this.getArcaniteBarData(), 10000)
+    this.timer = setInterval(()=> this.getWoolclothData(), 10000)
   }
       async getBlackLotusData(){
         
@@ -54,6 +55,17 @@ class App extends Component {
             console.error(error)
           })
       }
+      async getWoolclothData(){
+        
+        fetch("http://localhost:9000/WoolCloth", {method: "GET"})
+          .then((response) => response.json())
+          .then((woolclothData => this.setState({
+            WCCurrent:woolclothData.data.stats.current
+          })))
+          .catch((error) => {
+            console.error(error)
+          })
+      }
   
   render () {
     return (
@@ -67,6 +79,7 @@ class App extends Component {
           MCCurrent={this.state.MCCurrent}
           BLCurrent={this.state.BLCurrent}
           ABCurrent={this.state.ABCurrent}
+          WCCurrent={this.state.WCCurrent}
         />
       </div>
     )
