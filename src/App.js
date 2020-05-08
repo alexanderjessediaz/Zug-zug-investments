@@ -1,21 +1,17 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import CommoditiesTable from "./containers/CommoditiesTable.js"
 import MainNavbar from "./containers/MainNavbar.js"
-import Jumbo from './containers/Jumbo.js';
+import Jumbo from './containers/Jumbo.js'
+// import ChartContainer from "./containers/ChartContainer"
 
-import './App.css';
 
 class App extends Component {
 
   state = {
-    blackLotusObject: [],
-    BLData: [],
-    BLStats: [],
     BLCurrent: [],
-    moonclothObject: [],
+    BLPriceData: [],
     MCCurrent: [],
-    arcaniteBarData: [],
-    ABCurrent: []
+    ABCurrent: [],
   }
 
 
@@ -29,55 +25,54 @@ class App extends Component {
         fetch("http://localhost:9000/BlackLotus", {method: "GET"})
           .then((response) => response.json())
           .then((blackLotusObject => this.setState({
-            blackLotusObject:blackLotusObject,
-            BLData:blackLotusObject.data,
-            BLStats:blackLotusObject.data.stats,
-            BLCurrent:blackLotusObject.data.stats.current
+            BLCurrent:blackLotusObject.data.stats.current,
+            BLPriceData:blackLotusObject.BLPriceData.data
           })))
           .catch((error) => {
             console.error(error)
           })
-      };
+      }
       async getMoonclothData(){
         
         fetch("http://localhost:9000/MoonCloth", {method: "GET"})
           .then((response) => response.json())
           .then((moonclothObject => this.setState({
-            moonclothObject:moonclothObject,
             MCCurrent:moonclothObject.data.stats.current
           })))
           .catch((error) => {
             console.error(error)
           })
-      };
+      }
       async getArcaniteBarData(){
         
         fetch("http://localhost:9000/ArcaniteBar", {method: "GET"})
           .then((response) => response.json())
           .then((arcaniteBarData => this.setState({
-            arcaniteBarData:arcaniteBarData,
             ABCurrent:arcaniteBarData.data.stats.current
           })))
           .catch((error) => {
             console.error(error)
           })
-      };
+      }
   
   render () {
     return (
       <div className="App">
         <MainNavbar />
-        <Jumbo />
+        <Jumbo 
+          BLCurrent={this.state.BLCurrent}
+          BLPriceData={this.state.BLPriceData}
+        />
         <CommoditiesTable
           MCCurrent={this.state.MCCurrent}
           BLCurrent={this.state.BLCurrent}
           ABCurrent={this.state.ABCurrent}
         />
       </div>
-    );
+    )
   }
 
   }
 
-export default App;
+export default App
         

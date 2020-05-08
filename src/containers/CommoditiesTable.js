@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { Table } from 'react-bootstrap';
+import React, { Component } from 'react'
+import { Table } from 'react-bootstrap'
 
 class CommoditiesTable extends Component {
 
@@ -40,7 +40,7 @@ class CommoditiesTable extends Component {
       <div className="row mb-4">
          <div className="col-sm-12 grid-margin">
            <div className="card h-100">
-             <h4 className="card-header" class="d-flex justify-content-center">Kromcrush Prices</h4>
+             <h6 class="d-flex justify-content-center">Only the most important World of Warcraft Commodities</h6>
              <div className="card-body"> 
                 <Table striped bordered hover>
                 <thead>
