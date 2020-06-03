@@ -1,5 +1,6 @@
 import React from 'react'
 import { Navbar, Nav } from 'react-bootstrap'
+import ZugZugLogo from '../Images/ZugZugLogo.png'
 
  const MainNavbar = () =>{
     return (
@@ -7,7 +8,7 @@ import { Navbar, Nav } from 'react-bootstrap'
           <Navbar expand="1g" variant="dark" bg="dark">
             <Navbar.Brand href="#">
               <img 
-                src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fvignette1.wikia.nocookie.net%2Fwowwiki%2Fimages%2Fd%2Fd1%2FPeon_face_WC3.jpg%2Frevision%2Flatest%3Fcb%3D20081211004507&f=1&nofb=1"
+                src={ZugZugLogo}
                 width="60"
                 height="60"
                 alt="peon"
