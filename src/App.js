@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import CommoditiesTable from "./containers/CommoditiesTable.js"
-import MainNavbar from "./containers/MainNavbar.js"
-import Jumbo from './containers/Jumbo.js'
+import CommoditiesTable from "./Components/CommoditiesTable.js"
+import MainNavbar from "./Components/MainNavbar.js"
+import Jumbo from './Components/Jumbo.js'
 
 
 class App extends Component {
