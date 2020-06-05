@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import CommoditiesTable from "./Components/CommoditiesTable.js"
 import MainNavbar from "./Components/MainNavbar.js"
 import Jumbo from './Components/Jumbo.js'
+import LoginPage from './Pages/LoginSignUp.js'
 
 
 class App extends Component {
@@ -81,6 +82,7 @@ class App extends Component {
           ABCurrent={this.state.ABCurrent}
           WCCurrent={this.state.WCCurrent}
         />
+        < LoginPage />
       </div>
     )
   }

@@ -71,6 +71,7 @@ class Jumbo extends Component {
             <Jumbotron>
                 <Container>
                     <h1>Zug-Zug Investments</h1>
+                    
                     <h4 className="card-header" class="d-flex justify-content-end">Kromcrush Server</h4>
                     <hr class="my-4"></hr>
                     <div class="media">
