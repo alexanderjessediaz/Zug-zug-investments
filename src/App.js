@@ -3,6 +3,7 @@ import CommoditiesTable from "./Components/CommoditiesTable.js"
 import MainNavbar from "./Components/MainNavbar.js"
 import Jumbo from './Components/Jumbo.js'
 import LoginPage from './Pages/LoginSignUp.js'
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 
 
 class App extends Component {
@@ -70,6 +71,10 @@ class App extends Component {
   
   render () {
     return (
+      <Router>
+        <Switch>
+          <Route exact path="/Login" component={LoginPage}/>
+        </Switch>
       <div className="App">
         <MainNavbar />
         <Jumbo 
@@ -84,6 +89,7 @@ class App extends Component {
         />
         < LoginPage />
       </div>
+      </Router>
     )
   }
 
