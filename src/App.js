@@ -87,7 +87,7 @@ class App extends Component {
           ABCurrent={this.state.ABCurrent}
           WCCurrent={this.state.WCCurrent}
         />
-        < LoginPage />
+        
       </div>
       </Router>
     )
