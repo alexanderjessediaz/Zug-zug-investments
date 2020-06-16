@@ -75,20 +75,22 @@ class App extends Component {
         <Switch>
           <Route exact path="/Login" component={LoginPage}/>
         </Switch>
-      <div className="App">
-        <MainNavbar />
-        <Jumbo 
-          BLCurrent={this.state.BLCurrent}
-          BLPriceData={this.state.BLPriceData}
-        />
-        <CommoditiesTable
-          MCCurrent={this.state.MCCurrent}
-          BLCurrent={this.state.BLCurrent}
-          ABCurrent={this.state.ABCurrent}
-          WCCurrent={this.state.WCCurrent}
-        />
+        <Route exact path = "/">
+            <div className="App">
+          <MainNavbar />
+          <Jumbo 
+            BLCurrent={this.state.BLCurrent}
+            BLPriceData={this.state.BLPriceData}
+            />
+          <CommoditiesTable
+            MCCurrent={this.state.MCCurrent}
+            BLCurrent={this.state.BLCurrent}
+            ABCurrent={this.state.ABCurrent}
+            WCCurrent={this.state.WCCurrent}
+            />
         
-      </div>
+          </div>
+          </Route>
       </Router>
     )
   }
