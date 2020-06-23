@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import CommoditiesTable from "./Components/CommoditiesTable.js"
-import MainNavbar from "./Components/MainNavbar.js"
-import Jumbo from './Components/Jumbo.js'
-import LoginPage from './Pages/LoginSignUp.js'
+import CommoditiesTable from "./CommoditiesTable.js"
+import MainNavbar from "./MainNavbar.js"
+import Jumbo from './Jumbo.js'
+import LoginPage from '../Pages/LoginSignUp.js'
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 
 
@@ -72,12 +72,12 @@ class App extends Component {
   render () {
     return (
       <Router>
+            <div className="App">
+          <MainNavbar />
         <Switch>
           <Route exact path="/Login" component={LoginPage}/>
         </Switch>
         <Route exact path = "/">
-            <div className="App">
-          <MainNavbar />
           <Jumbo 
             BLCurrent={this.state.BLCurrent}
             BLPriceData={this.state.BLPriceData}
@@ -89,8 +89,8 @@ class App extends Component {
             WCCurrent={this.state.WCCurrent}
             />
         
-          </div>
           </Route>
+          </div>
       </Router>
     )
   }
