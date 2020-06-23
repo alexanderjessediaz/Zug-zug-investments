@@ -9,6 +9,7 @@ The goal of this project was to sucessfully connect and display a World of Warcr
 
 
 
+
 Technologies used:
 
 frontend:
@@ -20,3 +21,19 @@ backend:
 -Node.js
 -express
 -Nexus Hub API
+=======
+Video Demo link: https://youtu.be/e_QTyKqcM_c
+
+Technologies used:
+
+
+frontend:
+1. -React
+2. -Bootstrap
+3. -Chartjs
+
+backend:
+1. -Node.js
+2. -express
+3. -Nexus Hub API(https://nexushub.co/developers/api)
+
