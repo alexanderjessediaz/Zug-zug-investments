@@ -72,10 +72,10 @@ class Jumbo extends Component {
                 <Container>
                     <h1>Zug-Zug Investments</h1>
                     
-                    <h4 className="card-header" class="d-flex justify-content-end">Kromcrush Server</h4>
-                    <hr class="my-4"></hr>
-                    <div class="media">
-                        <div class="media-body">
+                    <h4 className="card-header">Kromcrush Server</h4>
+                    <hr className="my-4"></hr>
+                    <div className="media">
+                        <div className="media-body">
                             <div style={{position: "relative", width: 750, height: 650}}>
                                 <Line 
                                     options={{
@@ -83,13 +83,13 @@ class Jumbo extends Component {
                                     }}
                                     data={this.getChartData}
                                 />
-                                <h6 className="chart-footer" class="d-flex justify-content-center">Last 7 days</h6>
+                                <h6 className="d-flex justify-content-center">Last 7 days</h6>
                             </div>
                         </div>
                     </div>
-                    <h1 class="d-flex justify-content-center">Only the most important World of Warcraft commodities:</h1>
-                    <h3 class="d-flex justify-content-center">Current Kromcrush prices</h3>
-                    <h5 class="d-flex justify-content-center">updated every ten seconds!</h5>
+                    <h1 className="d-flex justify-content-center">Only the most important World of Warcraft commodities:</h1>
+                    <h3 className="d-flex justify-content-center">Current Kromcrush prices</h3>
+                    <h5 className="d-flex justify-content-center">updated every ten seconds!</h5>
 
                 </Container>
             </Jumbotron>

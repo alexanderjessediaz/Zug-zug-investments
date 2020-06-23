@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import CommoditiesTable from "./CommoditiesTable.js"
-import MainNavbar from "./MainNavbar.js"
-import Jumbo from './Jumbo.js'
-import LoginPage from '../Pages/LoginSignUp.js'
+import CommoditiesTable from "./Components/CommoditiesTable.js"
+import MainNavbar from "./Components/MainNavbar.js"
+import Jumbo from './Components/Jumbo.js'
+import LoginPage from './Pages/LoginSignUp.js'
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 
 
