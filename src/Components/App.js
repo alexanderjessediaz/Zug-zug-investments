@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
-import CommoditiesTable from "./Components/CommoditiesTable.js"
-import MainNavbar from "./Components/MainNavbar.js"
-import Jumbo from './Components/Jumbo.js'
+import CommoditiesTable from "./CommoditiesTable.js"
+import MainNavbar from "./MainNavbar.js"
+import Jumbo from './Jumbo.js'
+import LoginPage from '../Pages/LoginSignUp.js'
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 
 
 class App extends Component {
@@ -69,19 +71,27 @@ class App extends Component {
   
   render () {
     return (
-      <div className="App">
-        <MainNavbar />
-        <Jumbo 
-          BLCurrent={this.state.BLCurrent}
-          BLPriceData={this.state.BLPriceData}
-        />
-        <CommoditiesTable
-          MCCurrent={this.state.MCCurrent}
-          BLCurrent={this.state.BLCurrent}
-          ABCurrent={this.state.ABCurrent}
-          WCCurrent={this.state.WCCurrent}
-        />
-      </div>
+      <Router>
+            <div className="App">
+          <MainNavbar />
+        <Switch>
+          <Route exact path="/Login" component={LoginPage}/>
+        </Switch>
+        <Route exact path = "/">
+          <Jumbo 
+            BLCurrent={this.state.BLCurrent}
+            BLPriceData={this.state.BLPriceData}
+            />
+          <CommoditiesTable
+            MCCurrent={this.state.MCCurrent}
+            BLCurrent={this.state.BLCurrent}
+            ABCurrent={this.state.ABCurrent}
+            WCCurrent={this.state.WCCurrent}
+            />
+        
+          </Route>
+          </div>
+      </Router>
     )
   }
 
