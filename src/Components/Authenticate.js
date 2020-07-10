@@ -2,7 +2,7 @@ import React, { Component }  from 'react'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
-const usersURL = "http://localhost:3000/users"
+const loginURL = "http://localhost:3000/login"
 
 class Authenticate extends Component {
 
@@ -19,7 +19,7 @@ class Authenticate extends Component {
     handleSubmit = (event) => {
         event.preventDefault()
 
-        fetch(usersURL, {
+        fetch(loginURL, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -34,8 +34,8 @@ class Authenticate extends Component {
         const { username, password} = this.state
 
         return(
-           <Form>
-               <Form.Group controlID="formBasicEmail">
+           <Form className="login" onSubmit={this.handleSubmit}>
+               <Form.Group controlId="formBasicEmail">
                    <Form.Label>Username</Form.Label>
                    <Form.Control 
                     type="text"
@@ -45,7 +45,7 @@ class Authenticate extends Component {
                     onChange={this.handleChange}
                     />
                </Form.Group>
-               <Form.Group controlID="formBasicPassword">
+               <Form.Group controlId="formBasicPassword">
                    <Form.Label>Password</Form.Label>
                    <Form.Control 
                     type="password" 
