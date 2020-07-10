@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import CommoditiesTable from "./Components/CommoditiesTable.js"
 import MainNavbar from "./Components/MainNavbar.js"
 import Jumbo from './Components/Jumbo.js'
-import LoginPage from './Pages/LoginSignUp.js'
+// import LoginPage from './Pages/LoginSignUp.js'
+import Authenticate from './Components/Authenticate'
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 
 
@@ -75,7 +76,7 @@ class App extends Component {
             <div className="App">
           <MainNavbar />
         <Switch>
-          <Route exact path="/Login" component={LoginPage}/>
+          <Route exact path="/Login" component={Authenticate}/>
         </Switch>
         <Route exact path = "/">
           <Jumbo 
