@@ -2,6 +2,8 @@ import React, { Component }  from 'react'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
+const usersURL = "http://localhost:3000/users"
+
 class Authenticate extends Component {
 
     state = {
@@ -12,6 +14,19 @@ class Authenticate extends Component {
     handleChange = (event) => {
         const {name, value} = event.target
         this.setState({[name]: value})
+    }
+
+    handleSubmit = (event) => {
+        event.preventDefault()
+
+        fetch(usersURL, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(this.state)
+        }).then(response => response.json())
+            .then(console.log)
     }
     
     
