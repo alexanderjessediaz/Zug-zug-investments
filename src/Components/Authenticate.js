@@ -26,12 +26,15 @@ class Authenticate extends Component {
             },
             body: JSON.stringify(this.state)
         }).then(response => response.json())
-            .then(console.log)
-    }
+            .then(result => {
+                localStorage.setItem("token", result.token)
+            })
+        }
     
     
     render(){
         const { username, password} = this.state
+        console.log(username, password)
 
         return(
            <Form className="login" onSubmit={this.handleSubmit}>
