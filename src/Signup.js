@@ -33,7 +33,6 @@ class Signup extends Component {
     render(){
         const { username, password} = this.state
         
-
         return(
            <Form className="singup" onSubmit={this.handleSubmit}>
                <Form.Group controlId="formBasicEmail">
@@ -56,7 +55,7 @@ class Signup extends Component {
                     onChange={this.handleChange}
                     />
                </Form.Group>
-               <Button variant="primary" type="submit" value="login">
+               <Button variant="primary" type="submit" value="signup">
                    Sign up
                </Button>
            </Form>

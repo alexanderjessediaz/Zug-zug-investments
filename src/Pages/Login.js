@@ -29,13 +29,12 @@ class Login extends Component {
             .then(result => {
                 localStorage.setItem("token", result.token)
             })
-            
         }
     
     
     render(){
         const { username, password} = this.state
-        console.log(username, password)
+        
 
         return(
            <Form className="login" onSubmit={this.handleSubmit}>

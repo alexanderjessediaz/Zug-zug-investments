@@ -19,10 +19,10 @@ class App extends Component {
 
 
   componentDidMount(){
-    this.timer = setInterval(()=> this.getBlackLotusData(), 10000)
-    this.timer = setInterval(()=> this.getMoonclothData(), 10000)
-    this.timer = setInterval(()=> this.getArcaniteBarData(), 10000)
-    this.timer = setInterval(()=> this.getWoolclothData(), 10000)
+    // this.timer = setInterval(()=> this.getBlackLotusData(), 10000)
+    // this.timer = setInterval(()=> this.getMoonclothData(), 10000)
+    // this.timer = setInterval(()=> this.getArcaniteBarData(), 10000)
+    // this.timer = setInterval(()=> this.getWoolclothData(), 10000)
   }
       async getBlackLotusData(){
         
