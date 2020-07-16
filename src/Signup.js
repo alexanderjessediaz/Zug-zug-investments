@@ -1,6 +1,7 @@
 import React, { Component }  from 'react'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
+// import { response } from 'express'
 
 const usersURL = "http://localhost:3000/users"
 
@@ -25,8 +26,11 @@ class Signup extends Component {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({ user: this.state })
-        }).then(console.log)
-            
+        }).then(response => response.json())
+            .then(result => {
+            localStorage.setItem("token", result.token)
+            })
+            .catch(error => this.setState({error: error.message}))  
         }
     
     

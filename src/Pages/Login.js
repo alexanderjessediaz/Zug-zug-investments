@@ -8,7 +8,8 @@ class Login extends Component {
 
     state = {
         username: "",
-        password: ""
+        password: "",
+        error: ""
     }
     
     handleChange = (event) => {
@@ -25,16 +26,22 @@ class Login extends Component {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(this.state)
-        }).then(response => response.json())
-            .then(result => {
-                localStorage.setItem("token", result.token)
-            })
+        }).then(response =>{
+            if (response.status === "200"){
+                response.json()
+            } else if (response.status === "401") {
+                throw new Error("Username or password not correct")
+            } 
+        })
+        .then(result => {
+            localStorage.setItem("token", result.token)
+        })
+        .catch(error => this.setState({ error: error.message}))
         }
     
     
     render(){
         const { username, password} = this.state
-        
 
         return(
            <Form className="login" onSubmit={this.handleSubmit}>
@@ -60,6 +67,7 @@ class Login extends Component {
                </Form.Group>
                <Button variant="primary" type="submit" value="login">
                    Log in
+                   {this.state.error ? <p>{this.state.error}</p>: null}
                </Button>
            </Form>
         )
