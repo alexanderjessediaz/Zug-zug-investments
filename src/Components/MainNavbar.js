@@ -6,7 +6,7 @@ import ZugZugLogo from '../Images/ZugZugLogo.png'
     return (
         <header>
           <Navbar variant="dark" bg="dark">
-            <Navbar.Brand href="#">
+            <Navbar.Brand href="http://localhost:3001">
               <img 
                 src={ZugZugLogo}
                 width="50"
@@ -16,7 +16,10 @@ import ZugZugLogo from '../Images/ZugZugLogo.png'
             </Navbar.Brand>
                   <Nav className="mr-auto">
                     <Nav.Item>
-                      <Nav.Link href="http://localhost:3000/login">Login/Sign Up</Nav.Link>
+                      <Nav.Link href="http://localhost:3001/login">Login/Sign Up</Nav.Link>
+                    </Nav.Item>
+                    <Nav.Item>
+                      <Nav.Link href="http://loaclhost:3001/yourProfile">Your Profile</Nav.Link>
                     </Nav.Item>
                   </Nav>
                   <Nav>

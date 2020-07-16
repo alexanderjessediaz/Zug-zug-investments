@@ -76,12 +76,6 @@ class CommoditiesTable extends Component {
                     <td> {this.arcaniteBarCurrentPrice()} </td>
                     <td> {this.arcaniteBarCurrentQuantity()} </td>
                   </tr>
-                  <tr>
-                    <td>4</td>
-                    <td>Woolcloth</td>
-                    <td> {this.woolclothCurrentPrice()} </td>
-                    <td> {this.woolclothCurrentQuantity()} </td>
-                  </tr>
                 </tbody>
                </Table>
              </div>

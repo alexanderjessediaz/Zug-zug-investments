@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import CommoditiesTable from "./Components/CommoditiesTable.js"
 import MainNavbar from "./Components/MainNavbar.js"
-import Jumbo from './Components/Jumbo.js'
-// import LoginPage from './Pages/LoginSignUp.js'
+import BlackLotusGraph from './Components/BlackLotusGraph.js'
 import Authenticate from './Components/Authenticate'
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 
@@ -22,7 +21,6 @@ class App extends Component {
     // this.timer = setInterval(()=> this.getBlackLotusData(), 10000)
     // this.timer = setInterval(()=> this.getMoonclothData(), 10000)
     // this.timer = setInterval(()=> this.getArcaniteBarData(), 10000)
-    // this.timer = setInterval(()=> this.getWoolclothData(), 10000)
   }
       async getBlackLotusData(){
         
@@ -58,17 +56,7 @@ class App extends Component {
             console.error(error)
           })
       }
-      async getWoolclothData(){
-        
-        fetch("http://localhost:9000/WoolCloth", {method: "GET"})
-          .then((response) => response.json())
-          .then((woolclothData => this.setState({
-            WCCurrent:woolclothData.data.stats.current
-          })))
-          .catch((error) => {
-            console.error(error)
-          })
-      }
+      
   
   render () {
     return (
@@ -77,9 +65,10 @@ class App extends Component {
           <MainNavbar />
         <Switch>
           <Route exact path="/Login" component={Authenticate}/>
+          <Route exact path="/Profile" />
         </Switch>
         <Route exact path = "/">
-          <Jumbo 
+          <BlackLotusGraph 
             BLCurrent={this.state.BLCurrent}
             BLPriceData={this.state.BLPriceData}
             />

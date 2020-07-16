@@ -1,6 +1,6 @@
 import React, { Component }  from 'react'
 import Login from '../Pages/Login'
-import Signup from '../Signup'
+import Signup from '../Pages/Signup'
 import Button from "react-bootstrap/Button"
 
 

@@ -3,6 +3,7 @@ import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import Badge from 'react-bootstrap/Badge'
 
+
 const loginURL = "http://localhost:3000/login"
 
 class Login extends Component {
@@ -48,7 +49,7 @@ class Login extends Component {
         return(
             <div>
                 <Badge pill variant="secondary">Zug Zug, log in here!</Badge>{' '}
-                
+
                 <Form className="login" onSubmit={this.handleSubmit} >
                 <Form.Group controlId="formBasicEmail">
                     <Form.Label></Form.Label>
