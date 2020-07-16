@@ -13,7 +13,7 @@
       "sizes": ""
     },
     {
-      "src": "Images/ZugZugLogo.png",
+      "src": "favico.ico",
       "type": "image/png",
       "sizes": "512x512"
     }
