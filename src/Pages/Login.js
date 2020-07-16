@@ -27,9 +27,9 @@ class Login extends Component {
             },
             body: JSON.stringify(this.state)
         }).then(response =>{
-            if (response.status === "200"){
+            if (response.status === 200){
                 response.json()
-            } else if (response.status === "401") {
+            } else if (response.status === 401) {
                 throw new Error("Username or password not correct")
             } 
         })
