@@ -28,6 +28,7 @@ class Login extends Component {
             body: JSON.stringify(this.state)
         }).then(response =>{
             if (response.status === 200){
+                this.setState({ error: ""})
                 response.json()
             } else if (response.status === 401) {
                 throw new Error("Username or password not correct")
@@ -41,7 +42,7 @@ class Login extends Component {
     
     
     render(){
-        const { username, password} = this.state
+        const { username, password, error} = this.state
 
         return(
            <Form className="login" onSubmit={this.handleSubmit}>
@@ -67,7 +68,7 @@ class Login extends Component {
                </Form.Group>
                <Button variant="primary" type="submit" value="login">
                    Log in
-                   {this.state.error ? <p>{this.state.error}</p>: null}
+                   {error ? <p>{error}</p>: null}
                </Button>
            </Form>
         )
