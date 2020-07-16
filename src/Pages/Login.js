@@ -1,6 +1,7 @@
 import React, { Component }  from 'react'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
+import Badge from 'react-bootstrap/Badge'
 
 const loginURL = "http://localhost:3000/login"
 
@@ -45,32 +46,38 @@ class Login extends Component {
         const { username, password, error} = this.state
 
         return(
-           <Form className="login" onSubmit={this.handleSubmit}>
-               <Form.Group controlId="formBasicEmail">
-                   <Form.Label>Username</Form.Label>
-                   <Form.Control 
-                    type="text"
-                    name="username"
-                    placeholder="enter username" 
-                    value={username}
-                    onChange={this.handleChange}
-                    />
-               </Form.Group>
-               <Form.Group controlId="formBasicPassword">
-                   <Form.Label>Password</Form.Label>
-                   <Form.Control 
-                    type="password" 
-                    name="password" 
-                    placeholder="enter password" 
-                    value={password}
-                    onChange={this.handleChange}
-                    />
-               </Form.Group>
-               <Button variant="primary" type="submit" value="login">
-                   Log in
-                   {error ? <p>{error}</p>: null}
-               </Button>
-           </Form>
+            <div>
+                <Badge pill variant="secondary">Zug Zug, log in here!</Badge>{' '}
+                
+                <Form className="login" onSubmit={this.handleSubmit} >
+                <Form.Group controlId="formBasicEmail">
+                    <Form.Label></Form.Label>
+                    <Form.Control 
+                        size="sm"
+                        type="text"
+                        name="username"
+                        placeholder="enter username" 
+                        value={username}
+                        onChange={this.handleChange}
+                        />
+                </Form.Group>
+                <Form.Group controlId="formBasicPassword">
+                    <Form.Label></Form.Label>
+                    <Form.Control 
+                        size="sm"
+                        type="password" 
+                        name="password" 
+                        placeholder="enter password" 
+                        value={password}
+                        onChange={this.handleChange}
+                        />
+                </Form.Group>
+                    <Button variant="secondary" type="submit" value="login">
+                        Log in
+                    </Button>
+                    <p>{error ? <p>{error}</p>: null}</p>
+                </Form>
+           </div>
         )
     }
     

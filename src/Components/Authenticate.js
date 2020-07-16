@@ -20,7 +20,7 @@ class Authenticate extends Component {
             <div className="authenticate">
                {isLogin ? <Login/> : <Signup/>} 
                 <Button onClick={this.toggleLoginOrSignup}>
-                    {isLogin ? "Signup?": "Login?"}
+                    {isLogin ? "New? Signup here!": "Login here!"}
                 </Button>
             </div>
         )

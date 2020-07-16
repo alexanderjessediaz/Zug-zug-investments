@@ -1,7 +1,8 @@
 import React, { Component }  from 'react'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
-// import { response } from 'express'
+import Badge from 'react-bootstrap/Badge'
+
 
 const usersURL = "http://localhost:3000/users"
 
@@ -9,7 +10,8 @@ class Signup extends Component {
 
     state = {
         username: "",
-        password: ""
+        password: "", 
+        error: ""
     }
     
     handleChange = (event) => {
@@ -35,10 +37,12 @@ class Signup extends Component {
     
     
     render(){
-        const { username, password} = this.state
+        const { username, password, error} = this.state
         
         return(
-           <Form className="singup" onSubmit={this.handleSubmit}>
+        <div>
+            <Badge pill variant="secondary">Welcome, sign up here!</Badge>{' '}
+            <Form className="singup" onSubmit={this.handleSubmit}>
                <Form.Group controlId="formBasicEmail">
                    <Form.Label>Username</Form.Label>
                    <Form.Control 
@@ -59,10 +63,12 @@ class Signup extends Component {
                     onChange={this.handleChange}
                     />
                </Form.Group>
-               <Button variant="primary" type="submit" value="signup">
-                   Sign up
+               <Button variant="secondary" type="submit" value="signup">
+                   Submit
                </Button>
-           </Form>
+               <p>{error ? <p>{error}</p>: null}</p>
+            </Form>
+        </div>
         )
     }
     

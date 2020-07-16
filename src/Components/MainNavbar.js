@@ -16,7 +16,7 @@ import ZugZugLogo from '../Images/ZugZugLogo.png'
             </Navbar.Brand>
                   <Nav className="mr-auto">
                     <Nav.Item>
-                      <Nav.Link href="#">Login/Sign Up</Nav.Link>
+                      <Nav.Link href="http://localhost:3000/login">Login/Sign Up</Nav.Link>
                     </Nav.Item>
                   </Nav>
                   <Nav>
