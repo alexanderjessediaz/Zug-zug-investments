@@ -29,7 +29,7 @@ class Login extends Component {
         }).then(response =>{
             if (response.status === 200){
                 this.setState({ error: ""})
-                response.json()
+               return response.json()
             } else if (response.status === 401) {
                 throw new Error("Username or password not correct")
             } 
@@ -38,7 +38,7 @@ class Login extends Component {
             localStorage.setItem("token", result.token)
         })
         .catch(error => this.setState({ error: error.message}))
-        }
+    }
     
     
     render(){
