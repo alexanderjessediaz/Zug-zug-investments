@@ -61,13 +61,13 @@ class App extends Component {
   render () {
     return (
       <Router>
-            <div className="App">
-          <MainNavbar />
+        <div className="App">
+        <MainNavbar />
         <Switch>
-          <Route exact path="/Login" component={Authenticate}/>
+          <Route exact path="/" component={Authenticate}/>
           <Route exact path="/Profile" />
         </Switch>
-        <Route exact path = "/">
+        <Route exact path = "/ProfileID">
           <BlackLotusGraph 
             BLCurrent={this.state.BLCurrent}
             BLPriceData={this.state.BLPriceData}
