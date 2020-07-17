@@ -3,6 +3,7 @@ import CommoditiesTable from "./Components/CommoditiesTable.js"
 import MainNavbar from "./Components/MainNavbar.js"
 import BlackLotusGraph from './Components/BlackLotusGraph.js'
 import Authenticate from './Components/Authenticate'
+import UserDashboard from './Components/UserDashboard'
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 
 
@@ -65,7 +66,7 @@ class App extends Component {
         <MainNavbar />
         <Switch>
           <Route exact path="/" component={Authenticate}/>
-          <Route exact path="/Profile" />
+          <Route exact path="/Profile" component={UserDashboard}/>
         </Switch>
         <Route exact path = "/ProfileID">
           <BlackLotusGraph 
