@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import CommoditiesTable from "./Components/CommoditiesTable.js"
 import MainNavbar from "./Components/MainNavbar.js"
 import BlackLotusGraph from './Components/BlackLotusGraph.js'
-import Authenticate from './Components/Authenticate'
+// import Authenticate from './Components/Authenticate'
 import UserDashboard from './Components/UserDashboard'
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 
@@ -19,9 +19,9 @@ class App extends Component {
 
 
   componentDidMount(){
-    // this.timer = setInterval(()=> this.getBlackLotusData(), 10000)
-    // this.timer = setInterval(()=> this.getMoonclothData(), 10000)
-    // this.timer = setInterval(()=> this.getArcaniteBarData(), 10000)
+    this.timer = setInterval(()=> this.getBlackLotusData(), 10000)
+    this.timer = setInterval(()=> this.getMoonclothData(), 10000)
+    this.timer = setInterval(()=> this.getArcaniteBarData(), 10000)
   }
       async getBlackLotusData(){
         
@@ -65,10 +65,10 @@ class App extends Component {
         <div className="App">
         <MainNavbar />
         <Switch>
-          <Route exact path="/" component={Authenticate}/>
-          <Route exact path="/Profile" component={UserDashboard}/>
+          {/* <Route exact path="/" component={Authenticate}/> */}
+          <Route exact path="/" component={UserDashboard}/>
         </Switch>
-        <Route exact path = "/ProfileID">
+        
           <BlackLotusGraph 
             BLCurrent={this.state.BLCurrent}
             BLPriceData={this.state.BLPriceData}
@@ -79,8 +79,6 @@ class App extends Component {
             ABCurrent={this.state.ABCurrent}
             WCCurrent={this.state.WCCurrent}
             />
-        
-          </Route>
           </div>
       </Router>
     )
