@@ -25,7 +25,7 @@ class App extends Component {
   }
       async getBlackLotusData(){
         
-        fetch("http://localhost:9000/BlackLotus", {method: "GET"})
+        fetch("http://localhost:5555/BlackLotus", {method: "GET"})
           .then((response) => response.json())
           .then((blackLotusObject => this.setState({
             BLCurrent:blackLotusObject.data.stats.current,
@@ -37,7 +37,7 @@ class App extends Component {
       }
       async getMoonclothData(){
         
-        fetch("http://localhost:9000/MoonCloth", {method: "GET"})
+        fetch("http://localhost:5555/MoonCloth", {method: "GET"})
           .then((response) => response.json())
           .then((moonclothObject => this.setState({
             MCCurrent:moonclothObject.data.stats.current
@@ -48,7 +48,7 @@ class App extends Component {
       }
       async getArcaniteBarData(){
         
-        fetch("http://localhost:9000/ArcaniteBar", {method: "GET"})
+        fetch("http://localhost:5555/ArcaniteBar", {method: "GET"})
           .then((response) => response.json())
           .then((arcaniteBarData => this.setState({
             ABCurrent:arcaniteBarData.data.stats.current
