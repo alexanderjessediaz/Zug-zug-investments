@@ -2,9 +2,7 @@ import React, { Component } from 'react'
 import CommoditiesTable from "./Components/CommoditiesTable.js"
 import MainNavbar from "./Components/MainNavbar.js"
 import BlackLotusGraph from './Components/BlackLotusGraph.js'
-// import Authenticate from './Components/Authenticate'
-import UserDashboard from './Components/UserDashboard'
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
+import {BrowserRouter as Router, Switch} from 'react-router-dom'
 
 
 class App extends Component {
@@ -65,10 +63,7 @@ class App extends Component {
         <div className="App">
         <MainNavbar />
         <Switch>
-          {/* <Route exact path="/" component={Authenticate}/> */}
-          <Route exact path="/" component={UserDashboard}/>
         </Switch>
-        
           <BlackLotusGraph 
             BLCurrent={this.state.BLCurrent}
             BLPriceData={this.state.BLPriceData}
