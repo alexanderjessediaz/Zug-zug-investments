@@ -2,7 +2,7 @@ import React, {Component}  from 'react'
 import { Jumbotron, Container } from 'react-bootstrap'
 import { Line } from 'react-chartjs-2'
 
-class Jumbo extends Component {
+class GoodsGraph extends Component {
 
     state = {
         data: {
@@ -96,4 +96,4 @@ class Jumbo extends Component {
         )
     }
 }
-export default Jumbo
+export default GoodsGraph

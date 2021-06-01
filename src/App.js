@@ -1,21 +1,21 @@
 import React, { Component } from 'react'
 import CommoditiesTable from "./Components/CommoditiesTable.js"
 import MainNavbar from "./Components/MainNavbar.js"
-import BlackLotusGraph from './Components/BlackLotusGraph.js'
+import GoodsGraph from './Components/GoodsGraph.js'
 import {BrowserRouter as Router, Switch} from 'react-router-dom'
 
 
 class App extends Component {
 
-  state = {
-    BLCurrent: [],
-    BLPriceData: [],
-    MCCurrent: [],
-    ABCurrent: [],
-    WCCurrent:[]
-  }
+  // state = {
+  //   BLCurrent: [],
+  //   BLPriceData: [],
+  //   MCCurrent: [],
+  //   ABCurrent: [],
+  //   WCCurrent:[]
+  // }
 
-
+  // timer calls
   componentDidMount(){
     this.timer = setInterval(()=> this.getBlackLotusData(), 10000)
     this.timer = setInterval(()=> this.getMoonclothData(), 10000)
@@ -64,15 +64,15 @@ class App extends Component {
         <MainNavbar />
         <Switch>
         </Switch>
-          <BlackLotusGraph 
-            BLCurrent={this.state.BLCurrent}
-            BLPriceData={this.state.BLPriceData}
+          <GoodsGraph 
+            // BLCurrent={this.state.BLCurrent}
+            // BLPriceData={this.state.BLPriceData}
             />
           <CommoditiesTable
-            MCCurrent={this.state.MCCurrent}
-            BLCurrent={this.state.BLCurrent}
-            ABCurrent={this.state.ABCurrent}
-            WCCurrent={this.state.WCCurrent}
+            // MCCurrent={this.state.MCCurrent}
+            // BLCurrent={this.state.BLCurrent}
+            // ABCurrent={this.state.ABCurrent}
+            // WCCurrent={this.state.WCCurrent}
             />
           </div>
       </Router>
