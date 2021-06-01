@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import CommoditiesTable from "./Components/CommoditiesTable.js"
-import MainNavbar from "./Components/MainNavbar.js"
-import GoodsGraph from './Components/GoodsGraph.js'
+import CommoditiesTable from "./Components/CommodityTable/CommoditiesTable.js"
+import Navbar from "./Components/Navbar.js"
+import GoodsGraph from './Components/Graphs/GoodsGraph.js'
 import {BrowserRouter as Router, Switch} from 'react-router-dom'
 
 
@@ -61,7 +61,7 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-        <MainNavbar />
+        <Navbar />
         <Switch>
         </Switch>
           <GoodsGraph 
