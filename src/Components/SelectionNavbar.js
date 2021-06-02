@@ -1,8 +1,10 @@
 import React from 'react'
-import { Navbar} from 'react-bootstrap'
+import { Navbar } from 'react-bootstrap'
+import FactionButton from './WowFilters/FactionButton'
+
 import ZugZugLogo from '../Images/ZugZugLogo.png'
 
- const MainNavbar = () =>{
+ const SelectionNavbar = () =>{
     return (
         <header>
           <Navbar variant="dark" bg="dark">
@@ -14,8 +16,10 @@ import ZugZugLogo from '../Images/ZugZugLogo.png'
                 alt="peon"
               />
             </Navbar.Brand>
+            < FactionButton />
+            
             </Navbar>
         </header>
     )
 } 
-export default MainNavbar
+export default SelectionNavbar
