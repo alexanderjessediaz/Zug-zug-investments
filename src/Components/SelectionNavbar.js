@@ -17,8 +17,8 @@ import ZugZugLogo from '../Images/ZugZugLogo.png'
                 alt="peon"
               />
             </Navbar.Brand>
-            < ServerSelect />
-            < FactionSelect />
+            <ServerSelect />
+            <FactionSelect />
             
             </Navbar>
         </header>
