@@ -13,8 +13,8 @@ import ZugZugLogo from '../Images/ZugZugLogo.png'
               <img 
                 src={ZugZugLogo}
                 width="50"
-                height="50"
-                alt="peon"
+                height="5%"
+                alt="orc peon on a black backdrop. Text: Me Gold You"
               />
             </Navbar.Brand>
             <ServerSelect />

@@ -1,11 +1,24 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 
 import { Dropdown, FormControl } from 'react-bootstrap';
 
 
 const ServerSelect = () => {
-// The forwardRef is important!!
-// Dropdown needs access to the DOM node in order to position the Menu
+
+// list of WoW Server names for graph and table queries
+const [wowServerNames, setWowServerNames] = useState([])
+
+
+useEffect(() => {
+  const nexusServerNames = 
+  fetch("http://", {method: "GET"})
+    .then((response) => response.json())
+      .then(
+        // fetch WoW server name endpoints
+      ).catch((error) => {console.error(error)});
+
+
+})
 const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
     <a
       href=""
@@ -20,43 +33,40 @@ const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
     </a>
   ));
   
-  // forwardRef again here!
-  // Dropdown needs access to the DOM of the Menu to measure it
-  const CustomMenu = React.forwardRef(
-    ({ children, style, className, 'aria-labelledby': labeledBy }, ref) => {
-      const [value, setValue] = useState('');
-  
-      return (
-        <div
-          ref={ref}
-          style={style}
-          className={className}
-          aria-labelledby={labeledBy}
-        >
-          <FormControl
-            autoFocus
-            className="mx-3 my-2 w-auto"
-            placeholder="Type to filter..."
-            onChange={(e) => setValue(e.target.value)}
-            value={value}
-          />
-          <ul className="list-unstyled">
-            {React.Children.toArray(children).filter(
-              (child) =>
-                !value || child.props.children.toLowerCase().startsWith(value),
-            )}
-          </ul>
-        </div>
-      );
-    },
-  );
+const CustomMenu = React.forwardRef(
+  ({ children, style, className, 'aria-labelledby': labeledBy }, ref) => {
+    const [value, setValue] = useState('');
+
+    return (
+      <div
+        ref={ref}
+        style={style}
+        className={className}
+        aria-labelledby={labeledBy}
+      >
+        <FormControl
+          autoFocus
+          className="mx-3 my-2 w-auto"
+          placeholder="Type to filter..."
+          onChange={(e) => setValue(e.target.value)}
+          value={value}
+        />
+        <ul className="list-unstyled">
+          {React.Children.toArray(children).filter(
+            (child) =>
+              !value || child.props.children.toLowerCase().startsWith(value),
+          )}
+        </ul>
+      </div>
+    );
+  },
+);
   
   return (
     <Dropdown>
       <Dropdown.Toggle as={CustomToggle} id="dropdown-custom-components">
         Select Server
       </Dropdown.Toggle>
-  
       <Dropdown.Menu as={CustomMenu}>
         <Dropdown.Item eventKey="1">Red</Dropdown.Item>
         <Dropdown.Item eventKey="2">Blue</Dropdown.Item>
