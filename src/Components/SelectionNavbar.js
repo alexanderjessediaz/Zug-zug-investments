@@ -20,7 +20,7 @@ import ZugZugLogo from '../Images/ZugZugLogo.png'
             </Navbar.Brand>
             <ServerSelect />
             <FactionSelect />
-            <BlackLotus />
+            {/* <BlackLotus /> */}
             
             </Navbar>
         </header>

@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import { Dropdown, DropdownButton } from 'react-bootstrap'
+import axios from 'axios';
 
  const FactionSelect = () => {
 
@@ -13,7 +14,7 @@ import { Dropdown, DropdownButton } from 'react-bootstrap'
     //     if (faction === '') {
     //         return () => { return null}
     //     } else {
-    //         fetch("http://localhost:5555/BlackLotus", {
+    //         fetch("http://localhost:5555/WowQuery", {
     //             method: "POST",
     //             headers: {
     //                 'Content-Type': 'application/json'
@@ -28,6 +29,15 @@ import { Dropdown, DropdownButton } from 'react-bootstrap'
     //             })
     //     }
     // }, [])
+    useEffect(() => {
+        // if (faction === '') {
+        //     return () => { return null}
+        // } else {
+            axios.post("http://localhost:5555/WowQuery", {
+                wowQuery: faction
+            })
+        // }
+    }, [faction])
 
     return (
         // style match color match logo

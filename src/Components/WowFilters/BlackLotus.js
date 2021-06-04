@@ -1,19 +1,19 @@
-import React, {useEffect} from 'react'
+// import React, {useEffect} from 'react';
 
-const BlackLotus = () => {
+// const BlackLotus = () => {
 
-    useEffect(() => {
-        fetch("http://localhost:5555/BlackLotus", {method: "GET"})
-            .then((response) => response.json())
-                .then((blackLotusData => {
-                    // console.log(blackLotusData)
-                })).catch((error) => {console.error(error)})
-    },[])
+//     useEffect(() => {
+//         fetch("http://localhost:5555/BlackLotus", {method: "GET"})
+//             .then((response) => response.json())
+//                 .then((blackLotusData => {
+//                     // console.log(blackLotusData)
+//                 })).catch((error) => {console.error(error)})
+//     },[])
 
 
-    return(
-        <div></div>
-    )
-}
+//     return(
+//         <div></div>
+//     )
+// }
 
-export default BlackLotus
+// export default BlackLotus
