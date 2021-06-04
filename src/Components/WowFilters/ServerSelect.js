@@ -5,15 +5,13 @@ import { Dropdown, FormControl } from 'react-bootstrap';
 
 const ServerSelect = () => {
 
-// list of WoW Server names for graph and table queries
+
 const [wowServerNames, setWowServerNames] = useState([])
-const [wowServerData, setWowServerData] = useState([])
 
 useEffect(() => {
   fetch("http://localhost:5555/Servers", {method: "GET"})
   .then((response) => response.json())
   .then((serverData => {
-    setWowServerData(serverData.serverNames)
     setWowServerNames(serverData.serverNames.map((server) => server.name))
   })).catch((error) => {console.error(error)});
 },[]);
