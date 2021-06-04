@@ -71,7 +71,6 @@ class GoodsGraph extends Component {
             <Jumbotron>
                 <Container>
                     <h1>Zug-Zug Investments</h1>
-                    
                     <h4 className="card-header">Kromcrush Server</h4>
                     <hr className="my-4"></hr>
                     <div className="media">
@@ -87,10 +86,6 @@ class GoodsGraph extends Component {
                             </div>
                         </div>
                     </div>
-                    <h1 className="d-flex justify-content-center">Only the most important World of Warcraft commodities:</h1>
-                    <h3 className="d-flex justify-content-center">Current Kromcrush prices</h3>
-                    <h5 className="d-flex justify-content-center">updated every ten seconds!</h5>
-
                 </Container>
             </Jumbotron>
         )
