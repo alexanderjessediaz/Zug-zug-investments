@@ -8,17 +8,21 @@ const ServerSelect = () => {
 // list of WoW Server names for graph and table queries
 const [wowServerNames, setWowServerNames] = useState([])
 
-
 useEffect(() => {
-  const nexusServerNames = 
-  fetch("http://", {method: "GET"})
-    .then((response) => response.json())
-      .then(
-        // fetch WoW server name endpoints
-      ).catch((error) => {console.error(error)});
+  fetch("http://localhost:5555/Servers", {method: "GET"})
+  .then((response) => response.json())
+  .then((serverData => {
+    // console.log(serverData.serverNames.map((server) => server.name))
+    setWowServerNames(serverData.serverNames.map((server) => server.name))
+  })).catch((error) => {console.error(error)});
+},[]);
 
+const serverNames = wowServerNames.map((server) => <Dropdown.Item>{server}</Dropdown.Item>)
+// console.log(serverNames)
+// const displayServerList = () => {
+  // return wowServerNames === undefined ? <Dropdown.Item>Loading...</Dropdown.Item>: serverNames
+// }
 
-})
 const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
     <a
       href=""
@@ -67,10 +71,7 @@ const CustomMenu = React.forwardRef(
       <Dropdown.Toggle as={CustomToggle} id="dropdown-custom-components">
         Select Server
       </Dropdown.Toggle>
-      <Dropdown.Menu as={CustomMenu}>
-        <Dropdown.Item eventKey="1">Red</Dropdown.Item>
-        <Dropdown.Item eventKey="2">Blue</Dropdown.Item>
-      </Dropdown.Menu>
+      <Dropdown.Menu as={CustomMenu}>{wowServerNames === undefined ? <Dropdown.Item>Loading...</Dropdown.Item>: serverNames}</Dropdown.Menu>
     </Dropdown>
   );
 }
