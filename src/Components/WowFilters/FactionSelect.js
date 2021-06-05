@@ -10,33 +10,10 @@ import axios from 'axios';
         setFaction(e)
     }
     
-    // useEffect(() => {
-    //     if (faction === '') {
-    //         return () => { return null}
-    //     } else {
-    //         fetch("http://localhost:5555/WowQuery", {
-    //             method: "POST",
-    //             headers: {
-    //                 'Content-Type': 'application/json'
-    //             },
-    //             body: JSON.stringify(faction)
-    //         })
-    //         .then(response => response.json())
-    //             .then(data => {
-    //                 console.log('success:', data);
-    //             }).catch((error) => {
-    //                 console.error('Error:', error)
-    //             })
-    //     }
-    // }, [])
     useEffect(() => {
-        // if (faction === '') {
-        //     return () => { return null}
-        // } else {
-            axios.post("http://localhost:5555/WowQuery", {
-                wowQuery: faction
-            })
-        // }
+        axios.post("http://localhost:5555/WowQuery", {
+            factionQuery: faction
+        })
     }, [faction])
 
     return (

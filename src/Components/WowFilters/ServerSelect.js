@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 
 import { Dropdown, FormControl } from 'react-bootstrap';
+import axios from 'axios';
 
 
 const ServerSelect = () => {
@@ -16,26 +17,46 @@ useEffect(() => {
   })).catch((error) => {console.error(error)});
 },[]);
 
-const serverNames = wowServerNames.map((server, i) => <Dropdown.Item eventKey={i} key={i}>{server}</Dropdown.Item>)
 
+const [selectedServer, setSelectedServer] = useState("")
+
+const handleSelect = (e) => {
+  setSelectedServer(e)
+}
+
+const serverNames = wowServerNames.map((server, i) => 
+<Dropdown.Item 
+  eventKey={i}
+  key={i}
+  onSelect={handleSelect}
+  >{server}
+</Dropdown.Item>
+  )
+
+useEffect(() => {
+  axios.post("http://localhost:5555/WowQuery", {
+    serverQuery: "testServer"
+  })
+}, [selectedServer])
 
 
 const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
-    <a
-      href=""
-      ref={ref}
-      onClick={(e) => {
-        e.preventDefault();
+  <a
+  href="http://localhost:3001"
+  ref={ref}
+    onClick={(e) => {
+      e.preventDefault();
         onClick(e);
       }}
-    >
+      >
       {children}
       &#x25bc;
     </a>
   ));
+  console.log( "selectedServer:", selectedServer)
   
-const CustomMenu = React.forwardRef(
-  ({ children, style, className, 'aria-labelledby': labeledBy }, ref) => {
+  const CustomMenu = React.forwardRef(
+    ({ children, style, className, 'aria-labelledby': labeledBy }, ref) => {
     const [value, setValue] = useState('');
 
     return (
