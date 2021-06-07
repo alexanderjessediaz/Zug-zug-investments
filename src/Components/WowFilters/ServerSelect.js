@@ -24,14 +24,16 @@ const handleSelect = (e) => {
   setSelectedServer(e)
 }
 
-const serverNames = wowServerNames.map((server, i) => 
-<Dropdown.Item 
-  eventKey={i}
-  key={i}
-  onSelect={handleSelect}
-  >{server}
-</Dropdown.Item>
-  )
+
+const serverNames = wowServerNames.map(
+  (server, i) => 
+    <Dropdown.Item 
+      eventKey={server}
+      key={i}
+      onSelect={handleSelect}
+      >{server}
+    </Dropdown.Item>
+);
 
 useEffect(() => {
   axios.post("http://localhost:5555/WowQuery", {
@@ -87,9 +89,9 @@ const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
   return (
     <Dropdown>
       <Dropdown.Toggle as={CustomToggle} id="dropdown-custom-components">
-        Select Server
+        {selectedServer === '' ? "Choose Server":selectedServer}
       </Dropdown.Toggle>
-      <Dropdown.Menu as={CustomMenu}>
+      <Dropdown.Menu as={CustomMenu} onSelect={handleSelect}>
         {wowServerNames === undefined ? <Dropdown.Item>Loading...</Dropdown.Item>: serverNames}
       </Dropdown.Menu>
     </Dropdown>
