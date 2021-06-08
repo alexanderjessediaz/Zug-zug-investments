@@ -1,9 +1,10 @@
 import React from 'react';
 import { Navbar } from 'react-bootstrap';
-import QuerySearch from './QueryForm/QuerySearch.js';
-
+import QuerySearch from './Query/QueryForm/QuerySearch.js';
 
 import ZugZugLogo from '../Images/ZugZugLogo.png'
+// import FactionSelect from './QueryForm/Filters/FactionSelect.js';
+// import ServerSelect from './QueryForm/Filters/ServerSelect.js';
 
  const SelectionNavbar = (props) =>{
    

@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import { Dropdown } from 'react-bootstrap';
 
- const FactionSelect = () => {
+ const FactionSelect = (props) => {
 
     const [selectedFaction, setSelectedFaction] = useState('')
 
@@ -14,7 +14,7 @@ import { Dropdown } from 'react-bootstrap';
         // style match color match logo
         // grey lighter
         // h1 of logo text styled
-        <Dropdown onSelect={handleSelect}>
+        <Dropdown onSelect={handleSelect && props.handleChange}>
             <Dropdown.Toggle variant="success" id="dropdown-basic">
                 {selectedFaction === '' ? "Choose Faction":selectedFaction}
             </Dropdown.Toggle>
@@ -23,13 +23,6 @@ import { Dropdown } from 'react-bootstrap';
                 <Dropdown.Item eventKey="alliance" >Alliance</Dropdown.Item>
             </Dropdown.Menu>
         </Dropdown>
-        // <DropdownButton
-        //  id="dropdown-basic-button" 
-        //  title={selectedFaction === '' ? "Choose Faction":selectedFaction}
-        //  >
-        //       <Dropdown.Item as="button" eventKey="horde">Horde</Dropdown.Item>
-        //       <Dropdown.Item as="button" eventKey="alliance" >Alliance</Dropdown.Item>
-        // </DropdownButton>
     )
 }
 
