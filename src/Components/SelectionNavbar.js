@@ -1,8 +1,7 @@
-import React from 'react'
-import { Navbar } from 'react-bootstrap'
-import FactionSelect from './WowFilters/FactionSelect'
-import ServerSelect from './WowFilters/ServerSelect'
-// import BlackLotus from './WowFilters/BlackLotus'
+import React from 'react';
+import { Navbar } from 'react-bootstrap';
+import QuerySearch from './QueryForm/QuerySearch.js';
+
 
 import ZugZugLogo from '../Images/ZugZugLogo.png'
 
@@ -19,10 +18,7 @@ import ZugZugLogo from '../Images/ZugZugLogo.png'
                 alt="orc peon on a black backdrop. Text: Me Gold You"
               />
             </Navbar.Brand>
-            <ServerSelect />
-            <FactionSelect />
-            {/* <BlackLotus /> */}
-            
+            <QuerySearch />
             </Navbar>
         </header>
     )

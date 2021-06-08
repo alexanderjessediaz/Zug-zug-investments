@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 
 import { Dropdown, FormControl } from 'react-bootstrap';
-import axios from 'axios';
+
 
 
 const ServerSelect = () => {
@@ -35,12 +35,6 @@ const serverNames = wowServerNames.map(
     </Dropdown.Item>
 );
 
-// take out
-useEffect(() => {
-  axios.post("http://localhost:5555/WowQuery", {
-    sQuery: selectedServer
-  })
-}, [selectedServer])
 
 
 const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
@@ -56,7 +50,6 @@ const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
       &#x25bc;
     </a>
   ));
-  // console.log( "selectedServer:", selectedServer)
   
   const CustomMenu = React.forwardRef(
     ({ children, style, className, 'aria-labelledby': labeledBy }, ref) => {
