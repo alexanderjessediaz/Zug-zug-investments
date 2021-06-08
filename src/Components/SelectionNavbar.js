@@ -2,11 +2,12 @@ import React from 'react'
 import { Navbar } from 'react-bootstrap'
 import FactionSelect from './WowFilters/FactionSelect'
 import ServerSelect from './WowFilters/ServerSelect'
-import BlackLotus from './WowFilters/BlackLotus'
+// import BlackLotus from './WowFilters/BlackLotus'
 
 import ZugZugLogo from '../Images/ZugZugLogo.png'
 
- const SelectionNavbar = () =>{
+ const SelectionNavbar = (props) =>{
+   
     return (
         <header>
           <Navbar variant="dark" bg="dark">

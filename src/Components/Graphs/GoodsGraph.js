@@ -17,6 +17,11 @@ class GoodsGraph extends Component {
         }
     }
 
+    // remove after testing
+    seeData = () => {
+        console.log(this.props)
+    }
+
     setGradientColor = (canvas, color) => {
         const ctx = canvas.getContext('2d')
         const gradient = ctx.createLinearGradient(0,0,600,550)
@@ -48,27 +53,30 @@ class GoodsGraph extends Component {
     }
 
     createBLPriceData = () => {
-        return this.props.BLPriceData.map(price => {
-            return price.marketValue /10000
-        })
+        // console.log(this.props)
+        // console.log(this.props)
+        // return this.props.query.map(price => {
+        //     return price.marketValue /10000
+        // })
       }
 
     createBLPriceLabels = () => {
-        return this.props.BLPriceData.map(priceObject => {
-            const dateAndTimeScanned = {
-                ...priceObject,
-                scannedAt: new Date(priceObject.scannedAt).toString().split(" ")[0] +
-                " " + 
-                new Date(priceObject.scannedAt).toString().split(" ")[4] +
-                " " 
-            }
-           return dateAndTimeScanned.scannedAt
-        })
+        // return this.props.wowQuery.map(priceObject => {
+        //     const dateAndTimeScanned = {
+        //         ...priceObject,
+        //         scannedAt: new Date(priceObject.scannedAt).toString().split(" ")[0] +
+        //         " " + 
+        //         new Date(priceObject.scannedAt).toString().split(" ")[4] +
+        //         " " 
+        //     }
+        //    return dateAndTimeScanned.scannedAt
+        // })
       }
     
     render(){
         return (
             <Jumbotron>
+                {this.seeData()}
                 <Container>
                     <h1>Zug-Zug Investments</h1>
                     <h4 className="card-header">Kromcrush Server</h4>

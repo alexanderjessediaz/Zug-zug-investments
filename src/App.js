@@ -1,66 +1,60 @@
 import React, { Component } from 'react'
 import SelectionNavbar from "./Components/SelectionNavbar"
 // import CommoditiesTable from "./Components/CommodityTable/GoodsTable.js"
-// import GoodsGraph from './Components/Graphs/GoodsGraph.js'
+import GoodsGraph from './Components/Graphs/GoodsGraph.js'
 // import {BrowserRouter as Router} from 'react-router-dom'
 
 
 class App extends Component {
 
-  // state = {
-  //   BLCurrent: [],
-  //   BLPriceData: [],
-  //   MCCurrent: [],
-  //   ABCurrent: [],
-  //   WCCurrent:[]
-  // }
+  state = {
+    query : []
+  }
 
   // timer calls
-  // componentDidMount(){
-  //   this.timer = setInterval(()=> this.getBlackLotusData(), 10000)
-  //   this.timer = setInterval(()=> this.getMoonclothData(), 10000)
-  //   this.timer = setInterval(()=> this.getArcaniteBarData(), 10000)
-  // }
-  //     async getBlackLotusData(){
+  componentDidMount(){
+    // this.timer = setInterval(()=> this.getQuery(), 10000)
+    // this.timer = setInterval(()=> this.getMoonclothData(), 10000)
+    // this.timer = setInterval(()=> this.getArcaniteBarData(), 10000)
+  }
+      async getQuery(){
         
-  //       fetch("http://localhost:5555/BlackLotus", {method: "GET"})
-  //         .then((response) => response.json())
-  //         .then((blackLotusObject => this.setState({
-  //           BLCurrent:blackLotusObject.data.stats.current,
-  //           BLPriceData:blackLotusObject.BLPriceData.data
-  //         })))
-  //         .catch((error) => {
-  //           console.error(error)
-  //         })
-  //     }
-  //     async getMoonclothData(){
+        fetch("http://localhost:5555/WowQuery", {method: "GET"})
+          .then((response) => response.json())
+          .then((QueryObject => {
+            console.log("QueryObject:" ,QueryObject)
+            this.setState({query: QueryObject})
+            }))
+          .catch((error) => {
+            console.error(error)
+          })
+      }
+      // async getFactionQuery(){
         
-  //       fetch("http://localhost:5555/MoonCloth", {method: "GET"})
-  //         .then((response) => response.json())
-  //         .then((moonclothObject => this.setState({
-  //           MCCurrent:moonclothObject.data.stats.current
-  //         })))
-  //         .catch((error) => {
-  //           console.error(error)
-  //         })
-  //     }
-  //     async getArcaniteBarData(){
+      //   fetch("http://localhost:5555/FactionQuery", {method: "GET"})
+      //     .then((response) => response.json())
+      //     .then((factionQueryObject => {
+      //       console.log("factionQueryObject:" ,factionQueryObject)
+      //       this.setState({factionQuery: factionQueryObject})
+      //       }))
+      //     .catch((error) => {
+      //       console.error(error)
+      //     })
+      // }
+
+      // componentWillUnmount
+  
         
-  //       fetch("http://localhost:5555/ArcaniteBar", {method: "GET"})
-  //         .then((response) => response.json())
-  //         .then((arcaniteBarData => this.setState({
-  //           ABCurrent:arcaniteBarData.data.stats.current
-  //         })))
-  //         .catch((error) => {
-  //           console.error(error)
-  //         })
-  //     }
       
   
   render () {
     return (
         <div className="App">
           <SelectionNavbar />
+          <GoodsGraph 
+          data={this.getQuery}
+          
+          />
         </div>
     )
   }

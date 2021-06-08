@@ -12,7 +12,7 @@ import axios from 'axios';
     
     useEffect(() => {
         axios.post("http://localhost:5555/WowQuery", {
-            factionQuery: faction
+            fQuery: faction
         })
     }, [faction])
 

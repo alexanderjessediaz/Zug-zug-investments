@@ -35,9 +35,10 @@ const serverNames = wowServerNames.map(
     </Dropdown.Item>
 );
 
+// take out
 useEffect(() => {
   axios.post("http://localhost:5555/WowQuery", {
-    serverQuery: "testServer"
+    sQuery: selectedServer
   })
 }, [selectedServer])
 
@@ -55,7 +56,7 @@ const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
       &#x25bc;
     </a>
   ));
-  console.log( "selectedServer:", selectedServer)
+  // console.log( "selectedServer:", selectedServer)
   
   const CustomMenu = React.forwardRef(
     ({ children, style, className, 'aria-labelledby': labeledBy }, ref) => {
