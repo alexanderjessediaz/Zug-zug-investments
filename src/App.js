@@ -8,53 +8,37 @@ import GoodsGraph from './Components/Graphs/GoodsGraph.js'
 class App extends Component {
 
   state = {
-    query : []
+    itemPriceData: []
   }
 
   // timer calls
   componentDidMount(){
-    this.timer = setInterval(()=> this.getQuery(), 10000)
-    // this.timer = setInterval(()=> this.getMoonclothData(), 10000)
-    // this.timer = setInterval(()=> this.getArcaniteBarData(), 10000)
+    // if (this.state.itemPriceData.length !== 1) return
+    // else {
+      this.timer = setInterval(()=> this.nexusCall(), 10000)
+    // }
   }
-      async getQuery(){
+      async nexusCall(){
         
         fetch("http://localhost:5555/WowQuery", {method: "GET"})
           .then((response) => response.json())
           .then((QueryObject => {
             console.log("QueryObject:" ,QueryObject)
-            this.setState({query: QueryObject})
+            this.setState({
+              itemPriceData: QueryObject.data
+            })
             }))
           .catch((error) => {
             console.error(error)
           })
       }
-      // async getFactionQuery(){
-        
-      //   fetch("http://localhost:5555/FactionQuery", {method: "GET"})
-      //     .then((response) => response.json())
-      //     .then((factionQueryObject => {
-      //       console.log("factionQueryObject:" ,factionQueryObject)
-      //       this.setState({factionQuery: factionQueryObject})
-      //       }))
-      //     .catch((error) => {
-      //       console.error(error)
-      //     })
-      // }
-
       // componentWillUnmount
-  
-        
-      
   
   render () {
     return (
         <div className="App">
-          <SelectionNavbar />
-          <GoodsGraph 
-          data={this.getQuery}
-          
-          />
+          <SelectionNavbar nexusCall={this.nexusCall}/>
+          <GoodsGraph itemPriceData={this.state.itemPriceData} />
         </div>
     )
   }

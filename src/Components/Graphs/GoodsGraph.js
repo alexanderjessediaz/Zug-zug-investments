@@ -9,7 +9,7 @@ class GoodsGraph extends Component {
             labels: [],
             datasets: [
                 {
-                    label: "Black Lotus",
+                    label: "PLACEHOLDER ITEM",
                     backgroundColor: "rgba(255,0,255,0.75)",
                     data: []
                 }
@@ -19,7 +19,7 @@ class GoodsGraph extends Component {
 
     // remove after testing
     seeData = () => {
-        console.log(this.props)
+        console.log(this.props.itemPriceData)
     }
 
     setGradientColor = (canvas, color) => {
@@ -32,12 +32,12 @@ class GoodsGraph extends Component {
 
     getChartData = canvas => {
         const data = {
-            labels: this.createBLPriceLabels(),
+            labels: this.createItemPriceLabels(),
             datasets: [
                 {
-                    label: "Black Lotus Price",
+                    label: "Item Price",
                     backgroundColor: "rgba(130,160,106,0.75)",
-                    data: this.createBLPriceData()
+                    data: this.createItemPriceData()
                 }
             ]
         }
@@ -48,29 +48,33 @@ class GoodsGraph extends Component {
                     set.borderColor = "white"
                     set.borderWidth = 2
                 });
+            } else {
+                return null
             }
         return data
     }
 
-    createBLPriceData = () => {
-        // console.log(this.props)
-        // console.log(this.props)
-        // return this.props.query.map(price => {
-        //     return price.marketValue /10000
-        // })
+    createItemPriceData = () => {
+        if (!this.props.itemPriceData) return 
+        else {
+         this.props.itemPriceData.map(price => {
+            return price.marketValue /10000
+        })}
       }
 
-    createBLPriceLabels = () => {
-        // return this.props.wowQuery.map(priceObject => {
-        //     const dateAndTimeScanned = {
-        //         ...priceObject,
-        //         scannedAt: new Date(priceObject.scannedAt).toString().split(" ")[0] +
-        //         " " + 
-        //         new Date(priceObject.scannedAt).toString().split(" ")[4] +
-        //         " " 
-        //     }
-        //    return dateAndTimeScanned.scannedAt
-        // })
+    createItemPriceLabels = () => {
+        if (!this.props.itemPriceData) return
+        else {
+        this.props.itemPriceData.map(priceObject => {
+            const dateAndTimeScanned = {
+                ...priceObject,
+                scannedAt: new Date(priceObject.scannedAt).toString().split(" ")[0] +
+                " " + 
+                new Date(priceObject.scannedAt).toString().split(" ")[4] +
+                " " 
+            }
+           return dateAndTimeScanned.scannedAt
+        })}
       }
     
     render(){

@@ -7,34 +7,31 @@ import axios from 'axios';
 import { Form} from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
 
-const QuerySearch = () => {
+const QuerySearch = (props) => {
 
     // this component will make call with complete query string to nexus api
 
-    const [nexusQuery, setNexusQuery] = useState(``)
-    
-    const wowQuery = (e) => {
-        e.preventDefault()
-    //    setNexusQuery(`/wow-classic/v1/items/${serverQueryString}-${factionQueryString}/13468`)
-       setNexusQuery(`/wow-classic/v1/items/kromcrush-${factionQueryString}/13468`)
-       console.log(nexusQuery)
-    }
-    
+    console.log(props)
     const [serverQueryString, setServerQuery] = useState('')
     
     const updateServerChange = (e) => {
         setServerQuery(e)
-        // console.log(serverQueryString)
+        
     }
 
     const [factionQueryString, setFactionQueryString] = useState('')
     
     const updateFactionChange = (e) => {
         setFactionQueryString(e)
-        console.log(factionQueryString)
     }
     
-
+    
+    const [nexusQuery, setNexusQuery] = useState(``)
+    
+    const wowQuery = (e) => {
+        e.preventDefault()
+        setNexusQuery(`/wow-classic/v1/items/${serverQueryString}-${factionQueryString}/13468`)
+    }
 
     useEffect(() => {
         if(nexusQuery === ""){
@@ -50,7 +47,7 @@ const QuerySearch = () => {
     
     return (
         <>
-            <Form onSubmit={wowQuery}>
+            <Form onSubmit={props.query.getQuery}>
                 <ServerSelect  updateServerChange={updateServerChange}/>
                 <FactionSelect updateFactionChange={updateFactionChange}/> 
                 <Button type="submit" variant="primary">Search</Button>       

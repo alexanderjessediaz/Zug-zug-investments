@@ -3,10 +3,9 @@ import { Navbar } from 'react-bootstrap';
 import QuerySearch from './Query/QueryForm/QuerySearch.js';
 
 import ZugZugLogo from '../Images/ZugZugLogo.png'
-// import FactionSelect from './QueryForm/Filters/FactionSelect.js';
-// import ServerSelect from './QueryForm/Filters/ServerSelect.js';
 
- const SelectionNavbar = () =>{
+
+ const SelectionNavbar = (props) =>{
    
     return (
         <header>
@@ -19,7 +18,7 @@ import ZugZugLogo from '../Images/ZugZugLogo.png'
                 alt="orc peon on a black backdrop. Text: Me Gold You"
               />
             </Navbar.Brand>
-            <QuerySearch />
+            <QuerySearch query={props}/>
             </Navbar>
         </header>
     )
