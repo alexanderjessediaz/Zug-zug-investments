@@ -4,7 +4,7 @@ import { Dropdown, FormControl } from 'react-bootstrap';
 
 
 
-const ServerSelect = (props) => {
+const ServerSelect = ({ updateServerChange }) => {
 
 
 const [wowServerNames, setWowServerNames] = useState([])
@@ -22,6 +22,7 @@ const [selectedServer, setSelectedServer] = useState("")
 
 const handleSelect = (e) => {
   setSelectedServer(e)
+  updateServerChange(e)
 }
 
 
@@ -81,11 +82,11 @@ const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
 );
   
   return (
-    <Dropdown onSelect={props.handleChange}>
+    <Dropdown onSelect={handleSelect}>
       <Dropdown.Toggle as={CustomToggle} id="dropdown-custom-components">
         {selectedServer === '' ? "Choose Server":selectedServer}
       </Dropdown.Toggle>
-      <Dropdown.Menu as={CustomMenu} onSelect={handleSelect}>
+      <Dropdown.Menu as={CustomMenu} >
         {wowServerNames === undefined ? <Dropdown.Item>Loading...</Dropdown.Item>: serverNames}
       </Dropdown.Menu>
     </Dropdown>

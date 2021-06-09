@@ -1,12 +1,13 @@
 import React, {useState} from 'react';
 import { Dropdown } from 'react-bootstrap';
 
- const FactionSelect = (props) => {
+ const FactionSelect = ({ updateFactionChange }) => {
 
     const [selectedFaction, setSelectedFaction] = useState('')
 
     const handleSelect = (e) => {
         setSelectedFaction(e)
+        updateFactionChange(e)
     }
     
 
@@ -14,7 +15,7 @@ import { Dropdown } from 'react-bootstrap';
         // style match color match logo
         // grey lighter
         // h1 of logo text styled
-        <Dropdown onSelect={handleSelect && props.handleChange}>
+        <Dropdown onSelect={handleSelect} >
             <Dropdown.Toggle variant="success" id="dropdown-basic">
                 {selectedFaction === '' ? "Choose Faction":selectedFaction}
             </Dropdown.Toggle>

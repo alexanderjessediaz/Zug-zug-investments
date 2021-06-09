@@ -6,7 +6,7 @@ import ZugZugLogo from '../Images/ZugZugLogo.png'
 // import FactionSelect from './QueryForm/Filters/FactionSelect.js';
 // import ServerSelect from './QueryForm/Filters/ServerSelect.js';
 
- const SelectionNavbar = (props) =>{
+ const SelectionNavbar = () =>{
    
     return (
         <header>

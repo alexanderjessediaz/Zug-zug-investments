@@ -1,36 +1,59 @@
-// import React, {useEffect} from 'react';
-import React from 'react';
+import React, {useState, useEffect} from 'react';
+// import React from 'react';
 import FactionSelect from '../Filters/FactionSelect.js';
 import ServerSelect from '../Filters/ServerSelect.js';
+import axios from 'axios';
 
-// import axios from 'axios';
 import { Form} from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 
 const QuerySearch = () => {
 
     // this component will make call with complete query string to nexus api
 
-    const handleChange = () => {
-        console.log("test")
+    const [nexusQuery, setNexusQuery] = useState(``)
+    
+    const wowQuery = (e) => {
+        e.preventDefault()
+    //    setNexusQuery(`/wow-classic/v1/items/${serverQueryString}-${factionQueryString}/13468`)
+       setNexusQuery(`/wow-classic/v1/items/kromcrush-${factionQueryString}/13468`)
+       console.log(nexusQuery)
+    }
+    
+    const [serverQueryString, setServerQuery] = useState('')
+    
+    const updateServerChange = (e) => {
+        setServerQuery(e)
+        // console.log(serverQueryString)
     }
 
-    // useEffect(() => {
-    //     axios.post("http://localhost:5555/WowQuery", {
-    //         fQuery: faction
-    //     })
-    // }, [faction])
+    const [factionQueryString, setFactionQueryString] = useState('')
+    
+    const updateFactionChange = (e) => {
+        setFactionQueryString(e)
+        console.log(factionQueryString)
+    }
+    
 
-    // useEffect(() => {
-    //     axios.post("http://localhost:5555/WowQuery", {
-    //       sQuery: selectedServer
-    //     })
-    //   }, [selectedServer])
+
+    useEffect(() => {
+        if(nexusQuery === ""){
+            console.log("nexusQuery is empty")
+        } else {
+            console.log(nexusQuery)
+            axios.post("http://localhost:5555/WowQuery", {
+                nQuery: nexusQuery 
+        })
+        }
+    }, [nexusQuery])
+
+    
     return (
         <>
-            <Form>
-                <ServerSelect  handleChange={handleChange}/>
-                <FactionSelect handleChange={handleChange}/>
-                
+            <Form onSubmit={wowQuery}>
+                <ServerSelect  updateServerChange={updateServerChange}/>
+                <FactionSelect updateFactionChange={updateFactionChange}/> 
+                <Button type="submit" variant="primary">Search</Button>       
             </Form>
         </>
     )

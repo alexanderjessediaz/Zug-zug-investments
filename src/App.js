@@ -13,7 +13,7 @@ class App extends Component {
 
   // timer calls
   componentDidMount(){
-    // this.timer = setInterval(()=> this.getQuery(), 10000)
+    this.timer = setInterval(()=> this.getQuery(), 10000)
     // this.timer = setInterval(()=> this.getMoonclothData(), 10000)
     // this.timer = setInterval(()=> this.getArcaniteBarData(), 10000)
   }
