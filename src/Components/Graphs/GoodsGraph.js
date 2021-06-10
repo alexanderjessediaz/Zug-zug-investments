@@ -18,9 +18,9 @@ class GoodsGraph extends Component {
     }
 
     // remove after testing
-    seeData = () => {
-        console.log(this.props.itemPriceData)
-    }
+    // seeData = () => {
+    //     console.log(this.props.itemPriceData)
+    // }
 
     setGradientColor = (canvas, color) => {
         const ctx = canvas.getContext('2d')
@@ -80,7 +80,7 @@ class GoodsGraph extends Component {
     render(){
         return (
             <Jumbotron>
-                {this.seeData()}
+                
                 <Container>
                     <h1>Zug-Zug Investments</h1>
                     <h4 className="card-header">Kromcrush Server</h4>

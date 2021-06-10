@@ -18,7 +18,7 @@ import ZugZugLogo from '../Images/ZugZugLogo.png'
                 alt="orc peon on a black backdrop. Text: Me Gold You"
               />
             </Navbar.Brand>
-            <QuerySearch query={props}/>
+            <QuerySearch nexusCall={props}/>
             </Navbar>
         </header>
     )

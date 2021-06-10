@@ -15,22 +15,28 @@ class App extends Component {
   componentDidMount(){
     // if (this.state.itemPriceData.length !== 1) return
     // else {
-      this.timer = setInterval(()=> this.nexusCall(), 10000)
+      // this.timer = setInterval(()=> this.nexusCall(), 10000)
     // }
   }
       async nexusCall(){
         
         fetch("http://localhost:5555/WowQuery", {method: "GET"})
           .then((response) => response.json())
-          .then((QueryObject => {
-            console.log("QueryObject:" ,QueryObject)
+          .then((queryObject => {
+            console.log("Success:", queryObject)
             this.setState({
-              itemPriceData: QueryObject.data
+              itemPriceData: queryObject.data
             })
-            }))
+            }
+          ))
+            
           .catch((error) => {
-            console.error(error)
+            console.error("Error:", error)
           })
+      }
+
+      showData = () => {
+        console.log(this.state.itemPriceData)
       }
       // componentWillUnmount
   
@@ -39,6 +45,7 @@ class App extends Component {
         <div className="App">
           <SelectionNavbar nexusCall={this.nexusCall}/>
           <GoodsGraph itemPriceData={this.state.itemPriceData} />
+          {this.showData()}
         </div>
     )
   }

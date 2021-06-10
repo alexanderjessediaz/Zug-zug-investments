@@ -29,10 +29,10 @@ const handleSelect = (e) => {
 const serverNames = wowServerNames.map(
   (server, i) => 
     <Dropdown.Item 
-      eventKey={server}
+      eventKey={server.toLowerCase()}
       key={i}
       onSelect={handleSelect}
-      >{server}
+      >{server.toLowerCase()}
     </Dropdown.Item>
 );
 
