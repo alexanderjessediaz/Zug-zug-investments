@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import FactionSelect from '../Filters/FactionSelect.js';
 import ServerSelect from '../Filters/ServerSelect.js';
-// import GoodsGraph from './Graphs/GoodsGraph.js';
+import GoodsGraph from './Graphs/GoodsGraph.js';
 import axios from 'axios';
 
 
@@ -32,19 +32,18 @@ const QuerySearch = () => {
     const handleClick = (e) => {
         e.preventDefault()
         setNexusQuery(`/wow-classic/v1/items/${serverQueryString}-${factionQueryString}/13468`)
-        
     }
     
-    const handleSubmit = (e) => {
-        e.preventDefault()
-    }
+    // const handleSubmit = (e) => {
+    //     e.preventDefault()
+    // }
 
     useEffect(() => {
         if(nexusQuery === ""){
-            console.log("nexusQuery is empty")
+            console.log("client query post: nexusQuery is empty")
         } else { 
             try {
-            console.log(nexusQuery)
+            console.log( "client query string posted:", nexusQuery)
             axios.post("http://localhost:5555/", {
                 nQuery: nexusQuery 
             })
@@ -54,42 +53,37 @@ const QuerySearch = () => {
         }
     }, [nexusQuery])
 
-    // const [nexusData, setNexusData] = useState('')
+    // const [nexusData, setNexusData] = useState({})
     
     useEffect(() => {
         if(!nexusQuery){
-            console.log("nexusQuery is empty")
+            console.log("Nexus API call: nexusQuery is empty")
             return
         } else {
        async function nexusCall(){
             try {
+                console.log("API query sent")
                await axios.get("http://localhost:5555/")
-                    .then((response) => console.log("success:", response))
+                    .then((response) => {
+                        console.log("success:", response)
+                        // setNexusData(response.data)
+                    })
                 }
                   catch(error) {
                     console.error("Error:", error)
                   }}
                   nexusCall()
                 }
-    },[handleSubmit])
+    },[nexusQuery])
 
-    // What I am trying to do:
-    // Step 1) send complete query data to backend via post
-    // Step 2) backend sends get request to API with query data
-    // Step 3) backend sends API data back to frontend
-    // Step 4) frontend receives data and displays it
-
-    // I am able to send correct query data to backend
-    // backend correctly sends query to API
-    // backend receives API response
     
     return (
         <>
-            <Form onSubmit={handleSubmit}>
+            <Form>
                 <ServerSelect  updateServerChange={updateServerChange}/>
                 <FactionSelect updateFactionChange={updateFactionChange}/> 
-                <Button onClick={handleClick} variant="secondary">Submit</Button>     
             </Form>
+            <Button onClick={handleClick} variant="secondary">Search</Button>     
         </>
     )
 }
