@@ -5,7 +5,7 @@ import QuerySearch from './Query/QueryForm/QuerySearch.js';
 import ZugZugLogo from '../Images/ZugZugLogo.png'
 
 
- const SelectionNavbar = (props) =>{
+ const SelectionNavbar = () =>{
    
     return (
         <header>
@@ -18,7 +18,7 @@ import ZugZugLogo from '../Images/ZugZugLogo.png'
                 alt="orc peon on a black backdrop. Text: Me Gold You"
               />
             </Navbar.Brand>
-            <QuerySearch nexusCall={props}/>
+            <QuerySearch />
             </Navbar>
         </header>
     )

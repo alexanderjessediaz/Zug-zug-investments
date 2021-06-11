@@ -12,7 +12,6 @@
     "cors": "^2.8.5",
     "css-what": "^5.0.1",
     "is-svg": "^4.3.1",
-    "nexushub-client": "^1.2.0",
     "normalize-url": "^4.5.1",
     "postcss": "^8.2.10",
     "react": "^16.13.1",

@@ -1,16 +1,17 @@
 import React, {useState, useEffect} from 'react';
-// import React from 'react';
 import FactionSelect from '../Filters/FactionSelect.js';
 import ServerSelect from '../Filters/ServerSelect.js';
+// import GoodsGraph from './Graphs/GoodsGraph.js';
 import axios from 'axios';
+
 
 import { Form} from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
 
 const QuerySearch = () => {
-
+    
     // this component will make call with complete query string to nexus api
-
+    
     const [serverQueryString, setServerQuery] = useState('')
     
     const updateServerChange = (e) => {
@@ -21,33 +22,56 @@ const QuerySearch = () => {
     
     const updateFactionChange = (e) => {
         setFactionQueryString(e)
+        
     }
     
     
     const [nexusQuery, setNexusQuery] = useState(``)
     
-    const handleSubmit = (e) => {
+    
+    const handleClick = (e) => {
         e.preventDefault()
         setNexusQuery(`/wow-classic/v1/items/${serverQueryString}-${factionQueryString}/13468`)
+        
+    }
+    
+    const handleSubmit = (e) => {
+        e.preventDefault()
     }
 
-    
     useEffect(() => {
         if(nexusQuery === ""){
             console.log("nexusQuery is empty")
+        } else { 
+            try {
+            console.log(nexusQuery)
+            axios.post("http://localhost:5555/", {
+                nQuery: nexusQuery 
+            })
+            } catch (error) {
+                console.error("Error:", error)
+            }
+        }
+    }, [nexusQuery])
+
+    // const [nexusData, setNexusData] = useState('')
+    
+    useEffect(() => {
+        if(!nexusQuery){
+            console.log("nexusQuery is empty")
             return
         } else {
-            console.log(nexusQuery)
-            axios.post("http://localhost:5555/WowQuery", {
-                nQuery: nexusQuery 
-            }).then((queryObject => {
-                        console.log("Success:", queryObject)
-                        }
-                      )).catch((error) => {
-                        console.error("Error:", error)
-                      }) 
-            }
-    }, [nexusQuery])
+       async function nexusCall(){
+            try {
+               await axios.get("http://localhost:5555/")
+                    .then((response) => console.log("success:", response))
+                }
+                  catch(error) {
+                    console.error("Error:", error)
+                  }}
+                  nexusCall()
+                }
+    },[handleSubmit])
 
     // What I am trying to do:
     // Step 1) send complete query data to backend via post
@@ -58,32 +82,14 @@ const QuerySearch = () => {
     // I am able to send correct query data to backend
     // backend correctly sends query to API
     // backend receives API response
-
-
-    
-
-    // useEffect(() => {
-
-    // })
-    // const nexusCall = async function(){
-    //     fetch("http://localhost:5555/WowQuery", {method: "GET"})
-    //       .then((response) => response.json())
-    //       .then((queryObject => {
-    //         console.log("Success:", queryObject)
-    //         }
-    //       )).catch((error) => {
-    //         console.error("Error:", error)
-    //       })
-    //   }
     
     return (
         <>
             <Form onSubmit={handleSubmit}>
                 <ServerSelect  updateServerChange={updateServerChange}/>
                 <FactionSelect updateFactionChange={updateFactionChange}/> 
-                <Button type="submit" variant="primary">Submit</Button>       
+                <Button onClick={handleClick} variant="secondary">Submit</Button>     
             </Form>
-            {/* <Button type="submit" variant="primary" onClick={handleClick}>Compile</Button> */}
         </>
     )
 }
