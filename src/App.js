@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import SelectionNavbar from "./Components/SelectionNavbar"
 // { useState, useEffect }
 // import CommoditiesTable from "./Components/CommodityTable/GoodsTable.js"
@@ -7,6 +7,7 @@ import SelectionNavbar from "./Components/SelectionNavbar"
 
 const App = () => {
 
+  // const [nexusQuery, setNexusQuery] = useState(``)
 
   // const [nexusData, setNexusData] = useState({})
     

@@ -1,12 +1,11 @@
 import React, {useState, useEffect} from 'react';
 import FactionSelect from '../Filters/FactionSelect.js';
 import ServerSelect from '../Filters/ServerSelect.js';
-import GoodsGraph from './Graphs/GoodsGraph.js';
+
 import axios from 'axios';
 
 
-import { Form} from 'react-bootstrap';
-import { Button } from 'react-bootstrap';
+import { Form, Button } from 'react-bootstrap';
 
 const QuerySearch = () => {
     
@@ -34,9 +33,6 @@ const QuerySearch = () => {
         setNexusQuery(`/wow-classic/v1/items/${serverQueryString}-${factionQueryString}/13468`)
     }
     
-    // const handleSubmit = (e) => {
-    //     e.preventDefault()
-    // }
 
     useEffect(() => {
         if(nexusQuery === ""){
@@ -83,7 +79,7 @@ const QuerySearch = () => {
                 <ServerSelect  updateServerChange={updateServerChange}/>
                 <FactionSelect updateFactionChange={updateFactionChange}/> 
             </Form>
-            <Button onClick={handleClick} variant="secondary">Search</Button>     
+            <Button onClick={handleClick} variant="secondary">Search</Button>
         </>
     )
 }
