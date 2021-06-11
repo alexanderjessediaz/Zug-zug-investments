@@ -7,48 +7,48 @@ import { Dropdown, FormControl } from 'react-bootstrap';
 const ServerSelect = ({ updateServerChange }) => {
 
 
-const [wowServerNames, setWowServerNames] = useState([])
+  const [wowServerNames, setWowServerNames] = useState([])
 
-useEffect(() => {
-  fetch("http://localhost:5555/Servers", {method: "GET"})
-  .then((response) => response.json())
-  .then((serverData => {
-    setWowServerNames(serverData.serverNames.map((server) => server.name))
-  })).catch((error) => {console.error(error)});
-},[]);
-
-
-const [selectedServer, setSelectedServer] = useState("")
-
-const handleSelect = (e) => {
-  setSelectedServer(e)
-  updateServerChange(e)
-}
+  useEffect(() => {
+    fetch("http://localhost:5555/Servers", {method: "GET"})
+    .then((response) => response.json())
+    .then((serverData => {
+      setWowServerNames(serverData.serverNames.map((server) => server.name))
+    })).catch((error) => {console.error(error)});
+  },[]);
 
 
-const serverNames = wowServerNames.map(
-  (server, i) => 
-    <Dropdown.Item 
-      eventKey={server.toLowerCase()}
-      key={i}
-      onSelect={handleSelect}
-      >{server.toLowerCase()}
-    </Dropdown.Item>
-);
+  const [selectedServer, setSelectedServer] = useState("")
+
+  const handleSelect = (e) => {
+    setSelectedServer(e)
+    updateServerChange(e)
+  }
+
+
+  const serverNames = wowServerNames.map(
+    (server, i) => 
+      <Dropdown.Item 
+        eventKey={server.toLowerCase()}
+        key={i}
+        onSelect={handleSelect}
+        >{server.toLowerCase()}
+      </Dropdown.Item>
+  );
 
 
 
-const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
-  <a
-  href="http://localhost:3001"
-  ref={ref}
-    onClick={(e) => {
-      e.preventDefault();
-        onClick(e);
-      }}
-      >
-      {children}
-      &#x25bc;
+  const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
+    <a
+    href="http://localhost:3001"
+    ref={ref}
+      onClick={(e) => {
+        e.preventDefault();
+          onClick(e);
+        }}
+        >
+        {children}
+        &#x25bc;
     </a>
   ));
   
