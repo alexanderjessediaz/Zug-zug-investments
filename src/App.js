@@ -23,7 +23,7 @@ const App = () => {
   const [nexusQuery, setNexusQuery] = useState(``)
 
   const updateNexusQuery = () => {
-    setNexusQuery(`/wow-classic/v1/items/${serverQueryString}-${factionQueryString}/13468`)
+    setNexusQuery(`/wow-classic/v1/items/${serverQueryString}-${factionQueryString}/13468/prices`)
   }
   
   
@@ -59,7 +59,6 @@ const App = () => {
             console.log("API items query sent")
             await axios.get("http://localhost:5555/")
                   .then((response) => {
-                      console.log("success:", response)
                       setNexusData(response)
                   })
               }
@@ -91,7 +90,11 @@ const App = () => {
             updateFactionChange={updateFactionChange}
             updateNexusQuery={updateNexusQuery}
           />
-          <GoodsContainer nexusData={nexusData} />
+          <GoodsContainer 
+            nexusData={nexusData}
+            serverQueryString={serverQueryString}
+            factionQueryString={factionQueryString}
+          />
           
         </div>
     )

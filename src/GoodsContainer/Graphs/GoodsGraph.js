@@ -18,7 +18,7 @@ class GoodsGraph extends Component {
     }
 
     seeData = () => {
-        console.log("More Success:", this.props)
+        console.log("Goods Graph:", this.props)
     }
 
     setGradientColor = (canvas, color) => {
@@ -47,61 +47,49 @@ class GoodsGraph extends Component {
                     set.borderColor = "white"
                     set.borderWidth = 2
                 });
-            } else {
-                return null
             }
         return data
     }
 
     createItemPriceData = () => {
-        // if (!this.props.nexusData) return 
-        // else {
-        //  this.props.nexusData.data.data.stats.current.map(price => {
-        //     return price.marketValue /10000
-        // })}
-        return null
+        return this.props.nexusData.data.nData.data.map(price => {
+            return price.marketValue /10000
+        })
       }
 
     createItemPriceLabels = () => {
-        // if (!this.props.nexusItemPrice) return
-        // else {
-        // this.props.nexusItemPrice.map(priceObject => {
-        //     const dateAndTimeScanned = {
-        //         ...priceObject,
-        //         scannedAt: new Date(priceObject.scannedAt).toString().split(" ")[0] +
-        //         " " + 
-        //         new Date(priceObject.scannedAt).toString().split(" ")[4] +
-        //         " " 
-        //     }
-        //    return dateAndTimeScanned.scannedAt
-        // })}
-        // console.log( "nexusItemPrice:", this.props.nexusItemPrice)
-        return null
+      return this.props.nexusData.data.nData.data.map(priceObject => {
+            const dateAndTimeScanned = {
+                ...priceObject,
+                scannedAt: new Date(priceObject.scannedAt).toString().split(" ")[0] +
+                " " + 
+                new Date(priceObject.scannedAt).toString().split(" ")[4] +
+                " " 
+            }
+           return dateAndTimeScanned.scannedAt
+        })
       }
     
     render(){
         return (
             <Jumbotron>
-                {this.seeData()}
                 <Container>
                     <h1>Zug-Zug Investments</h1>
-                    
-                    <h4 className="card-header">Kromcrush Server</h4>
+                    <h4 className="card-header">{`${this.props.serverQueryString}-${this.props.factionQueryString}`}</h4>
                     <hr className="my-4"></hr>
                     <div className="media">
                         <div className="media-body">
                             <div style={{position: "relative", width: 750, height: 650}}>
-                                {/* <Line 
+                                <Line 
                                     options={{
                                         responsive: true
                                     }}
                                     data={this.getChartData}
-                                /> */}
+                                />
                                 <h6 className="d-flex justify-content-center">Last 7 days</h6>
                             </div>
                         </div>
                     </div>
-                    
                 </Container>
             </Jumbotron>
         )

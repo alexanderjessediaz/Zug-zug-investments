@@ -5,16 +5,20 @@ import GoodsGraph from './Graphs/GoodsGraph.js'
 
 import { Container, Row } from 'react-bootstrap';
 
-const GoodsContainer = ({ nexusData }) => {
+const GoodsContainer = ({ nexusData, serverQueryString, factionQueryString }) => {
 
-    const seeData = () => {
-        console.log("Container/nexusData:", nexusData)
-    }
+    
     return (
-        <Container>
-            {seeData()}
+        <Container>        
             <Row>
-                <GoodsGraph nexusData={nexusData} />
+                {nexusData === undefined ?
+                    <h5>No Data</h5> :
+                    <GoodsGraph
+                        nexusData={nexusData}
+                        serverQueryString={serverQueryString}
+                        factionQueryString={factionQueryString}
+                    />
+                }
             </Row>
             <Row>
                 {/* <GoodsTable nexusData={nexusData} nexusItemPrice={nexusItemPrice}/> */}
