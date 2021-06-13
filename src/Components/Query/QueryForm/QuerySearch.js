@@ -11,7 +11,7 @@ const QuerySearch = ({ updateServerChange, updateFactionChange, updateNexusQuery
     
     const handleClick = (e) => {
         e.preventDefault()
-        updateNexusQuery(`/wow-classic/v1/items/${serverQueryString}-${factionQueryString}/13468`)   
+        updateNexusQuery(`/wow-classic/v1/items/${serverQueryString.split(" ").join("-")}-${factionQueryString}/13468/prices`)   
     }
 
     

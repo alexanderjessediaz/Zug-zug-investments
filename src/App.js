@@ -33,6 +33,7 @@ const App = () => {
       if(nexusQuery === ""){
           console.log("client query post: nexusQuery is empty")
       } else { 
+        async function postNexusQuery(){
           try {
           console.log( "client query string posted:", nexusQuery)
           axios.post("http://localhost:5555/", {
@@ -40,7 +41,8 @@ const App = () => {
           })
           } catch (error) {
               console.error("Error:", error)
-          }
+          }}
+          postNexusQuery()
       }
   }, [nexusQuery])
 
@@ -78,7 +80,7 @@ const App = () => {
       //     console.error("Error:", error)
       //   }
       // }
-        nexusCall()
+      setInterval(() => nexusCall(), 15000) 
         // priceCall()
       }
   },[nexusQuery])
