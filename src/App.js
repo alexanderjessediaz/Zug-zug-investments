@@ -23,7 +23,7 @@ const App = () => {
   const [nexusQuery, setNexusQuery] = useState(``)
 
   const updateNexusQuery = () => {
-    setNexusQuery(`/wow-classic/v1/items/${serverQueryString}-${factionQueryString}/13468/prices`)
+    setNexusQuery(`/wow-classic/v1/items/${serverQueryString.split(" ").join("-")}-${factionQueryString}/13468/prices`)
   }
   
   

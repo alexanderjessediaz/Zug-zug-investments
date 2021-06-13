@@ -34,7 +34,7 @@ class GoodsGraph extends Component {
             labels: this.createItemPriceLabels(),
             datasets: [
                 {
-                    label: "Item Price",
+                    label: "Item Price in gold",
                     backgroundColor: "rgba(130,160,106,0.75)",
                     data: this.createItemPriceData()
                 }
@@ -52,13 +52,19 @@ class GoodsGraph extends Component {
     }
 
     createItemPriceData = () => {
+        if(this.props.nexusData === undefined){
+            return 
+        } else {
         return this.props.nexusData.data.nData.data.map(price => {
             return price.marketValue /10000
-        })
+        })}
       }
 
     createItemPriceLabels = () => {
-      return this.props.nexusData.data.nData.data.map(priceObject => {
+        if(this.props.nexusData === undefined){
+            return 
+        } else {
+        return this.props.nexusData.data.nData.data.map(priceObject => {
             const dateAndTimeScanned = {
                 ...priceObject,
                 scannedAt: new Date(priceObject.scannedAt).toString().split(" ")[0] +
@@ -67,7 +73,7 @@ class GoodsGraph extends Component {
                 " " 
             }
            return dateAndTimeScanned.scannedAt
-        })
+        })}
       }
     
     render(){
