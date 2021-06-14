@@ -1,13 +1,14 @@
 import React, {useState} from 'react';
 import { Dropdown } from 'react-bootstrap';
 
- const FactionSelect = ({ updateFactionString }) => {
+ const FactionSelect = ({ updateFactionString, setUserFaction }) => {
 
     const [selectedFaction, setSelectedFaction] = useState('')
 
     const handleSelect = (e) => {
         setSelectedFaction(e)
         updateFactionString(e)
+        setUserFaction(e)
     }
     
 
