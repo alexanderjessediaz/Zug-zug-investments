@@ -43,17 +43,17 @@ const QuerySearch = ({ updateServerString, updateFactionString, updateNexusQuery
         suggestionsQuery()
     },[searchInput])
 
-    // useEffect(() => {
-    //     async function suggestionsSearch(){
-    //         try {
-    //             await axios.get("http://localhost:5555/ItemSearch")
-    //             .then((response) => console.log(response))
-    //         } catch(error) {
-    //             console.error(error)
-    //         }
-    //     }
-    //     suggestionsSearch()
-    // })
+    useEffect(() => {
+        async function suggestionsSearch(){
+            try {
+                await axios.get("http://localhost:5555/ItemSearch")
+                .then((response) => console.log(response))
+            } catch(error) {
+                console.error(error)
+            }
+        }
+        suggestionsSearch()
+    }) 
 
     
     return (
@@ -61,7 +61,7 @@ const QuerySearch = ({ updateServerString, updateFactionString, updateNexusQuery
             <ServerSelect updateServerString={updateServerString} setUserServer={setUserServer}/>
             <FactionSelect updateFactionString={updateFactionString} setUserFaction={setUserFaction}/>
             {
-                serverQueryString && factionQueryString === '' ?
+                serverQueryString === "" || factionQueryString === "" ?
                 <h1>test</h1>:
                     <Form inline>
                         <Form.Label as="label" color="blue">Choose Item</Form.Label>
