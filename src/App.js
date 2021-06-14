@@ -35,6 +35,7 @@ const App = () => {
   useEffect(() => {
       if(nexusQuery === ""){
           console.log("client query post: nexusQuery is empty")
+          return
       } else { 
         async function postNexusQuery(){
           try {

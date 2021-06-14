@@ -30,7 +30,7 @@ class GoodsGraph extends Component {
             labels: this.createItemPriceLabels(),
             datasets: [
                 {
-                    label: "Item Price in gold",
+                    label: `${this.props.nexusData.data.nData.name}: prices reflected in gold`,
                     backgroundColor: "rgba(130,160,106,0.75)",
                     data: this.createItemPriceData()
                 }
@@ -76,12 +76,13 @@ class GoodsGraph extends Component {
         return (
             <Jumbotron>
                 <Container>
-                    <h1>Zug-Zug Investments</h1>
-                    <h4 className="card-header">
+                    <h2>Current Server and Faction:</h2>
+                    <h3 className="card-header">
                         {this.props.nexusData === undefined ?
                         "Server and Faction":
                         this.props.nexusData.data.nData.slug}
-                    </h4>
+                    </h3>
+                    <h4>Search updates every 10 seconds. Your search will be reflected shortly.</h4>
                     <hr className="my-4"></hr>
                     <div className="media">
                         <div className="media-body">
