@@ -1,10 +1,11 @@
 import React, {useState, useEffect} from 'react';
+import { DropdownButton } from 'react-bootstrap';
 
 import { Dropdown, FormControl } from 'react-bootstrap';
 
 
 
-const ServerSelect = ({ updateServerChange }) => {
+const ServerSelect = ({ updateServerString }) => {
 
 
   const [wowServerNames, setWowServerNames] = useState([])
@@ -22,7 +23,7 @@ const ServerSelect = ({ updateServerChange }) => {
 
   const handleSelect = (e) => {
     setSelectedServer(e)
-    updateServerChange(e)
+    updateServerString(e)
   }
 
 

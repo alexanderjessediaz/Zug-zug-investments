@@ -9,24 +9,27 @@ const App = () => {
 
   const [serverQueryString, setServerQuery] = useState('')
     
-  const updateServerChange = (e) => {
-      setServerQuery(e)
+  const updateServerString = (e) => {
+    setServerQuery(e)
   }
 
   const [factionQueryString, setFactionQueryString] = useState('')
   
-  const updateFactionChange = (e) => {
-      setFactionQueryString(e)
+  const updateFactionString = (e) => {
+    setFactionQueryString(e)
   }
   
+  const [itemQueryString, setItemQueryString] = useState('')
+
+  const updateItemString = (e) => {
+    setItemQueryString(e)
+  }
   
   const [nexusQuery, setNexusQuery] = useState(``)
 
   const updateNexusQuery = () => {
     setNexusQuery(`/wow-classic/v1/items/${serverQueryString.split(" ").join("-")}-${factionQueryString}/13468/prices`)
   }
-  
-  
   
 
   useEffect(() => {
@@ -42,14 +45,14 @@ const App = () => {
           } catch (error) {
               console.error("Error:", error)
           }}
-          postNexusQuery()
+          postNexusQuery() 
       }
   }, [nexusQuery])
 
 
 
   const [nexusData, setNexusData] = useState()
-  // const [nexusItemPrice, setNexusItemPrice] = useState({})
+  
   
   useEffect(() => {
       if(!nexusQuery){
@@ -60,42 +63,27 @@ const App = () => {
           try {
             console.log("API items query sent")
             await axios.get("http://localhost:5555/")
-                  .then((response) => {
-                      setNexusData(response)
-                  })
-              }
-                catch(error) {
-                  console.error("Error:", error)
-                }
-              }
-      // async function priceCall() {
-      //   try {
-      //     console.log("API item price query sent")
-      //     await axios.get("http://localhost:5555/")
-      //       .then((response) => {
-      //         console.log("price call success:", response)
-      //         setNexusItemPrice(response.nData)
-      //       })
-      //   } catch(error) {
-      //     console.error("Error:", error)
-      //   }
-      // }
-      setInterval(() => nexusCall(), 15000) 
-        // priceCall()
+              .then((response) => {setNexusData(response)})
+          }
+          catch(error) {
+            console.error("Error:", error)
+          }
+      }
+      nexusCall()
+      setInterval(() => nexusCall(), 10000) 
       }
   },[nexusQuery])
 
     return (
         <div className="App">
           <SelectionNavbar
-            updateServerChange={updateServerChange}
-            updateFactionChange={updateFactionChange}
+            updateServerString={updateServerString}
+            updateFactionString={updateFactionString}
+            updateItemString={updateItemString}
             updateNexusQuery={updateNexusQuery}
-          />
+            />
           <GoodsContainer 
             nexusData={nexusData}
-            serverQueryString={serverQueryString}
-            factionQueryString={factionQueryString}
           />
           
         </div>

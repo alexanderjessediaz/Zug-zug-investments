@@ -17,10 +17,6 @@ class GoodsGraph extends Component {
         }
     }
 
-    seeData = () => {
-        console.log("Goods Graph:", this.props)
-    }
-
     setGradientColor = (canvas, color) => {
         const ctx = canvas.getContext('2d')
         const gradient = ctx.createLinearGradient(0,0,600,550)
@@ -81,7 +77,11 @@ class GoodsGraph extends Component {
             <Jumbotron>
                 <Container>
                     <h1>Zug-Zug Investments</h1>
-                    <h4 className="card-header">{`${this.props.serverQueryString}-${this.props.factionQueryString}`}</h4>
+                    <h4 className="card-header">
+                        {this.props.nexusData === undefined ?
+                        "Server and Faction":
+                        this.props.nexusData.data.nData.slug}
+                    </h4>
                     <hr className="my-4"></hr>
                     <div className="media">
                         <div className="media-body">

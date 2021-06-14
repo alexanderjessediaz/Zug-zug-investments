@@ -5,11 +5,11 @@ import QuerySearch from './Query/QueryForm/QuerySearch.js';
 import ZugZugLogo from '../Images/ZugZugLogo.png'
 
 
- const SelectionNavbar = ({ updateServerChange, updateFactionChange, updateNexusQuery}) =>{
+ const SelectionNavbar = ({ updateServerString, updateFactionString, updateNexusQuery, updateItemString}) =>{
    
     return (
         <header>
-          <Navbar variant="dark" bg="dark">
+          <Navbar className="justify-content-between" bg="light" expand="lg">
             <Navbar.Brand href="http://localhost:3001">
               <img 
                 src={ZugZugLogo}
@@ -19,8 +19,9 @@ import ZugZugLogo from '../Images/ZugZugLogo.png'
               />
             </Navbar.Brand>
             <QuerySearch 
-              updateServerChange={updateServerChange}
-              updateFactionChange={updateFactionChange}
+              updateServerString={updateServerString}
+              updateFactionString={updateFactionString}
+              updateItemString={updateItemString}
               updateNexusQuery={updateNexusQuery}  
             />
             </Navbar>
