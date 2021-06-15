@@ -1,22 +1,26 @@
 import React, {useState} from 'react';
 import FactionSelect from '../Filters/FactionSelect.js';
 import ServerSelect from '../Filters/ServerSelect.js';
-import { Button } from 'react-bootstrap';
+import { Button, Spinner} from 'react-bootstrap';
 
 
-const QuerySearch = ({ updateServerString, updateFactionString, updateNexusQuery}) => {
+
+const QuerySearch = ({
+    updateServerString,
+    updateFactionString,
+    updateNexusQuery,
+    nexusData
+}) => {
     
     
     const [serverQueryString, setServerQueryString] = useState('')
     const [factionQueryString, setFactionQueryString] = useState('')
 
     const setUserServer = (e) => {
-        console.log(serverQueryString)
         setServerQueryString(e)
     }
 
     const setUserFaction = (e) => {
-        console.log(factionQueryString)
         setFactionQueryString(e)
     }
     
@@ -33,9 +37,10 @@ const QuerySearch = ({ updateServerString, updateFactionString, updateNexusQuery
             <FactionSelect updateFactionString={updateFactionString} setUserFaction={setUserFaction}/>
                 {
                     serverQueryString === "" || factionQueryString === "" ?
-                    <h6>please select your server and region</h6>:
-                    <Button onClick={handleClick} variant="secondary">Search</Button>
+                    <Button disabled variant="secondary">Search</Button>:
+                    <Button onClick={handleClick} variant="secondary">Search</Button> 
                 }
+                
         </>
     )
 }

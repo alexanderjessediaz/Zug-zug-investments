@@ -73,11 +73,11 @@ const App = () => {
             updateServerString={updateServerString}
             updateFactionString={updateFactionString}
             updateNexusQuery={updateNexusQuery}
+            nexusData={nexusData}
             />
           <GoodsContainer 
             nexusData={nexusData}
           />
-          
         </div>
     )
 

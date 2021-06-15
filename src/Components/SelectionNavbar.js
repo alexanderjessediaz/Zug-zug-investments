@@ -5,7 +5,12 @@ import QuerySearch from './Query/QueryForm/QuerySearch.js';
 import ZugZugLogo from '../Images/ZugZugLogo.png'
 
 
- const SelectionNavbar = ({ updateServerString, updateFactionString, updateNexusQuery}) =>{
+ const SelectionNavbar = ({
+    updateServerString,
+    updateFactionString,
+    updateNexusQuery,
+    nexusData
+}) =>{
    
     return (
         <header>
@@ -21,7 +26,8 @@ import ZugZugLogo from '../Images/ZugZugLogo.png'
             <QuerySearch 
               updateServerString={updateServerString}
               updateFactionString={updateFactionString}
-              updateNexusQuery={updateNexusQuery}  
+              updateNexusQuery={updateNexusQuery} 
+              nexusData={nexusData} 
             />
             </Navbar>
         </header>
