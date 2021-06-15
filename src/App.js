@@ -1,8 +1,6 @@
-import React, { useState, useEffect } from 'react'
-import SelectionNavbar from "./Components/SelectionNavbar"
-import GoodsContainer from "./GoodsContainer/GoodsContainer.js"
-// import {BrowserRouter as Router} from 'react-router-dom'
-// import { Form, Button } from 'react-bootstrap';
+import React, { useState, useEffect } from 'react';
+import SelectionNavbar from "./Components/SelectionNavbar.js";
+import GoodsContainer from "./GoodsContainer/GoodsContainer.js";
 import axios from 'axios';
 
 const App = () => {
@@ -17,12 +15,6 @@ const App = () => {
   
   const updateFactionString = (e) => {
     setFactionQueryString(e)
-  }
-  
-  const [itemQueryString, setItemQueryString] = useState('')
-
-  const updateItemString = (e) => {
-    setItemQueryString(e)
   }
   
   const [nexusQuery, setNexusQuery] = useState(``)
@@ -80,7 +72,6 @@ const App = () => {
           <SelectionNavbar
             updateServerString={updateServerString}
             updateFactionString={updateFactionString}
-            updateItemString={updateItemString}
             updateNexusQuery={updateNexusQuery}
             />
           <GoodsContainer 

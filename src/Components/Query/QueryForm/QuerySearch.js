@@ -1,10 +1,10 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import FactionSelect from '../Filters/FactionSelect.js';
 import ServerSelect from '../Filters/ServerSelect.js';
-import { Button, Form } from 'react-bootstrap';
-import axios from 'axios';
+import { Button } from 'react-bootstrap';
 
-const QuerySearch = ({ updateServerString, updateFactionString, updateNexusQuery, updateItemString}) => {
+
+const QuerySearch = ({ updateServerString, updateFactionString, updateNexusQuery}) => {
     
     
     const [serverQueryString, setServerQueryString] = useState('')
@@ -25,52 +25,54 @@ const QuerySearch = ({ updateServerString, updateFactionString, updateNexusQuery
         updateNexusQuery(`/wow-classic/v1/items/${serverQueryString.split(" ").join("-")}-${factionQueryString}/13468/prices`)
     }
 
-    const [searchInput, setSearchInput] = useState('')
-    const handleChange = (e) => {
-        setSearchInput(e.target.value)
-    }
     
-    useEffect(() => {
-        async function suggestionsQuery(){
-            try {
-                await axios.post("http://localhost:5555", { 
-                    userSearchInput: searchInput
-                })
-            } catch(error) {
-                console.error(error)
-            }
-        }
-        suggestionsQuery()
-    },[searchInput])
-
-    useEffect(() => {
-        async function suggestionsSearch(){
-            try {
-                await axios.get("http://localhost:5555/ItemSearch")
-                .then((response) => console.log(response))
-            } catch(error) {
-                console.error(error)
-            }
-        }
-        suggestionsSearch()
-    }) 
-
     
     return (
         <>
             <ServerSelect updateServerString={updateServerString} setUserServer={setUserServer}/>
             <FactionSelect updateFactionString={updateFactionString} setUserFaction={setUserFaction}/>
-            {
-                serverQueryString === "" || factionQueryString === "" ?
-                <h1>test</h1>:
-                    <Form inline>
-                        <Form.Label as="label" color="blue">Choose Item</Form.Label>
-                        <Form.Control type="text" onChange={handleChange} value={searchInput}/>
-                    </Form>
-            }
-            <Button onClick={handleClick} variant="secondary">Search</Button>
+                {
+                    serverQueryString === "" || factionQueryString === "" ?
+                    <h6>please select your server and region</h6>:
+                    <Button onClick={handleClick} variant="secondary">Search</Button>
+                }
         </>
     )
 }
 
 export default QuerySearch
+
+// Nexus suggestions endpoint
+    // const [searchInput, setSearchInput] = useState('')
+    // const handleChange = (e) => {
+    //     setSearchInput(e.target.value)
+    // }
+    
+    // useEffect(() => {
+    //     async function suggestionsQuery(){
+    //         try {
+    //             await axios.post("http://localhost:5555", { 
+    //                 userSearchInput: searchInput
+    //             })
+    //         } catch(error) {
+    //             console.error(error)
+    //         }
+    //     }
+    //     suggestionsQuery()
+    // },[searchInput])
+
+    // useEffect(() => {
+    //     async function suggestionsSearch(){
+    //         try {
+    //             await axios.get("http://localhost:5555")
+    //             .then((response) => console.log(response))
+    //         } catch(error) {
+    //             console.error(error)
+    //         }
+    //     }
+    //     suggestionsSearch()
+    // }) 
+    // <Form inline>
+    //     <Form.Label as="label" color="blue">Choose Item</Form.Label>
+    //     <Form.Control type="text" onChange={handleChange} value={searchInput}/>
+    // </Form>

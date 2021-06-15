@@ -30,7 +30,7 @@ class GoodsGraph extends Component {
             labels: this.createItemPriceLabels(),
             datasets: [
                 {
-                    label: `${this.props.nexusData.data.nData.name}: prices reflected in gold`,
+                    label: `${this.props.nexusData.data.nData.name}`,
                     backgroundColor: "rgba(130,160,106,0.75)",
                     data: this.createItemPriceData()
                 }
@@ -93,7 +93,8 @@ class GoodsGraph extends Component {
                                     }}
                                     data={this.getChartData}
                                 />
-                                <h6 className="d-flex justify-content-center">Last 7 days</h6>
+                                <h5 className="d-flex justify-content-center">Last 7 days</h5>
+                                <h6 className="d-flex justify-content-center">displayed prices are measured in gold</h6>
                             </div>
                         </div>
                     </div>
