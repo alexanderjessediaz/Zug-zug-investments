@@ -8,18 +8,16 @@ const GoodsContainer = ({ nexusData }) => {
 
     
     return (
-        <Container fluid>        
-            <Row>
+        <Container fluid="xl">        
+            
                 {nexusData === undefined ?
                     <h5>Welcome to ZugZug Inc. Here we display real time World of Warcraft in game price data.<br></br>
                     <br></br>Please select Faction and Region to retrieve Data<br></br></h5>:
                     <GoodsGraph nexusData={nexusData}/>
                 }
-            </Row>
-            <Row>
                 {
                 nexusData === undefined ?
-                    <Button variant="success" disabled>
+                    <Button variant="primary" disabled>
                         <Spinner
                         as="span"
                         animation="grow"
@@ -31,7 +29,6 @@ const GoodsContainer = ({ nexusData }) => {
                     </Button>
                 : null
                 }
-            </Row>
         </Container>
     )
 }

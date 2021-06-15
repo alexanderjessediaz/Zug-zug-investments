@@ -75,7 +75,7 @@ class GoodsGraph extends Component {
     render(){
         return (
             <Jumbotron>
-                <Container>
+                <Container fluid>
                     <h2>Current Server and Faction:</h2>
                     <h3 className="card-header">
                         {this.props.nexusData === undefined ?

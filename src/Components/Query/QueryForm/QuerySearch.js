@@ -38,7 +38,7 @@ const QuerySearch = ({
                 {
                     serverQueryString === "" || factionQueryString === "" ?
                     <Button disabled variant="secondary">Search</Button>:
-                    <Button onClick={handleClick} variant="secondary">Search</Button> 
+                    <Button onClick={handleClick} variant="primary">Search</Button> 
                 }
                 
         </>
