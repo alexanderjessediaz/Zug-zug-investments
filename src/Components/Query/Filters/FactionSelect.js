@@ -3,13 +3,13 @@ import { Dropdown } from 'react-bootstrap';
 
  const FactionSelect = ({ updateFactionString, setUserFaction }) => {
 
-    const [selectedFaction, setSelectedFaction] = useState('')
+    const [selectedFaction, setSelectedFaction] = useState('');
 
     const handleSelect = (e) => {
-        setSelectedFaction(e)
-        updateFactionString(e)
-        setUserFaction(e)
-    }
+        setSelectedFaction(e);
+        updateFactionString(e);
+        setUserFaction(e);
+    };
     
 
     return (
@@ -25,7 +25,7 @@ import { Dropdown } from 'react-bootstrap';
                 <Dropdown.Item eventKey="alliance" >Alliance</Dropdown.Item>
             </Dropdown.Menu>
         </Dropdown>
-    )
-}
+    );
+};
 
-export default FactionSelect
+export default FactionSelect;

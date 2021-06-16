@@ -5,67 +5,67 @@ import axios from 'axios';
 
 const App = () => {
 
-  const [serverQueryString, setServerQuery] = useState('')
+  const [serverQueryString, setServerQuery] = useState('');
     
   const updateServerString = (e) => {
-    setServerQuery(e)
-  }
+    setServerQuery(e);
+  };
 
-  const [factionQueryString, setFactionQueryString] = useState('')
+  const [factionQueryString, setFactionQueryString] = useState('');
   
   const updateFactionString = (e) => {
-    setFactionQueryString(e)
-  }
+    setFactionQueryString(e);
+  };
   
-  const [nexusQuery, setNexusQuery] = useState(``)
+  const [nexusQuery, setNexusQuery] = useState(``);
 
   const updateNexusQuery = () => {
-    setNexusQuery(`/wow-classic/v1/items/${serverQueryString.split(" ").join("-")}-${factionQueryString}/21884/prices`)
-  }
+    setNexusQuery(`/wow-classic/v1/items/${serverQueryString.split(" ").join("-")}-${factionQueryString}/21884/prices`);
+  };
   
 
   useEffect(() => {
       if(nexusQuery === ""){
-          console.log("client query post: nexusQuery is empty")
-          return
+          console.log("client query post: nexusQuery is empty");
+          return;
       } else { 
         async function postNexusQuery(){
           try {
-            console.log( "client query string posted:", nexusQuery)
+            console.log( "client query string posted:", nexusQuery);
             axios.post("http://localhost:5555/", {
                 nQuery: nexusQuery 
-            })
+            });
           } catch (error) {
-              console.error("Error:", error)
-          }}
-          postNexusQuery() 
-      }
-  }, [nexusQuery])
+              console.error("Error:", error);
+          }};
+          postNexusQuery() ;
+      };
+  }, [nexusQuery]);
 
 
 
-  const [nexusData, setNexusData] = useState()
+  const [nexusData, setNexusData] = useState();
   
   
   useEffect(() => {
       if(!nexusQuery){
-          console.log("Nexus API call: nexusQuery is empty")
-          return
+          console.log("Nexus API call: nexusQuery is empty");
+          return;
       } else {
       async function nexusCall(){
           try {
-            console.log("API items query sent")
+            console.log("API items query sent");
             await axios.get("http://localhost:5555/")
-              .then((response) => {setNexusData(response)})
+              .then((response) => {setNexusData(response)});
           }
           catch(error) {
-            console.error("Error:", error)
+            console.error("Error:", error);
           }
       }
-      nexusCall()
-      setInterval(() => nexusCall(), 10000) 
-      }
-  },[nexusQuery])
+      nexusCall();
+      setInterval(() => nexusCall(), 10000);
+      };
+  },[nexusQuery]);
 
     return (
         <div className="App">
@@ -81,8 +81,6 @@ const App = () => {
           />
         </div>
     )
+  };
 
-  }
-
-export default App
-        
+export default App;

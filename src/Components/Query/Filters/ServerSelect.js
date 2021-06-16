@@ -2,12 +2,10 @@ import React, {useState, useEffect} from 'react';
 
 import { Dropdown, FormControl } from 'react-bootstrap';
 
-
-
 const ServerSelect = ({ updateServerString, setUserServer }) => {
 
 
-  const [wowServerNames, setWowServerNames] = useState([])
+  const [wowServerNames, setWowServerNames] = useState([]);
 
   useEffect(() => {
     fetch("http://localhost:5555/Servers", {method: "GET"})
@@ -18,13 +16,13 @@ const ServerSelect = ({ updateServerString, setUserServer }) => {
   },[]);
 
 
-  const [selectedServer, setSelectedServer] = useState("")
+  const [selectedServer, setSelectedServer] = useState("");
 
   const handleSelect = (e) => {
-    setSelectedServer(e)
-    updateServerString(e)
-    setUserServer(e)
-  }
+    setSelectedServer(e);
+    updateServerString(e);
+    setUserServer(e);
+  };
 
 
   const serverNames = wowServerNames.map(
@@ -92,6 +90,6 @@ const ServerSelect = ({ updateServerString, setUserServer }) => {
       </Dropdown.Menu>
     </Dropdown>
   );
-}
+};
 
-export default ServerSelect
+export default ServerSelect;
