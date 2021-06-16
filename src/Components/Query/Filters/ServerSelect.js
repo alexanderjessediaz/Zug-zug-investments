@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 
 import { Dropdown, FormControl } from 'react-bootstrap';
+import './ServerSelectStyles.css'
 
 const ServerSelect = ({ updateServerString, setUserServer }) => {
 
@@ -69,7 +70,7 @@ const ServerSelect = ({ updateServerString, setUserServer }) => {
           onChange={(e) => setValue(e.target.value)}
           value={value}
         />
-        <ul className="list-unstyled">
+        <ul className="list-unstyled" id="dropdown-menu">
           {React.Children.toArray(children).filter(
             (child) =>
               !value || child.props.children.toLowerCase().startsWith(value),
@@ -81,11 +82,11 @@ const ServerSelect = ({ updateServerString, setUserServer }) => {
 );
   
   return (
-    <Dropdown onSelect={handleSelect}>
+    <Dropdown onSelect={handleSelect} >
       <Dropdown.Toggle as={CustomToggle} id="dropdown-custom-components">
         {selectedServer === '' ? "Choose Server":selectedServer}
       </Dropdown.Toggle>
-      <Dropdown.Menu as={CustomMenu} >
+      <Dropdown.Menu as={CustomMenu} className="dropdown-menu-show">
         {wowServerNames === undefined ? <Dropdown.Item>Loading...</Dropdown.Item>: serverNames}
       </Dropdown.Menu>
     </Dropdown>

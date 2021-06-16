@@ -19,7 +19,7 @@ const GoodsContainer = ({ nexusData }) => {
                             </Card.Text>
                         </Card.Body>
                         <Card.Footer>
-                            To proceed please select game server and faction to retrieve Data
+                            To proceed please select game server and faction to retrieve game data
                         </Card.Footer>
                     </Card>
                     :
