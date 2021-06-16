@@ -20,7 +20,7 @@ const App = () => {
   const [nexusQuery, setNexusQuery] = useState(``)
 
   const updateNexusQuery = () => {
-    setNexusQuery(`/wow-classic/v1/items/${serverQueryString.split(" ").join("-")}-${factionQueryString}/13468/prices`)
+    setNexusQuery(`/wow-classic/v1/items/${serverQueryString.split(" ").join("-")}-${factionQueryString}/21884/prices`)
   }
   
 
@@ -31,10 +31,10 @@ const App = () => {
       } else { 
         async function postNexusQuery(){
           try {
-          console.log( "client query string posted:", nexusQuery)
-          axios.post("http://localhost:5555/", {
-              nQuery: nexusQuery 
-          })
+            console.log( "client query string posted:", nexusQuery)
+            axios.post("http://localhost:5555/", {
+                nQuery: nexusQuery 
+            })
           } catch (error) {
               console.error("Error:", error)
           }}
@@ -74,6 +74,7 @@ const App = () => {
             updateFactionString={updateFactionString}
             updateNexusQuery={updateNexusQuery}
             nexusData={nexusData}
+            nexusQuery={nexusQuery}
             />
           <GoodsContainer 
             nexusData={nexusData}

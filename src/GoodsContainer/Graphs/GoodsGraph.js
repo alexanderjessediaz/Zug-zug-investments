@@ -74,7 +74,7 @@ class GoodsGraph extends Component {
     
     render(){
         return (
-            <Jumbotron>
+            <Jumbotron fluid>
                 <Container fluid>
                     <h2>Current Server and Faction:</h2>
                     <h3 className="card-header">

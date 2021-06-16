@@ -9,7 +9,8 @@ const QuerySearch = ({
     updateServerString,
     updateFactionString,
     updateNexusQuery,
-    nexusData
+    nexusData, 
+    nexusQuery
 }) => {
     
     
@@ -23,13 +24,16 @@ const QuerySearch = ({
     const setUserFaction = (e) => {
         setFactionQueryString(e)
     }
-    
+     
     const handleClick = (e) => {
         e.preventDefault()
         updateNexusQuery(`/wow-classic/v1/items/${serverQueryString.split(" ").join("-")}-${factionQueryString}/13468/prices`)
+        
     }
 
     
+
+  
     
     return (
         <>
@@ -37,47 +41,22 @@ const QuerySearch = ({
             <FactionSelect updateFactionString={updateFactionString} setUserFaction={setUserFaction}/>
                 {
                     serverQueryString === "" || factionQueryString === "" ?
-                    <Button disabled variant="secondary">Search</Button>:
-                    <Button onClick={handleClick} variant="primary">Search</Button> 
+                    <Button disabled id="disabledSearchBtn" variant="secondary">Search</Button>:
+                        <Button id="searchBtn" onClick={handleClick} variant="primary">
+                            {
+                                nexusData === undefined ?
+                                'Search'
+                                : 'Search again'
+                            }
+                        </Button>
+                }    
+                {
+                    nexusQuery !== "" ?
+                    <Button disabled><Spinner as="span" animation="grow" size="sm" role="status" aria-hidden="true"/>Loading Data...</Button>
+                    : <Button disabled>Waiting for Search</Button>
                 }
-                
         </>
     )
 }
 
 export default QuerySearch
-
-// Nexus suggestions endpoint
-    // const [searchInput, setSearchInput] = useState('')
-    // const handleChange = (e) => {
-    //     setSearchInput(e.target.value)
-    // }
-    
-    // useEffect(() => {
-    //     async function suggestionsQuery(){
-    //         try {
-    //             await axios.post("http://localhost:5555", { 
-    //                 userSearchInput: searchInput
-    //             })
-    //         } catch(error) {
-    //             console.error(error)
-    //         }
-    //     }
-    //     suggestionsQuery()
-    // },[searchInput])
-
-    // useEffect(() => {
-    //     async function suggestionsSearch(){
-    //         try {
-    //             await axios.get("http://localhost:5555")
-    //             .then((response) => console.log(response))
-    //         } catch(error) {
-    //             console.error(error)
-    //         }
-    //     }
-    //     suggestionsSearch()
-    // }) 
-    // <Form inline>
-    //     <Form.Label as="label" color="blue">Choose Item</Form.Label>
-    //     <Form.Control type="text" onChange={handleChange} value={searchInput}/>
-    // </Form>

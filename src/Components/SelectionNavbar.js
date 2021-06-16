@@ -9,7 +9,8 @@ import ZugZugLogo from '../Images/ZugZugLogo.png'
     updateServerString,
     updateFactionString,
     updateNexusQuery,
-    nexusData
+    nexusData, 
+    nexusQuery
 }) =>{
    
     return (
@@ -28,6 +29,7 @@ import ZugZugLogo from '../Images/ZugZugLogo.png'
               updateFactionString={updateFactionString}
               updateNexusQuery={updateNexusQuery} 
               nexusData={nexusData} 
+              nexusQuery={nexusQuery}
             />
             </Navbar>
         </header>
