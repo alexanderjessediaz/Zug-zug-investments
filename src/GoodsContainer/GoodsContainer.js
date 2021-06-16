@@ -1,5 +1,6 @@
 import React from 'react';
 import GoodsGraph from './Graphs/GoodsGraph.js';
+import GoodsTable from './GoodsTable/GoodsTable.js';
 
 import './GoodsContainerStyles.css'
 import { Container, Card } from 'react-bootstrap';
@@ -7,7 +8,7 @@ import { Container, Card } from 'react-bootstrap';
 const GoodsContainer = ({ nexusData }) => {
 
     return (
-        <Container id="goods-container" fluid="xl">        
+        <Container id="goods-main-container" fluid="xl">        
                 {
                     nexusData === undefined ? 
                     <Card id="welcome-card" border="primary">
@@ -22,8 +23,10 @@ const GoodsContainer = ({ nexusData }) => {
                             To proceed please select game server and faction to retrieve game data
                         </Card.Footer>
                     </Card>
-                    :
-                    <GoodsGraph nexusData={nexusData}/>
+                    :<Container id="goods-graph-table-container">
+                        <GoodsGraph nexusData={nexusData}/>
+                        <GoodsTable nexusData={nexusData}/>
+                    </Container>
                 }
         </Container>
     );

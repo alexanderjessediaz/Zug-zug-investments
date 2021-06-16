@@ -92,7 +92,7 @@ class GoodsGraph extends Component {
                     </Card>
                     <div className="media" >
                         <div className="media-body" >
-                            <div style={{position: "relative", width: 750, height: 650, margin:"auto"}}>
+                            <div style={{position: "relative", width: 750, height: 400, margin:"auto"}}>
                                 <Line 
                                     options={{
                                         responsive: true
@@ -100,7 +100,7 @@ class GoodsGraph extends Component {
                                     data={this.getChartData}
                                 />
                                 <h5 id="card-graph-footer-title">Last 7 days</h5>
-                                <h6 id="card-graph-footer-text">displayed prices are measured in gold</h6>
+                                <h6 id="card-graph-footer-text">displayed prices in gold</h6>
                             </div>
                         </div>
                     </div>
