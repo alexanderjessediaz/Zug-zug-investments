@@ -2,7 +2,7 @@ import React from 'react';
 import { Navbar } from 'react-bootstrap';
 import QuerySearch from './Query/QueryForm/QuerySearch.js';
 
-import ZugZugLogo from '../Images/ZugZugLogo.png'
+import ZugZugLogo from '../Images/ZugZugLogo.png';
 
 
  const SelectionNavbar = ({

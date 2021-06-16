@@ -1,6 +1,6 @@
-import React, {Component}  from 'react'
-import { Jumbotron, Container } from 'react-bootstrap'
-import { Line } from 'react-chartjs-2'
+import React, {Component}  from 'react';
+import { Jumbotron, Container } from 'react-bootstrap';
+import { Line } from 'react-chartjs-2';
 
 class GoodsGraph extends Component {
 
@@ -15,15 +15,15 @@ class GoodsGraph extends Component {
                 }
             ]
         }
-    }
+    };
 
     setGradientColor = (canvas, color) => {
-        const ctx = canvas.getContext('2d')
-        const gradient = ctx.createLinearGradient(0,0,600,550)
-        gradient.addColorStop(0, color)
-        gradient.addColorStop(0.95, "rgba(130,160,106,0.5")
-        return gradient
-    }
+        const ctx = canvas.getContext('2d');
+        const gradient = ctx.createLinearGradient(0,0,600,550);
+        gradient.addColorStop(0, color);
+        gradient.addColorStop(0.95, "rgba(130,160,106,0.5");
+        return gradient;
+    };
 
     getChartData = canvas => {
         const data = {
@@ -35,30 +35,30 @@ class GoodsGraph extends Component {
                     data: this.createItemPriceData()
                 }
             ]
-        }
-            if(data.datasets) {
-                let colors = ["rgba(130,160,106,0.75)","rgba(130,160,106,0.75)"]
-                data.datasets.forEach((set, i ) => {
-                    set.backgroundColor = this.setGradientColor(canvas, colors[i])
-                    set.borderColor = "white"
-                    set.borderWidth = 2
-                });
-            }
-        return data
-    }
+        };
+        if(data.datasets) {
+            let colors = ["rgba(130,160,106,0.75)","rgba(130,160,106,0.75)"]
+            data.datasets.forEach((set, i ) => {
+                set.backgroundColor = this.setGradientColor(canvas, colors[i])
+                set.borderColor = "white"
+                set.borderWidth = 2
+            })
+        };
+        return data;
+    };
 
     createItemPriceData = () => {
         if(this.props.nexusData === undefined){
-            return 
+            return;
         } else {
         return this.props.nexusData.data.nData.data.map(price => {
-            return price.marketValue /10000
-        })}
-      }
+            return price.marketValue /10000;
+        })};
+      };
 
     createItemPriceLabels = () => {
         if(this.props.nexusData === undefined){
-            return 
+            return; 
         } else {
         return this.props.nexusData.data.nData.data.map(priceObject => {
             const dateAndTimeScanned = {
@@ -67,23 +67,23 @@ class GoodsGraph extends Component {
                 " " + 
                 new Date(priceObject.scannedAt).toString().split(" ")[4] +
                 " " 
-            }
-           return dateAndTimeScanned.scannedAt
-        })}
-      }
+            };
+           return dateAndTimeScanned.scannedAt;
+        })};
+      };
     
     render(){
         return (
             <Jumbotron fluid>
                 <Container fluid>
-                    <h2>Current Server and Faction:</h2>
+                    <h2>Current Server and Faction:</h2>;
                     <h3 className="card-header">
                         {this.props.nexusData === undefined ?
                         "Server and Faction":
                         this.props.nexusData.data.nData.slug}
-                    </h3>
-                    <h4>Search updates every 10 seconds. Your search will be reflected shortly.</h4>
-                    <hr className="my-4"></hr>
+                    </h3>;
+                    <h4>Search updates every 10 seconds. Your search will be reflected shortly.</h4>;
+                    <hr className="my-4"></hr>;
                     <div className="media">
                         <div className="media-body">
                             <div style={{position: "relative", width: 750, height: 650}}>
@@ -93,14 +93,14 @@ class GoodsGraph extends Component {
                                     }}
                                     data={this.getChartData}
                                 />
-                                <h5 className="d-flex justify-content-center">Last 7 days</h5>
-                                <h6 className="d-flex justify-content-center">displayed prices are measured in gold</h6>
-                            </div>
-                        </div>
-                    </div>
+                                <h5 className="d-flex justify-content-center">Last 7 days</h5>;
+                                <h6 className="d-flex justify-content-center">displayed prices are measured in gold</h6>;
+                            </div>;
+                        </div>;
+                    </div>;
                 </Container>
             </Jumbotron>
-        )
+        );
     }
-}
-export default GoodsGraph
+};
+export default GoodsGraph;
