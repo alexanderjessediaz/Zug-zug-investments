@@ -1,21 +1,30 @@
 import React from 'react';
 import GoodsGraph from './Graphs/GoodsGraph.js';
-import { Container, Alert } from 'react-bootstrap';
+
+import './GoodsContainerStyles.css'
+import { Container, Card } from 'react-bootstrap';
 
 const GoodsContainer = ({ nexusData }) => {
 
     return (
-        <Container fluid="xl">        
+        <Container id="goods-container" fluid="xl">        
                 {
                     nexusData === undefined ? 
-                    <Alert variant="success">
-                        <Alert.Heading>Welcome to ZugZug Inc. Here we display real time World of Warcraft in game price data.</Alert.Heading>
-                        <p>Please select Faction and Region to retrieve Data</p>
-                        <hr />
-                    </Alert>
+                    <Card id="welcome-card" border="primary">
+                        <Card.Header>ZugZug Inc.</Card.Header>
+                        <Card.Body>
+                            <Card.Title>Our Purpose</Card.Title>
+                            <Card.Text>
+                                Display real time World of Warcraft in game price data based on selected region. 
+                            </Card.Text>
+                        </Card.Body>
+                        <Card.Footer>
+                            To proceed please select game server and faction to retrieve Data
+                        </Card.Footer>
+                    </Card>
                     :
                     <GoodsGraph nexusData={nexusData}/>
-                };
+                }
         </Container>
     );
 };

@@ -1,6 +1,7 @@
 import React, {Component}  from 'react';
-import { Jumbotron, Container } from 'react-bootstrap';
+import { Jumbotron, Container, Card } from 'react-bootstrap';
 import { Line } from 'react-chartjs-2';
+import './GoodsGraphStyles.css';
 
 class GoodsGraph extends Component {
 
@@ -76,28 +77,39 @@ class GoodsGraph extends Component {
         return (
             <Jumbotron fluid>
                 <Container fluid>
-                    <h2>Current Server and Faction:</h2>;
-                    <h3 className="card-header">
-                        {this.props.nexusData === undefined ?
-                        "Server and Faction":
-                        this.props.nexusData.data.nData.slug}
-                    </h3>;
-                    <h4>Search updates every 10 seconds. Your search will be reflected shortly.</h4>;
-                    <hr className="my-4"></hr>;
-                    <div className="media">
-                        <div className="media-body">
-                            <div style={{position: "relative", width: 750, height: 650}}>
+                    <Card id="card-graph-head">
+                        <Card.Header id="card-graph-header">Current Server and Faction:</Card.Header>
+                        <Card.Title id="card-graph-head-title">
+                            {
+                                this.props.nexusData === undefined ?
+                                "Server and Faction":
+                                this.props.nexusData.data.nData.slug
+                            }
+                        </Card.Title>
+                        <Card.Body>
+                            <Card.Text id="card-graph-head-text">Search updates every 10 seconds. Your search will be reflected shortly.</Card.Text>
+                        </Card.Body>
+                    </Card>
+                    <div className="media" >
+                        <div className="media-body" >
+                            <div style={{position: "relative", width: 750, height: 650, margin:"auto"}}>
                                 <Line 
                                     options={{
                                         responsive: true
                                     }}
                                     data={this.getChartData}
                                 />
-                                <h5 className="d-flex justify-content-center">Last 7 days</h5>;
-                                <h6 className="d-flex justify-content-center">displayed prices are measured in gold</h6>;
-                            </div>;
-                        </div>;
-                    </div>;
+                                {/* <Card id="card-graph-footer">
+                                    <Card.Title id="card-graph-footer-title">Last 7 days</Card.Title>
+                                    <Card.Body>
+                                        <Card.Text id="card-graph-footer-text">displayed prices are measured in gold</Card.Text>
+                                    </Card.Body>
+                                </Card> */}
+                                <h5 id="card-graph-footer-title">Last 7 days</h5>
+                                <h6 id="card-graph-footer-text">displayed prices are measured in gold</h6>
+                            </div>
+                        </div>
+                    </div>
                 </Container>
             </Jumbotron>
         );

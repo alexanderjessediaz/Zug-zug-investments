@@ -3,8 +3,6 @@ import FactionSelect from '../Filters/FactionSelect.js';
 import ServerSelect from '../Filters/ServerSelect.js';
 import { Button, Spinner} from 'react-bootstrap';
 
-
-
 const QuerySearch = ({
     updateServerString,
     updateFactionString,
@@ -32,22 +30,22 @@ const QuerySearch = ({
   
     return (
         <>
-            <ServerSelect updateServerString={updateServerString} setUserServer={setUserServer}/>;
-            <FactionSelect updateFactionString={updateFactionString} setUserFaction={setUserFaction}/>;
+            <ServerSelect updateServerString={updateServerString} setUserServer={setUserServer}/>
+            <FactionSelect updateFactionString={updateFactionString} setUserFaction={setUserFaction}/>
                 {
                     serverQueryString === "" || factionQueryString === "" ?
                     <Button disabled id="disabledSearchBtn" variant="secondary">Search</Button>:
                         <Button id="searchBtn" onClick={handleClick} variant="primary">
                             {nexusData === undefined ? 'Search' : 'Search again'}
                         </Button>
-                };
+                }
                 {
                     nexusQuery !== "" ?
                     <Button disabled><Spinner as="span" animation="grow" size="sm" role="status" aria-hidden="true"/>Loading Data...</Button>
-                    : <Button disabled>Waiting for Search</Button>
-                };
+                    : <Button disabled variant="secondary">Waiting for Search</Button>
+                }
         </>
-    );
+    )
 };
 
 export default QuerySearch;

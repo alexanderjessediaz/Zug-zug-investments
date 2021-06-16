@@ -9,9 +9,9 @@ const ServerSelect = ({ updateServerString, setUserServer }) => {
 
   useEffect(() => {
     fetch("http://localhost:5555/Servers", {method: "GET"})
-    .then((response) => response.json())
-    .then((serverData => {
-      setWowServerNames(serverData.serverNames.map((server) => server.name))
+      .then((response) => response.json())
+      .then((serverData => {
+        setWowServerNames(serverData.serverNames.map((server) => server.name))
     })).catch((error) => {console.error(error)});
   },[]);
 
