@@ -22,7 +22,7 @@ const App = () => {
   const updateNexusQuery = () => {
     setNexusQuery(`/wow-classic/v1/items/${serverQueryString.split(" ").join("-")}-${factionQueryString}/21884/prices`);
   };
-  
+
 
   useEffect(() => {
       if(nexusQuery === ""){
@@ -43,20 +43,18 @@ const App = () => {
   }, [nexusQuery]);
 
 
-
   const [nexusData, setNexusData] = useState();
-  
-  
+
   useEffect(() => {
       if(!nexusQuery){
-          console.log("Nexus API call: nexusQuery is empty");
           return;
       } else {
       async function nexusCall(){
           try {
-            console.log("API items query sent");
             await axios.get("http://localhost:5555/")
-              .then((response) => {setNexusData(response)});
+              .then((response) => {
+                setNexusData(response)
+              })
           }
           catch(error) {
             console.error("Error:", error);

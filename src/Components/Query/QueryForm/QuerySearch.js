@@ -27,7 +27,18 @@ const QuerySearch = ({
         e.preventDefault();
         updateNexusQuery(`/wow-classic/v1/items/${serverQueryString.split(" ").join("-")}-${factionQueryString}/13468/prices`);  
     };
-  
+
+    const loadingState = () => {
+        if(nexusData === undefined && nexusQuery === ""){
+            return <Button disabled variant="secondary">Waiting for Search</Button>
+        } else if (nexusQuery !== "" && nexusData === undefined) {
+           return <Button disabled><Spinner as="span" animation="grow" size="sm" role="status" aria-hidden="true"/>Loading Data...</Button>
+        } else if(nexusData !== undefined){
+            return <Button disabled><Spinner as="span" animation="border" size="sm" role="status" aria-hidden="true"/>Updating Data...</Button>
+        } else {
+           return null
+        }
+    }
     return (
         <>
             <ServerSelect updateServerString={updateServerString} setUserServer={setUserServer}/>
@@ -39,11 +50,7 @@ const QuerySearch = ({
                             {nexusData === undefined ? 'Search' : 'Search again'}
                         </Button>
                 }
-                {
-                    nexusQuery !== "" ?
-                    <Button disabled><Spinner as="span" animation="grow" size="sm" role="status" aria-hidden="true"/>Loading Data...</Button>
-                    : <Button disabled variant="secondary">Waiting for Search</Button>
-                }
+                {loadingState()}
         </>
     )
 };
