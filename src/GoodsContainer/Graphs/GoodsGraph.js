@@ -99,7 +99,7 @@ class GoodsGraph extends Component {
                                     }}
                                     data={this.getChartData}
                                 />
-                                <h5 id="card-graph-footer-title">Last 7 days</h5>
+                                <h5 id="card-graph-footer-title">Previous Week</h5>
                                 <h6 id="card-graph-footer-text">displayed prices in gold</h6>
                             </div>
                         </div>

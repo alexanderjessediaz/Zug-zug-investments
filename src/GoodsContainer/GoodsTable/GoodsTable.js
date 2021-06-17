@@ -67,13 +67,13 @@ const GoodsTable = ({nexusData}) => {
     return(
         <Container>
             <Card>
-                <Card.Title>Last Week</Card.Title>
+                <Card.Title>Current Week Data</Card.Title>
             </Card>
             <Table striped bordered hover size="sm">
                 <thead>
                     <tr>
                         <th>Item Name</th>
-                        <th>Quantity</th>
+                        <th>Current Quantity</th>
                         <th>Current Minimum Buyout</th>
                         <th>Current Market Value</th>
                         <th>Last Scanned</th>

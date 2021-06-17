@@ -12,7 +12,10 @@ const ServerSelect = ({ updateServerString, setUserServer }) => {
     fetch("http://localhost:5555/Servers", {method: "GET"})
       .then((response) => response.json())
       .then((serverData => {
-        setWowServerNames(serverData.serverNames.map((server) => server.name))
+        setWowServerNames(serverData.serverNames.map((server) =>{
+         return server.name.split("").filter(char => char !== "'").join("")
+          
+          }))
     })).catch((error) => {console.error(error)});
   },[]);
 
