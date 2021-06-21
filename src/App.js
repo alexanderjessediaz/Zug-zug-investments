@@ -25,45 +25,50 @@ const App = () => {
 
 
   useEffect(() => {
-      if(nexusQuery === ""){
-          console.log("client query post: nexusQuery is empty");
-          return;
-      } else { 
-        async function postNexusQuery(){
+      // if(nexusQuery === ""){
+      //     console.log("client query post: nexusQuery is empty");
+      //     return;
+      // } else { 
+        async function getNexusPriceQuery(){
           try {
-            console.log( "client query string posted:", nexusQuery);
-            axios.post("http://localhost:5555/", {
-                nQuery: nexusQuery 
-            });
+            // console.log( "client query string posted:", nexusQuery);
+            // get request pass as query string 
+           await axios.get(
+              `
+              http://localhost:5555/ItemPrice?server=${encodeURIComponent(serverQueryString)}&faction=${encodeURIComponent(factionQueryString)}`
+            ).then((response) => console.log(response))
+            // .then(await axios.get('http://localhost:5555/ItemPrice')
+              // .then((response) => console.log(response))
+            // )
           } catch (error) {
               console.error("Error:", error);
           }};
-          postNexusQuery() ;
-      };
-  }, [nexusQuery]);
-
+          getNexusPriceQuery();
+      },[serverQueryString, factionQueryString]
+  );
+  // [nexusQuery]
 
   const [nexusData, setNexusData] = useState();
 
-  useEffect(() => {
-      if(!nexusQuery){
-          return;
-      } else {
-      async function nexusCall(){
-          try {
-            await axios.get("http://localhost:5555/")
-              .then((response) => {
-                setNexusData(response)
-              })
-          }
-          catch(error) {
-            console.error("Error:", error);
-          }
-      }
-      nexusCall();
-      setInterval(() => nexusCall(), 10000);
-      };
-  },[nexusQuery]);
+  // useEffect(() => {
+  //     if(!nexusQuery){
+  //         return;
+  //     } else {
+  //     async function nexusCall(){
+  //         try {
+  //           await axios.get("http://localhost:5555/")
+  //             .then((response) => {
+  //               setNexusData(response)
+  //             })
+  //         }
+  //         catch(error) {
+  //           console.error("Error:", error);
+  //         }
+  //     }
+  //     nexusCall();
+  //     setInterval(() => nexusCall(), 10000);
+  //     };
+  // },[nexusQuery]);
 
     return (
         <div className="App">
