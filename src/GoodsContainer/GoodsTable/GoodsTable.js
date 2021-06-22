@@ -5,45 +5,57 @@ import { Table, Container, Card } from 'react-bootstrap';
 const GoodsTable = ({nexusData}) => {
 
     const nDataParse = () => {
-        if(nexusData === undefined) return null;
+        if(!nexusData.data) return;
         else {
-            const nItemScanArr = nexusData.data.nData.data
+            const nItemScanArr = nexusData.data.data
             const lastScannedItem = nItemScanArr.pop()
             return lastScannedItem
         }
     };
 
     const itemMarketValue = () => {
-        return nDataParse().marketValue/10000 + "g"
+        if(!nexusData.data) return;
+        else {
+            return nDataParse().marketValue/10000 + "g"
+        }
     };
 
     const itemMinBuyout = () => {
-        return nDataParse().minBuyout/10000 + "g"
+        if(!nexusData.data) return;
+        else {
+            return nDataParse().minBuyout/10000 + "g"
+        }
     };
     
     const itemQuantity = () => {
-        return nDataParse().quantity
+        if(!nexusData.data) return;
+        else {
+            return nDataParse().quantity
+        }
     };
     
     const itemName = () => {
-        if(nexusData === undefined) return null;
-        else return nexusData.data.nData.name
+        if(!nexusData.data) return;
+        else return nexusData.data.name
     }
 
     const lastScanned = () => {
-        const lastScannedNObj = {
-            scannedAt: new Date(nDataParse().scannedAt).toString().split(" ")[0] +
-            " " + 
-            new Date(nDataParse().scannedAt).toString().split(" ")[4] +
-            " " 
-        };
-        return lastScannedNObj
+        if(!nexusData.data) return; 
+        else {
+            const lastScannedNObj = {
+                scannedAt: new Date(nDataParse().scannedAt).toString().split(" ")[0] +
+                " " + 
+                new Date(nDataParse().scannedAt).toString().split(" ")[4] +
+                " " 
+            };
+            return lastScannedNObj.scannedAt
+        }
     } 
 
     const highestWeekBuyout = () => {
-        if(nexusData === undefined) return null;
+        if(!nexusData.data) return;
         else {
-            const maxMinBuyout = nexusData.data.nData.data.reduce((max,obj) => {
+            const maxMinBuyout = nexusData.data.data.reduce((max,obj) => {
                 return obj.minBuyout > max.minBuyout? obj:max
             })
             return maxMinBuyout.minBuyout/10000 +"g " + new Date(maxMinBuyout.scannedAt).toString().split(" ")[0] +
@@ -53,9 +65,9 @@ const GoodsTable = ({nexusData}) => {
     }
 
     const lowestWeekBuyout = () => {
-        if(nexusData === undefined) return null;
+        if(!nexusData.data) return;
         else {
-            const minMinBuyout = nexusData.data.nData.data.reduce((min,obj) => {
+            const minMinBuyout = nexusData.data.data.reduce((min,obj) => {
                 return obj.minBuyout < min.minBuyout? obj:min
             })
             return minMinBuyout.minBuyout/10000 +"g " + new Date(minMinBuyout.scannedAt).toString().split(" ")[0] +
@@ -87,7 +99,7 @@ const GoodsTable = ({nexusData}) => {
                         <td>{itemQuantity()}</td>
                         <td>{itemMinBuyout()}</td>
                         <td>{itemMarketValue()}</td>
-                        <td>{lastScanned().scannedAt}</td>
+                        <td>{lastScanned()}</td>
                         <td>{highestWeekBuyout()}</td>
                         <td>{lowestWeekBuyout()}</td>
                     </tr>

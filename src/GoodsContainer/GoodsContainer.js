@@ -10,7 +10,7 @@ const GoodsContainer = ({ nexusData }) => {
     return (
         <Container id="goods-main-container" fluid="xl">        
                 {
-                    nexusData === undefined ? 
+                    !nexusData.data ? 
                     <Card id="welcome-card" border="primary">
                         <Card.Header>ZugZug Inc.</Card.Header>
                         <Card.Body>

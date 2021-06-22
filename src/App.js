@@ -16,72 +16,46 @@ const App = () => {
   const updateFactionString = (e) => {
     setFactionQueryString(e);
   };
-  
-  const [nexusQuery, setNexusQuery] = useState(``);
 
-  const updateNexusQuery = () => {
-    setNexusQuery(`/wow-classic/v1/items/${serverQueryString.split(" ").join("-")}-${factionQueryString}/21884/prices`);
-  };
+  const [priceQuery, setPriceQuery] = useState(false);
 
+  const togglePriceSearch = (e) => {
+    setPriceQuery(true)
+  }
+
+  const [nexusData, setNexusData] = useState([]);
 
   useEffect(() => {
-      // if(nexusQuery === ""){
-      //     console.log("client query post: nexusQuery is empty");
-      //     return;
-      // } else { 
+      if(serverQueryString === "" || factionQueryString === "" || priceQuery === false){
+        return;
+      } else {
         async function getNexusPriceQuery(){
           try {
-            // console.log( "client query string posted:", nexusQuery);
-            // get request pass as query string 
-           await axios.get(
-              `
-              http://localhost:5555/ItemPrice?server=${encodeURIComponent(serverQueryString)}&faction=${encodeURIComponent(factionQueryString)}`
-            ).then((response) => console.log(response))
-            // .then(await axios.get('http://localhost:5555/ItemPrice')
-              // .then((response) => console.log(response))
-            // )
+            await axios.get(`http://localhost:5555/ItemPrice?server=${serverQueryString}&faction=${factionQueryString}`)
+            .then((response) => {
+              setNexusData(response)
+            })
           } catch (error) {
               console.error("Error:", error);
           }};
           getNexusPriceQuery();
-      },[serverQueryString, factionQueryString]
+      }
+    },[serverQueryString, factionQueryString, priceQuery]
   );
-  // [nexusQuery]
 
-  const [nexusData, setNexusData] = useState();
-
-  // useEffect(() => {
-  //     if(!nexusQuery){
-  //         return;
-  //     } else {
-  //     async function nexusCall(){
-  //         try {
-  //           await axios.get("http://localhost:5555/")
-  //             .then((response) => {
-  //               setNexusData(response)
-  //             })
-  //         }
-  //         catch(error) {
-  //           console.error("Error:", error);
-  //         }
-  //     }
-  //     nexusCall();
-  //     setInterval(() => nexusCall(), 10000);
-  //     };
-  // },[nexusQuery]);
 
     return (
         <div className="App">
           <SelectionNavbar
             updateServerString={updateServerString}
             updateFactionString={updateFactionString}
-            updateNexusQuery={updateNexusQuery}
+            togglePriceSearch={togglePriceSearch}
             nexusData={nexusData}
-            nexusQuery={nexusQuery}
             />
           <GoodsContainer 
             nexusData={nexusData}
           />
+          
         </div>
     )
   };

@@ -14,7 +14,6 @@ const ServerSelect = ({ updateServerString, setUserServer }) => {
       .then((serverData => {
         setWowServerNames(serverData.serverNames.map((server) =>{
          return server.name.split("").filter(char => char !== "'").join("")
-          
           }))
     })).catch((error) => {console.error(error)});
   },[]);

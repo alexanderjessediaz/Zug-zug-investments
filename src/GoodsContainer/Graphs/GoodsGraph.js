@@ -10,7 +10,7 @@ class GoodsGraph extends Component {
             labels: [],
             datasets: [
                 {
-                    label: "PLACEHOLDER ITEM",
+                    label: "",
                     backgroundColor: "rgba(255,0,255,0.75)",
                     data: []
                 }
@@ -19,59 +19,76 @@ class GoodsGraph extends Component {
     };
 
     setGradientColor = (canvas, color) => {
-        const ctx = canvas.getContext('2d');
-        const gradient = ctx.createLinearGradient(0,0,600,550);
-        gradient.addColorStop(0, color);
-        gradient.addColorStop(0.95, "rgba(130,160,106,0.5");
-        return gradient;
+        if(!this.props.nexusData) return;
+        else {
+            const ctx = canvas.getContext('2d');
+            const gradient = ctx.createLinearGradient(0,0,600,550);
+            gradient.addColorStop(0, color);
+            gradient.addColorStop(0.95, "rgba(130,160,106,0.5");
+            return gradient;
+        }
     };
+    // seeData = () => {
+    //     console.log(this.props.nexusData)
+    // }
 
     getChartData = canvas => {
-        const data = {
-            labels: this.createItemPriceLabels(),
-            datasets: [
-                {
-                    label: `${this.props.nexusData.data.nData.name}`,
-                    backgroundColor: "rgba(130,160,106,0.75)",
-                    data: this.createItemPriceData()
-                }
-            ]
-        };
-        if(data.datasets) {
-            let colors = ["rgba(130,160,106,0.75)","rgba(130,160,106,0.75)"]
-            data.datasets.forEach((set, i ) => {
-                set.backgroundColor = this.setGradientColor(canvas, colors[i])
-                set.borderColor = "white"
-                set.borderWidth = 2
-            })
-        };
-        return data;
+        if(!this.props.nexusData.data) return;
+        else {
+            const data = {
+                labels: this.createItemPriceLabels(),
+                datasets: [
+                    {
+                        label: `${this.props.nexusData.data.name}`,
+                        backgroundColor: "rgba(130,160,106,0.75)",
+                        data: this.createItemPriceData()
+                    }
+                ]
+            };
+            if(data.datasets) {
+                let colors = ["rgba(130,160,106,0.75)","rgba(130,160,106,0.75)"]
+                data.datasets.forEach((set, i ) => {
+                    set.backgroundColor = this.setGradientColor(canvas, colors[i])
+                    set.borderColor = "white"
+                    set.borderWidth = 2
+                })
+            } 
+            return data;
+        }
     };
 
     createItemPriceData = () => {
-        if(this.props.nexusData === undefined){
+        if(!this.props.nexusData.data){
             return;
         } else {
-        return this.props.nexusData.data.nData.data.map(price => {
+        return this.props.nexusData.data.data.map(price => {
             return price.marketValue /10000;
         })};
       };
 
     createItemPriceLabels = () => {
-        if(this.props.nexusData === undefined){
-            return; 
-        } else {
-        return this.props.nexusData.data.nData.data.map(priceObject => {
-            const dateAndTimeScanned = {
-                ...priceObject,
-                scannedAt: new Date(priceObject.scannedAt).toString().split(" ")[0] +
-                " " + 
-                new Date(priceObject.scannedAt).toString().split(" ")[4] +
-                " " 
-            };
-           return dateAndTimeScanned.scannedAt;
-        })};
+        if(!this.props.nexusData.data) return;
+        else {
+            return this.props.nexusData.data.data.map(priceObject => {
+                const dateAndTimeScanned = {
+                    ...priceObject,
+                    scannedAt: new Date(priceObject.scannedAt).toString().split(" ")[0] +
+                    " " + 
+                    new Date(priceObject.scannedAt).toString().split(" ")[4] +
+                    " " 
+                };
+            return dateAndTimeScanned.scannedAt;
+            })
+        };
       };
+
+      showCurrentServerandFactionName = () => {
+          if (!this.props.nexusData.data) return;
+          else {
+             return this.props.nexusData.data.slug
+          } 
+      }
+
     
     render(){
         return (
@@ -80,11 +97,8 @@ class GoodsGraph extends Component {
                     <Card id="card-graph-head">
                         <Card.Header id="card-graph-header">Current Server and Faction:</Card.Header>
                         <Card.Title id="card-graph-head-title">
-                            {
-                                this.props.nexusData === undefined ?
-                                "Server and Faction":
-                                this.props.nexusData.data.nData.slug
-                            }
+                            {this.showCurrentServerandFactionName()}
+                            {/* {this.seeData()} */}
                         </Card.Title>
                         <Card.Body>
                             <Card.Text id="card-graph-head-text">Search updates every 10 seconds. Your search will be reflected shortly.</Card.Text>

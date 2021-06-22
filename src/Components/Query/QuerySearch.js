@@ -1,14 +1,13 @@
 import React, {useState} from 'react';
-import FactionSelect from '../Filters/FactionSelect.js';
-import ServerSelect from '../Filters/ServerSelect.js';
+import FactionSelect from './Filters/FactionSelect.js';
+import ServerSelect from './Filters/ServerSelect.js';
 import { Button, Spinner} from 'react-bootstrap';
 
 const QuerySearch = ({
     updateServerString,
     updateFactionString,
-    updateNexusQuery,
-    nexusData, 
-    nexusQuery
+    nexusData,
+    togglePriceSearch
 }) => {
     
     
@@ -25,18 +24,18 @@ const QuerySearch = ({
      
     const handleClick = (e) => {
         e.preventDefault();
-        updateNexusQuery(`/wow-classic/v1/items/${serverQueryString.split(" ").join("-")}-${factionQueryString}/13468/prices`);  
+        togglePriceSearch(true)
     };
 
     const loadingState = () => {
-        if(nexusData === undefined && nexusQuery === ""){
+        if(nexusData === undefined && serverQueryString === "" && factionQueryString === ""){
             return <Button disabled variant="secondary">Waiting for Search</Button>
-        } else if (nexusQuery !== "" && nexusData === undefined) {
+        } else if (serverQueryString !== "" && factionQueryString !== "" && nexusData === undefined) {
            return <Button disabled><Spinner as="span" animation="grow" size="sm" role="status" aria-hidden="true"/>Loading Data...</Button>
         } else if(nexusData !== undefined){
             return <Button disabled><Spinner as="span" animation="border" size="sm" role="status" aria-hidden="true"/>Updating Data...</Button>
         } else {
-           return null
+           return;
         }
     }
     return (

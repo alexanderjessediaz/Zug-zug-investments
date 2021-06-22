@@ -1,6 +1,6 @@
 import React from 'react';
 import { Navbar } from 'react-bootstrap';
-import QuerySearch from './Query/QueryForm/QuerySearch.js';
+import QuerySearch from './Query/QuerySearch.js';
 
 import ZugZugLogo from '../Images/ZugZugLogo.png';
 
@@ -8,9 +8,8 @@ import ZugZugLogo from '../Images/ZugZugLogo.png';
  const SelectionNavbar = ({
     updateServerString,
     updateFactionString,
-    updateNexusQuery,
-    nexusData, 
-    nexusQuery
+    nexusData,
+    togglePriceSearch 
 }) =>{
    
     return (
@@ -27,9 +26,8 @@ import ZugZugLogo from '../Images/ZugZugLogo.png';
             <QuerySearch 
               updateServerString={updateServerString}
               updateFactionString={updateFactionString}
-              updateNexusQuery={updateNexusQuery} 
               nexusData={nexusData} 
-              nexusQuery={nexusQuery}
+              togglePriceSearch={togglePriceSearch}
             />
             </Navbar>
         </header>
