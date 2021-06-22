@@ -17,16 +17,16 @@ const App = () => {
     setFactionQueryString(e);
   };
 
-  const [priceQuery, setPriceQuery] = useState(false);
+  const [priceQueryBool, setPriceQueryBool] = useState(false);
 
-  const togglePriceSearch = (e) => {
-    setPriceQuery(true)
+  const togglePriceSearch = () => {
+    setPriceQueryBool(true)
   }
 
   const [nexusData, setNexusData] = useState([]);
 
   useEffect(() => {
-      if(serverQueryString === "" || factionQueryString === "" || priceQuery === false){
+      if(serverQueryString === "" || factionQueryString === "" || priceQueryBool === false){
         return;
       } else {
         async function getNexusPriceQuery(){
@@ -40,7 +40,7 @@ const App = () => {
           }};
           getNexusPriceQuery();
       }
-    },[serverQueryString, factionQueryString, priceQuery]
+    },[serverQueryString, factionQueryString, priceQueryBool]
   );
 
 
@@ -51,6 +51,7 @@ const App = () => {
             updateFactionString={updateFactionString}
             togglePriceSearch={togglePriceSearch}
             nexusData={nexusData}
+            priceQueryBool={priceQueryBool}
             />
           <GoodsContainer 
             nexusData={nexusData}

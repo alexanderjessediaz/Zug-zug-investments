@@ -9,7 +9,8 @@ import ZugZugLogo from '../Images/ZugZugLogo.png';
     updateServerString,
     updateFactionString,
     nexusData,
-    togglePriceSearch 
+    togglePriceSearch,
+    priceQueryBool 
 }) =>{
    
     return (
@@ -28,6 +29,7 @@ import ZugZugLogo from '../Images/ZugZugLogo.png';
               updateFactionString={updateFactionString}
               nexusData={nexusData} 
               togglePriceSearch={togglePriceSearch}
+              priceQueryBool={priceQueryBool}
             />
             </Navbar>
         </header>
