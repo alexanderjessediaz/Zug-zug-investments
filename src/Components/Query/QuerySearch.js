@@ -1,14 +1,13 @@
 import React, {useState} from 'react';
 import FactionSelect from './Filters/FactionSelect.js';
 import ServerSelect from './Filters/ServerSelect.js';
-import { Button, Spinner} from 'react-bootstrap';
+import { Button} from 'react-bootstrap';
 
 const QuerySearch = ({
     updateServerString,
     updateFactionString,
-    nexusData,
-    togglePriceSearch,
-    priceQueryBool
+    togglePriceSearch
+    
 }) => {
     
     

@@ -50,8 +50,6 @@ const App = () => {
             updateServerString={updateServerString}
             updateFactionString={updateFactionString}
             togglePriceSearch={togglePriceSearch}
-            nexusData={nexusData}
-            priceQueryBool={priceQueryBool}
             />
           <GoodsContainer 
             nexusData={nexusData}

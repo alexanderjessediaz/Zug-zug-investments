@@ -8,9 +8,8 @@ import ZugZugLogo from '../Images/ZugZugLogo.png';
  const SelectionNavbar = ({
     updateServerString,
     updateFactionString,
-    nexusData,
-    togglePriceSearch,
-    priceQueryBool 
+    togglePriceSearch
+   
 }) =>{
    
     return (
@@ -27,9 +26,7 @@ import ZugZugLogo from '../Images/ZugZugLogo.png';
             <QuerySearch 
               updateServerString={updateServerString}
               updateFactionString={updateFactionString}
-              nexusData={nexusData} 
               togglePriceSearch={togglePriceSearch}
-              priceQueryBool={priceQueryBool}
             />
             </Navbar>
         </header>
