@@ -8,7 +8,8 @@ const App = () => {
   const [serverQueryString, setServerQuery] = useState('');
     
   const updateServerString = (e) => {
-    setServerQuery(e);
+    const parsedServerString = e.split(" ").join("-")
+    setServerQuery(parsedServerString);
   };
 
   const [factionQueryString, setFactionQueryString] = useState('');
