@@ -28,9 +28,7 @@ class GoodsGraph extends Component {
             return gradient;
         }
     };
-    // seeData = () => {
-    //     console.log(this.props.nexusData)
-    // }
+  
 
     getChartData = canvas => {
         if(!this.props.nexusData.data) return;
@@ -98,10 +96,9 @@ class GoodsGraph extends Component {
                         <Card.Header id="card-graph-header">Current Server and Faction:</Card.Header>
                         <Card.Title id="card-graph-head-title">
                             {this.showCurrentServerandFactionName()}
-                            {/* {this.seeData()} */}
                         </Card.Title>
                         <Card.Body>
-                            <Card.Text id="card-graph-head-text">Search updates every 10 seconds. Your search will be reflected shortly.</Card.Text>
+                            <Card.Text id="card-graph-head-text">Select the Server or Faction to update the search</Card.Text>
                         </Card.Body>
                     </Card>
                     <div className="media" >

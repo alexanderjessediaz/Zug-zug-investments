@@ -5,6 +5,12 @@ import axios from 'axios';
 
 const App = () => {
 
+  const [itemQueryString, setItemQueryString] = useState('')
+
+  const updateItemString = (e) => {
+    setItemQueryString(e)
+  }
+
   const [serverQueryString, setServerQuery] = useState('');
     
   const updateServerString = (e) => {
@@ -51,6 +57,7 @@ const App = () => {
             updateServerString={updateServerString}
             updateFactionString={updateFactionString}
             togglePriceSearch={togglePriceSearch}
+            updateItemString={updateItemString}
             />
           <GoodsContainer 
             nexusData={nexusData}
