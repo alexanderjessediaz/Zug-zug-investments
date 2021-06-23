@@ -8,7 +8,9 @@ import ZugZugLogo from '../Images/ZugZugLogo.png';
  const SelectionNavbar = ({
     updateServerString,
     updateFactionString,
-    togglePriceSearch
+    togglePriceSearch,
+    updateSearchItem,
+    userSearchResults
    
 }) =>{
    
@@ -27,6 +29,8 @@ import ZugZugLogo from '../Images/ZugZugLogo.png';
               updateServerString={updateServerString}
               updateFactionString={updateFactionString}
               togglePriceSearch={togglePriceSearch}
+              updateSearchItem={updateSearchItem}
+              userSearchResults={userSearchResults}
             />
             </Navbar>
         </header>
