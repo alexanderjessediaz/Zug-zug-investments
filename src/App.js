@@ -25,7 +25,6 @@ const App = () => {
   const [searchItemResults, setSearchItemResults] = useState('')
   const searchResultItem = (e) => {
     setSearchItemResults(e)
-    console.log("searchItemResults:", searchItemResults)
   }
 
   const [priceQueryBool, setPriceQueryBool] = useState(false);
@@ -82,6 +81,7 @@ const App = () => {
             updateSearchItem={updateSearchItem}
             searchResultItem={searchResultItem}
             userSearchResults={userSearchResults}
+            nexusData={nexusData}
             />
           <GoodsContainer 
             nexusData={nexusData}

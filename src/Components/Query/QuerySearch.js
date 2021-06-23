@@ -9,7 +9,8 @@ const QuerySearch = ({
     togglePriceSearch,
     updateSearchItem,
     userSearchResults,
-    searchResultItem
+    searchResultItem,
+    nexusData
 }) => {
     
     
@@ -32,18 +33,32 @@ const QuerySearch = ({
     const handleChange = (e) => {
         updateSearchItem(e.target.value)
         setSearchInput(e.target.value)
-        
     }
     
     const handleClick = (e) => {
         e.preventDefault();
         togglePriceSearch(true)
+        displaSearchResultName()
     };
 
     const handleSelect = (e) => {
         searchResultItem(e)
+        displaSearchResultName()
     }
 
+    const [renderSearchName, setRenderSearchName] = useState('')
+
+    const displaSearchResultName = () => {
+        if(nexusData.length === 0) return;
+        else if(nexusData.data === undefined) return; 
+        else return setRenderSearchName(nexusData.data.name)
+        
+    }
+
+    const seeData = () => {
+        console.log("nexusData:", nexusData) 
+    }
+    
     
     const searchResults = () => {
         if (!userSearchResults.data) return;
@@ -104,12 +119,13 @@ const QuerySearch = ({
     
     return (
         <>
+            {seeData()}
             <ServerSelect updateServerString={updateServerString} setUserServer={setUserServer}/>
             <FactionSelect updateFactionString={updateFactionString} setUserFaction={setUserFaction}/>
             {
                 <Dropdown onSelect={handleSelect} >
                 <Dropdown.Toggle as={CustomToggle} id="dropdown-custom-components">
-                  {searchInput === ""? "Choose Item": searchInput}
+                  {nexusData.length === 0? "Choose Item": nexusData.data.name}
                 </Dropdown.Toggle>
                 <Dropdown.Menu as={CustomMenu} className="dropdown-menu-show">
                   {searchResults()}

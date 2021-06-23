@@ -11,7 +11,8 @@ import ZugZugLogo from '../Images/ZugZugLogo.png';
     togglePriceSearch,
     updateSearchItem,
     userSearchResults,
-    searchResultItem
+    searchResultItem,
+    nexusData
    
 }) =>{
    
@@ -33,6 +34,7 @@ import ZugZugLogo from '../Images/ZugZugLogo.png';
               updateSearchItem={updateSearchItem}
               userSearchResults={userSearchResults}
               searchResultItem={searchResultItem}
+              nexusData={nexusData}
             />
             </Navbar>
         </header>

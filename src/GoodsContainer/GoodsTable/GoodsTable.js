@@ -44,7 +44,8 @@ const GoodsTable = ({nexusData}) => {
     }
 
     const lastScanned = () => {
-        if(nexusData.data.data.length === 0) return; 
+        if(nexusData.data.data.length === 0) return;
+        else if(nexusData.data.data === undefined) return;  
         else {
             const lastScannedNObj = {
                 scannedAt: new Date(nDataParse().scannedAt).toString().split(" ")[0] +
