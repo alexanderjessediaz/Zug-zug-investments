@@ -1,14 +1,15 @@
 import React, {useState} from 'react';
 import FactionSelect from './Filters/FactionSelect.js';
 import ServerSelect from './Filters/ServerSelect.js';
-import { Button, FormControl,Form, Dropdown} from 'react-bootstrap';
+import { Button, FormControl, Dropdown} from 'react-bootstrap';
 
 const QuerySearch = ({
     updateServerString,
     updateFactionString,
     togglePriceSearch,
     updateSearchItem,
-    userSearchResults
+    userSearchResults,
+    searchResultItem
 }) => {
     
     
@@ -31,7 +32,6 @@ const QuerySearch = ({
     const handleChange = (e) => {
         setSearchInput(e.target.value)
         updateSearchItem(e.target.value)
-
     }
     
     const handleClick = (e) => {
@@ -40,7 +40,7 @@ const QuerySearch = ({
     };
 
     const handleSelect = (e) => {
-        e.preventDefault()
+        searchResultItem(e)
     }
 
     const searchResults = () => {
@@ -49,7 +49,7 @@ const QuerySearch = ({
         else {
             return userSearchResults.data.map((result, i) => {
             return <Dropdown.Item
-                eventKey={result.name}
+                eventKey={result.itemId}
                 key={i}
                 onSelect={handleSelect}
             >{result.name}</Dropdown.Item>
@@ -73,7 +73,6 @@ const QuerySearch = ({
       
       const CustomMenu = React.forwardRef(
         ({ children, style, className, 'aria-labelledby': labeledBy }, ref) => {
-        // const [value, setValue] = useState('');
     
         return (
           <div
@@ -115,7 +114,7 @@ const QuerySearch = ({
             <ServerSelect updateServerString={updateServerString} setUserServer={setUserServer}/>
             <FactionSelect updateFactionString={updateFactionString} setUserFaction={setUserFaction}/>
             {
-                    <Dropdown onSelect={handleSelect} >
+                <Dropdown onSelect={handleSelect} >
                 <Dropdown.Toggle as={CustomToggle} id="dropdown-custom-components">
                   Choose Item
                 </Dropdown.Toggle>

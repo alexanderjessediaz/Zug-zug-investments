@@ -14,18 +14,34 @@ const App = () => {
   const updateFactionString = (e) => {
     setFactionQueryString(e);
   };
+  
+  const [searchItemString, setSearchItemString] = useState('');
+
+  const updateSearchItem = (e) => {
+      setSearchItemString(e);
+      
+    };
+
+  const [searchItemResults, setSearchItemResults] = useState('')
+  const searchResultItem = (e) => {
+    setSearchItemResults(e)
+    console.log("searchItemResults:", searchItemResults)
+  }
 
   const [priceQueryBool, setPriceQueryBool] = useState(false);
+  const togglePriceSearch = () => {setPriceQueryBool(true)};
 
-  const togglePriceSearch = () => { setPriceQueryBool(true)};
+
   const [nexusData, setNexusData] = useState([]);
   useEffect(() => {
-      if(serverQueryString === "" || factionQueryString === "" || priceQueryBool === false){
+      if(serverQueryString === "" || factionQueryString === "" || searchItemResults === "" || priceQueryBool === false ){
         return;
       } else {
           async function getNexusPriceQuery(){
             try {
-              await axios.get(`http://localhost:5555/ItemPrice?server=${serverQueryString}&faction=${factionQueryString}`)
+              await axios.get(
+                `http://localhost:5555/ItemPrice?server=${serverQueryString}&faction=${factionQueryString}&item=${searchItemResults}`
+              )
               .then((response) => {
                 setNexusData(response)
               })
@@ -35,15 +51,11 @@ const App = () => {
           getNexusPriceQuery();
         }
       }
-    ,[serverQueryString, factionQueryString, priceQueryBool]
+    ,[serverQueryString, factionQueryString, priceQueryBool, searchItemResults]
   );
         
-    const [searchItemString, setSearchItemString] = useState('');
-
-    const updateSearchItem = (e) => {
-        setSearchItemString(e);
-      };
           
+
     const [userSearchResults, setUserSearchResults] = useState([]);
 
     useEffect(() => {
@@ -68,6 +80,7 @@ const App = () => {
             updateFactionString={updateFactionString}
             togglePriceSearch={togglePriceSearch}
             updateSearchItem={updateSearchItem}
+            searchResultItem={searchResultItem}
             userSearchResults={userSearchResults}
             />
           <GoodsContainer 

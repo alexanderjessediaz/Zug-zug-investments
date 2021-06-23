@@ -10,7 +10,8 @@ import ZugZugLogo from '../Images/ZugZugLogo.png';
     updateFactionString,
     togglePriceSearch,
     updateSearchItem,
-    userSearchResults
+    userSearchResults,
+    searchResultItem
    
 }) =>{
    
@@ -31,6 +32,7 @@ import ZugZugLogo from '../Images/ZugZugLogo.png';
               togglePriceSearch={togglePriceSearch}
               updateSearchItem={updateSearchItem}
               userSearchResults={userSearchResults}
+              searchResultItem={searchResultItem}
             />
             </Navbar>
         </header>

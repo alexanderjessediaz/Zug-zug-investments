@@ -25,7 +25,7 @@ const GoodsContainer = ({ nexusData }) => {
                     </Card>
                     :<Container id="goods-graph-table-container">
                         <GoodsGraph nexusData={nexusData}/>
-                        <GoodsTable nexusData={nexusData}/>
+                        {/* <GoodsTable nexusData={nexusData}/> */}
                     </Container>
                 }
         </Container>

@@ -28,7 +28,7 @@ const GoodsTable = ({nexusData}) => {
     };
     
     const itemQuantity = () => {
-        if(!nexusData.data) return;
+        if(!nDataParse().quantity) return;
         else {
             return nDataParse().quantity
         }
