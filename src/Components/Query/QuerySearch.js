@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import FactionSelect from './Filters/FactionSelect.js';
 import ServerSelect from './Filters/ServerSelect.js';
-import { Button, Form, Dropdown, Container} from 'react-bootstrap';
+import { Button, FormControl,Form, Dropdown} from 'react-bootstrap';
 
 const QuerySearch = ({
     updateServerString,
@@ -31,6 +31,7 @@ const QuerySearch = ({
     const handleChange = (e) => {
         setSearchInput(e.target.value)
         updateSearchItem(e.target.value)
+
     }
     
     const handleClick = (e) => {
@@ -42,36 +43,86 @@ const QuerySearch = ({
         e.preventDefault()
     }
 
-    // const searchResults = userSearchResults.map(
-    //     (searchItem, i) => 
-    //     <Dropdown.Item
-    //         eventKey={searchItem.itemId}
-    //         key={i}
-    //         onSelect={handleSelect}
-    //     >{searchItem.name}</Dropdown.Item>
-    // )
-
     const searchResults = () => {
         console.log(userSearchResults)
+        if (!userSearchResults.data) return;
+        else {
+            return userSearchResults.data.map((result, i) => {
+            return <Dropdown.Item
+                eventKey={result.name}
+                key={i}
+                onSelect={handleSelect}
+            >{result.name}</Dropdown.Item>
+            })
+        }
     }
-               
 
+    const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
+        <a
+        href="http://localhost:3001"
+        ref={ref}
+          onClick={(e) => {
+            e.preventDefault();
+              onClick(e);
+            }}
+            >
+            {children}
+            &#x25bc;
+        </a>
+      ));
+      
+      const CustomMenu = React.forwardRef(
+        ({ children, style, className, 'aria-labelledby': labeledBy }, ref) => {
+        // const [value, setValue] = useState('');
+    
+        return (
+          <div
+            ref={ref}
+            style={style}
+            className={className}
+            aria-labelledby={labeledBy}
+          >
+            <FormControl
+              autoFocus
+              className="mx-3 my-2 w-auto"
+              placeholder="Type to filter..."
+              onChange={handleChange}
+              value={searchInput}
+            />
+            <ul className="list-unstyled" id="dropdown-menu">
+              {React.Children.toArray(children).filter(
+                (child) =>
+                  !searchInput || child.props.children.toLowerCase().startsWith(searchInput),
+              )}
+            </ul>
+          </div>
+        );
+      },
+    );
+               
+    //  <Form inline>
+    //     <Form.Label color="blue">Choose Item</Form.Label>
+    //     <Form.Control
+    //         autoFocus
+    //         custom
+    //         onChange={handleChange} 
+    //         value={searchInput}
+    //     />
+    // </Form>               
     
     return (
         <>
             <ServerSelect updateServerString={updateServerString} setUserServer={setUserServer}/>
             <FactionSelect updateFactionString={updateFactionString} setUserFaction={setUserFaction}/>
             {
-                
-                 <Form inline>
-                    <Form.Label color="blue">Choose Item</Form.Label>
-                    <Form.Control
-                        autoFocus
-                        type="text"
-                        onChange={handleChange} 
-                        value={searchInput}
-                    />
-                </Form>               
+                    <Dropdown onSelect={handleSelect} >
+                <Dropdown.Toggle as={CustomToggle} id="dropdown-custom-components">
+                  Choose Item
+                </Dropdown.Toggle>
+                <Dropdown.Menu as={CustomMenu} className="dropdown-menu-show">
+                  {searchResults()}
+                </Dropdown.Menu>
+              </Dropdown>
             }
             {
                 serverQueryString === "" || factionQueryString === "" ?

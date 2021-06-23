@@ -5,28 +5,20 @@ import axios from 'axios';
 
 const App = () => {
 
-  
   const [serverQueryString, setServerQueryString] = useState('');
-  
   const updateServerString = (e) => {
     const parsedServerString = e.split(" ").join("-")
     setServerQueryString(parsedServerString);
   };
-
   const [factionQueryString, setFactionQueryString] = useState('');
-  
   const updateFactionString = (e) => {
     setFactionQueryString(e);
   };
 
   const [priceQueryBool, setPriceQueryBool] = useState(false);
 
-  const togglePriceSearch = () => {
-    setPriceQueryBool(true)
-  }
-  
+  const togglePriceSearch = () => { setPriceQueryBool(true)};
   const [nexusData, setNexusData] = useState([]);
-  
   useEffect(() => {
       if(serverQueryString === "" || factionQueryString === "" || priceQueryBool === false){
         return;
@@ -46,13 +38,13 @@ const App = () => {
     ,[serverQueryString, factionQueryString, priceQueryBool]
   );
         
-    const [searchItemString, setSearchItemString] = useState('')
+    const [searchItemString, setSearchItemString] = useState('');
 
     const updateSearchItem = (e) => {
-        setSearchItemString(e)
-      }
+        setSearchItemString(e);
+      };
           
-    const [userSearchResults, setUserSearchResults] = useState([])
+    const [userSearchResults, setUserSearchResults] = useState([]);
 
     useEffect(() => {
         if (searchItemString.length < 2 || searchItemString.length > 50) return;
@@ -67,7 +59,7 @@ const App = () => {
             }
             itemSearch()
         }
-    },[searchItemString]) 
+    },[searchItemString]);
   
     return (
       <div className="App">
@@ -81,7 +73,6 @@ const App = () => {
           <GoodsContainer 
             nexusData={nexusData}
           />
-          
         </div>
     )
   };
