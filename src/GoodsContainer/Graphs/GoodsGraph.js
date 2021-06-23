@@ -87,36 +87,37 @@ class GoodsGraph extends Component {
           } 
       }
 
+      // width: 750, height: 400
     
     render(){
         return (
-            <Jumbotron fluid>
-                <Container fluid>
-                    <Card id="card-graph-head">
-                        <Card.Header id="card-graph-header">Current Server and Faction:</Card.Header>
-                        <Card.Title id="card-graph-head-title">
-                            {this.showCurrentServerandFactionName()}
-                        </Card.Title>
-                        <Card.Body>
-                            <Card.Text id="card-graph-head-text">Select the Server or Faction to update the search</Card.Text>
-                        </Card.Body>
-                    </Card>
-                    <div className="media" >
-                        <div className="media-body" >
-                            <div style={{position: "relative", width: 750, height: 400, margin:"auto"}}>
-                                <Line 
-                                    options={{
-                                        responsive: true
-                                    }}
-                                    data={this.getChartData}
-                                />
-                                <h5 id="card-graph-footer-title">Previous Week</h5>
-                                <h6 id="card-graph-footer-text">displayed prices in gold</h6>
+            <Container fluid>
+                <Jumbotron fluid>
+                        <Card id="card-graph-head">
+                            <Card.Header id="card-graph-header">Current Server and Faction:</Card.Header>
+                            <Card.Title id="card-graph-head-title">
+                                {this.showCurrentServerandFactionName()}
+                            </Card.Title>
+                            <Card.Body>
+                                <Card.Text id="card-graph-head-text">Change the Server, Faction, or Item to update the search</Card.Text>
+                            </Card.Body>
+                        </Card>
+                        <div className="media" >
+                            <div className="media-body" >
+                                <div style={{position: "relative", width: "75%", height: "50%", margin:"auto"}}>
+                                    <Line 
+                                        options={{
+                                            responsive: true
+                                        }}
+                                        data={this.getChartData}
+                                    />
+                                    <h5 id="card-graph-footer-title">Previous Week</h5>
+                                    <h6 id="card-graph-footer-text">displayed prices in gold</h6>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </Container>
-            </Jumbotron>
+                </Jumbotron>
+            </Container>
         );
     }
 };

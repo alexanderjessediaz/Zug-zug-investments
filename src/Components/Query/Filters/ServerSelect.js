@@ -42,6 +42,7 @@ const ServerSelect = ({ updateServerString, setUserServer }) => {
 
   const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
     <a
+    id="server-toggle"
     href="http://localhost:3001"
     ref={ref}
       onClick={(e) => {

@@ -2,6 +2,7 @@ import React from 'react';
 import GoodsGraph from './Graphs/GoodsGraph.js';
 import GoodsTable from './GoodsTable/GoodsTable.js';
 
+import ZugZugLogo from '../Images/ZugZugLogo.png';
 import './GoodsContainerStyles.css'
 import { Container, Card } from 'react-bootstrap';
 
@@ -11,16 +12,17 @@ const GoodsContainer = ({ nexusData }) => {
         <Container id="goods-main-container" fluid="xl">        
                 {
                     !nexusData.data ? 
-                    <Card id="welcome-card" border="primary">
+                    <Card id="welcome-card" bg={"success"}>
                         <Card.Header>ZugZug Inc.</Card.Header>
+                        <Card.Img id="zugzug-logo" variant="top" src={ZugZugLogo}/>
                         <Card.Body>
                             <Card.Title>Our Purpose</Card.Title>
                             <Card.Text>
-                                Display real time World of Warcraft in game price data based on selected region. 
+                                Help players of World of Warcraft maximize their in game wealth through providing key information on real time in game prices. 
                             </Card.Text>
                         </Card.Body>
                         <Card.Footer>
-                            To proceed please select game server and faction to retrieve game data
+                            To proceed please select game server, faction, and item to retrieve game data
                         </Card.Footer>
                     </Card>
                     :<Container id="goods-graph-table-container">

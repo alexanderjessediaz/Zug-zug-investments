@@ -8,3 +8,10 @@
 #welcome-card {
     text-align: center;
 }
+
+#zugzug-logo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 15%;
+}

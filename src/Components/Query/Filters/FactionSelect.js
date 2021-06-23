@@ -17,7 +17,7 @@ import { Dropdown } from 'react-bootstrap';
         // grey lighter
         // h1 of logo text styled
         <Dropdown onSelect={handleSelect} >
-            <Dropdown.Toggle variant="primary" id="dropdown-basic">
+            <Dropdown.Toggle variant="outline-success" id="dropdown-basic">
                 {selectedFaction === '' ? "Choose Faction":selectedFaction}
             </Dropdown.Toggle>
             <Dropdown.Menu >

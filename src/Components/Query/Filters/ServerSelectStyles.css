@@ -2,3 +2,7 @@
     height: 20rem;
     overflow: auto;
 }
+
+#server-toggle{
+    color: #28a745;
+}

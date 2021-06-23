@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import FactionSelect from './Filters/FactionSelect.js';
 import ServerSelect from './Filters/ServerSelect.js';
 import { Button, FormControl, Dropdown} from 'react-bootstrap';
+import './QuerySearchStyles.css';
 
 const QuerySearch = ({
     updateServerString,
@@ -38,25 +39,10 @@ const QuerySearch = ({
     const handleClick = (e) => {
         e.preventDefault();
         togglePriceSearch(true)
-        displaSearchResultName()
     };
 
     const handleSelect = (e) => {
         searchResultItem(e)
-        displaSearchResultName()
-    }
-
-    const [renderSearchName, setRenderSearchName] = useState('')
-
-    const displaSearchResultName = () => {
-        if(nexusData.length === 0) return;
-        else if(nexusData.data === undefined) return; 
-        else return setRenderSearchName(nexusData.data.name)
-        
-    }
-
-    const seeData = () => {
-        console.log("nexusData:", nexusData) 
     }
     
     
@@ -75,6 +61,7 @@ const QuerySearch = ({
 
     const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
         <a
+        id="item-search-toggle"
         href="http://localhost:3001"
         ref={ref}
           onClick={(e) => {
@@ -119,7 +106,6 @@ const QuerySearch = ({
     
     return (
         <>
-            {seeData()}
             <ServerSelect updateServerString={updateServerString} setUserServer={setUserServer}/>
             <FactionSelect updateFactionString={updateFactionString} setUserFaction={setUserFaction}/>
             {
@@ -133,9 +119,9 @@ const QuerySearch = ({
               </Dropdown>
             }
             {
-                serverQueryString === "" || factionQueryString === "" ?
+                serverQueryString === "" || factionQueryString === "" || searchInput.length < 2 ?
                 <Button disabled id="disabledSearchBtn" variant="secondary">Search</Button>:
-                <Button id="searchBtn" onClick={handleClick} variant="primary">Search</Button>
+                <Button id="searchBtn" onClick={handleClick} variant="outline-success">Search</Button>
             }
         </>
     )
