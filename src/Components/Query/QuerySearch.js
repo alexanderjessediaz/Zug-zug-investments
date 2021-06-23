@@ -30,8 +30,9 @@ const QuerySearch = ({
 
     
     const handleChange = (e) => {
-        setSearchInput(e.target.value)
         updateSearchItem(e.target.value)
+        setSearchInput(e.target.value)
+        
     }
     
     const handleClick = (e) => {
@@ -43,8 +44,8 @@ const QuerySearch = ({
         searchResultItem(e)
     }
 
+    
     const searchResults = () => {
-        console.log(userSearchResults)
         if (!userSearchResults.data) return;
         else {
             return userSearchResults.data.map((result, i) => {
@@ -84,7 +85,8 @@ const QuerySearch = ({
             <FormControl
               autoFocus
               className="mx-3 my-2 w-auto"
-              placeholder="Type to filter..."
+              aria-placeholder="type item name to filter"
+              placeholder="type item name to filter"
               onChange={handleChange}
               value={searchInput}
             />
@@ -98,16 +100,7 @@ const QuerySearch = ({
         );
       },
     );
-               
-    //  <Form inline>
-    //     <Form.Label color="blue">Choose Item</Form.Label>
-    //     <Form.Control
-    //         autoFocus
-    //         custom
-    //         onChange={handleChange} 
-    //         value={searchInput}
-    //     />
-    // </Form>               
+                          
     
     return (
         <>
@@ -116,7 +109,7 @@ const QuerySearch = ({
             {
                 <Dropdown onSelect={handleSelect} >
                 <Dropdown.Toggle as={CustomToggle} id="dropdown-custom-components">
-                  Choose Item
+                  {searchInput === ""? "Choose Item": searchInput}
                 </Dropdown.Toggle>
                 <Dropdown.Menu as={CustomMenu} className="dropdown-menu-show">
                   {searchResults()}

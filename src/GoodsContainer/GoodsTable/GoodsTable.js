@@ -5,7 +5,7 @@ import { Table, Container, Card } from 'react-bootstrap';
 const GoodsTable = ({nexusData}) => {
 
     const nDataParse = () => {
-        if(!nexusData.data) return;
+        if(nexusData.data.data.length === 0) return;
         else {
             const nItemScanArr = nexusData.data.data
             const lastScannedItem = nItemScanArr.pop()
@@ -13,34 +13,38 @@ const GoodsTable = ({nexusData}) => {
         }
     };
 
+    const seeData = () => {
+        console.log("nexusData:" ,nexusData)
+    }
+
     const itemMarketValue = () => {
-        if(!nexusData.data) return;
+        if(nexusData.data.data.length === 0) return;
         else {
             return nDataParse().marketValue/10000 + "g"
         }
     };
 
     const itemMinBuyout = () => {
-        if(!nexusData.data) return;
+        if(nexusData.data.data.length === 0) return;
         else {
             return nDataParse().minBuyout/10000 + "g"
         }
     };
     
     const itemQuantity = () => {
-        if(!nDataParse().quantity) return;
+        if(nexusData.data.data.length === 0) return;
         else {
             return nDataParse().quantity
         }
     };
     
     const itemName = () => {
-        if(!nexusData.data) return;
+        if(!nexusData.data.name) return;
         else return nexusData.data.name
     }
 
     const lastScanned = () => {
-        if(!nexusData.data) return; 
+        if(nexusData.data.data.length === 0) return; 
         else {
             const lastScannedNObj = {
                 scannedAt: new Date(nDataParse().scannedAt).toString().split(" ")[0] +
@@ -53,7 +57,7 @@ const GoodsTable = ({nexusData}) => {
     } 
 
     const highestWeekBuyout = () => {
-        if(!nexusData.data) return;
+        if(nexusData.data.data.length === 0) return;
         else {
             const maxMinBuyout = nexusData.data.data.reduce((max,obj) => {
                 return obj.minBuyout > max.minBuyout? obj:max
@@ -65,7 +69,7 @@ const GoodsTable = ({nexusData}) => {
     }
 
     const lowestWeekBuyout = () => {
-        if(!nexusData.data) return;
+        if(nexusData.data.data.length === 0) return;
         else {
             const minMinBuyout = nexusData.data.data.reduce((min,obj) => {
                 return obj.minBuyout < min.minBuyout? obj:min
@@ -80,10 +84,12 @@ const GoodsTable = ({nexusData}) => {
         <Container>
             <Card>
                 <Card.Title>Current Week Data</Card.Title>
+                <Card.Body>{seeData()}</Card.Body>
             </Card>
             <Table striped bordered hover size="sm">
                 <thead>
                     <tr>
+                        
                         <th>Item Name</th>
                         <th>Current Quantity</th>
                         <th>Current Minimum Buyout</th>
