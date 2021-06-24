@@ -1,31 +1,17 @@
 Zug-Zug Investments:
-A World of Warcraft Real time auction house commondities price chart and graph.
 
 This application is designed for people who play World of Warcraft and who use the game's auction house system to generate in game currency.
 
-The goal of this project was to sucessfully connect and display a World of Warcraft auction house price API called Nexus Hub. In addition, the app displays prices in real time by fetching the data every 10 seconds and inclues a line chart of the price of a commodtity for the last 7 days with hourly intervals in each day. 
+Search any item in any region for that item's performance for the past week in the in-game auction-house.
+
+How to use: Simply select: The server you play on, the faction you belong to, and the game item you want to analyze and then hit search
+
+https://imgflip.com/gif/5ef1u1
 
 
-
-
-
-
-Technologies used:
-
-frontend:
--React
--Bootstrap
--Chartjs
-
-backend:
--Node.js
--express
--Nexus Hub API
-=======
-Video Demo link: https://youtu.be/e_QTyKqcM_c
+Video demo: https://youtu.be/PRiC3jeKCxk
 
 Technologies used:
-
 
 frontend:
 1. -React
@@ -36,4 +22,3 @@ backend:
 1. -Node.js
 2. -express
 3. -Nexus Hub API(https://nexushub.co/developers/api)
-
