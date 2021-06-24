@@ -6,9 +6,6 @@ Search any item in any region for that item's performance for the past week in t
 
 How to use: Simply select: The server you play on, the faction you belong to, and the game item you want to analyze and then hit search
 
-<img src="https://imgflip.com/gif/5ef1u1" alt="a gif showing how to select each option for this app."/>
-
-
 
 Video demo: https://youtu.be/PRiC3jeKCxk
 
