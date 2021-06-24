@@ -85,7 +85,7 @@ const QuerySearch = ({
               autoFocus
               className="mx-3 my-2 w-auto"
               aria-placeholder="type item name to filter"
-              placeholder="type item name to filter"
+              placeholder="try searching primal"
               onChange={handleChange}
               value={searchInput}
             />
