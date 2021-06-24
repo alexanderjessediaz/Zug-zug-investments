@@ -32,7 +32,7 @@ const App = () => {
           async function getNexusPriceQuery(){
             try {
               await axios.get(
-                `http://localhost:5555/ItemPrice?server=${serverQueryString}&faction=${factionQueryString}&item=${searchItemResults}`
+                `https://zug-zug-backend.herokuapp.com/ItemPrice?server=${serverQueryString}&faction=${factionQueryString}&item=${searchItemResults}`
               )
               .then((response) => {
                 setNexusData(response)
@@ -51,7 +51,7 @@ const App = () => {
     else {
       async function itemSearch(){
           try {
-              await axios.get(`http://localhost:5555/ItemSearch?itemSearch=${searchItemString}`)
+              await axios.get(`https://zug-zug-backend.herokuapp.com/ItemSearch?itemSearch=${searchItemString}`)
               .then((response) => setUserSearchResults(response))
           } catch (error) {
               console.error(error)

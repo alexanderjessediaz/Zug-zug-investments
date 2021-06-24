@@ -7,7 +7,7 @@ const ServerSelect = ({ updateServerString, setUserServer }) => {
   const [wowServerNames, setWowServerNames] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5555/Servers", {method: "GET"})
+    fetch("https://zug-zug-backend.herokuapp.com/Servers", {method: "GET"})
       .then((response) => response.json())
         .then((serverData => {
           setWowServerNames(serverData.serverNames.map((server) => {
