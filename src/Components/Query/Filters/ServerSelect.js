@@ -37,7 +37,7 @@ const ServerSelect = ({ updateServerString, setUserServer }) => {
   const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
     <a
     id="server-toggle"
-    href="http://localhost:3001"
+    href="https://zugzug-inc.netlify.app/"
     ref={ref}
       onClick={(e) => {
         e.preventDefault();

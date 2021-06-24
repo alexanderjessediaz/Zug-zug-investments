@@ -19,7 +19,7 @@ import { Navbar } from 'react-bootstrap';
     return (
         <header>
           <Navbar className="justify-content-between" bg="light" expand="lg">
-            <Navbar.Brand href="http://localhost:3001">
+            <Navbar.Brand href="https://zugzug-inc.netlify.app/">
               <img 
                 src={ZugZugLogo}
                 width="50"
