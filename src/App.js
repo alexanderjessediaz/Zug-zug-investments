@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import SelectionNavbar from "./Components/SelectionNavbar.js";
 import GoodsContainer from "./GoodsContainer/GoodsContainer.js";
+
 import axios from 'axios';
 
 const App = () => {
@@ -11,25 +12,17 @@ const App = () => {
     setServerQueryString(parsedServerString);
   };
   const [factionQueryString, setFactionQueryString] = useState('');
-  const updateFactionString = (e) => {
-    setFactionQueryString(e);
-  };
+  const updateFactionString = (e) => {setFactionQueryString(e);};
   
   const [searchItemString, setSearchItemString] = useState('');
 
-  const updateSearchItem = (e) => {
-      setSearchItemString(e);
-      
-    };
+  const updateSearchItem = (e) => {setSearchItemString(e);};
 
   const [searchItemResults, setSearchItemResults] = useState('')
-  const searchResultItem = (e) => {
-    setSearchItemResults(e)
-  }
+  const searchResultItem = (e) => {setSearchItemResults(e)}
 
   const [priceQueryBool, setPriceQueryBool] = useState(false);
   const togglePriceSearch = () => {setPriceQueryBool(true)};
-
 
   const [nexusData, setNexusData] = useState([]);
   useEffect(() => {
@@ -48,29 +41,25 @@ const App = () => {
                 console.error("Error:", error);
               }};
           getNexusPriceQuery();
-        }
-      }
-    ,[serverQueryString, factionQueryString, priceQueryBool, searchItemResults]
-  );
+        };
+  },[serverQueryString, factionQueryString, priceQueryBool, searchItemResults]);
         
-          
+  const [userSearchResults, setUserSearchResults] = useState([]);
 
-    const [userSearchResults, setUserSearchResults] = useState([]);
-
-    useEffect(() => {
-        if (searchItemString.length < 2 || searchItemString.length > 50) return;
-        else {
-            async function itemSearch(){
-                try {
-                    await axios.get(`http://localhost:5555/ItemSearch?itemSearch=${searchItemString}`)
-                    .then((response) => setUserSearchResults(response))
-                } catch (error) {
-                    console.error(error)
-                }
-            }
-            itemSearch()
-        }
-    },[searchItemString]);
+  useEffect(() => {
+    if (searchItemString.length < 2 || searchItemString.length > 50) return;
+    else {
+      async function itemSearch(){
+          try {
+              await axios.get(`http://localhost:5555/ItemSearch?itemSearch=${searchItemString}`)
+              .then((response) => setUserSearchResults(response))
+          } catch (error) {
+              console.error(error)
+          }
+      }
+      itemSearch();
+    };
+  },[searchItemString]);
   
     return (
       <div className="App">
@@ -87,7 +76,7 @@ const App = () => {
             nexusData={nexusData}
           />
         </div>
-    )
+    );
   };
 
 export default App;

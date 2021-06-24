@@ -1,32 +1,28 @@
 import React, {useState, useEffect} from 'react';
-
 import { Dropdown, FormControl } from 'react-bootstrap';
 import './ServerSelectStyles.css'
 
 const ServerSelect = ({ updateServerString, setUserServer }) => {
-
 
   const [wowServerNames, setWowServerNames] = useState([]);
 
   useEffect(() => {
     fetch("http://localhost:5555/Servers", {method: "GET"})
       .then((response) => response.json())
-      .then((serverData => {
-        setWowServerNames(serverData.serverNames.map((server) =>{
-         return server.name.split("").filter(char => char !== "'").join("")
-          }))
-    })).catch((error) => {console.error(error)});
+        .then((serverData => {
+          setWowServerNames(serverData.serverNames.map((server) => {
+          return server.name.split('').filter(char => char !== "'").join('')
+            }))
+        })).catch((error) => {console.error(error)});
   },[]);
 
-
-  const [selectedServer, setSelectedServer] = useState("");
+  const [selectedServer, setSelectedServer] = useState('');
 
   const handleSelect = (e) => {
     setSelectedServer(e);
     updateServerString(e);
     setUserServer(e);
   };
-
 
   const serverNames = wowServerNames.map(
     (server, i) => 
@@ -37,8 +33,6 @@ const ServerSelect = ({ updateServerString, setUserServer }) => {
         >{server.toLowerCase()}
       </Dropdown.Item>
   );
-
-
 
   const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
     <a

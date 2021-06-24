@@ -10,32 +10,22 @@ const GoodsTable = ({nexusData}) => {
             const nItemScanArr = nexusData.data.data
             const lastScannedItem = nItemScanArr.pop()
             return lastScannedItem
-        }
+        };
     };
-
-    const seeData = () => {
-        console.log("nexusData:" ,nexusData)
-    }
 
     const itemMarketValue = () => {
         if(nexusData.data.data.length === 0) return;
-        else {
-            return nDataParse().marketValue/10000 + "g"
-        }
+        else return nDataParse().marketValue/10000 + "g"
     };
 
     const itemMinBuyout = () => {
         if(nexusData.data.data.length === 0) return;
-        else {
-            return nDataParse().minBuyout/10000 + "g"
-        }
+        else return nDataParse().minBuyout/10000 + "g"
     };
     
     const itemQuantity = () => {
         if(nexusData.data.data.length === 0) return;
-        else {
-            return nDataParse().quantity
-        }
+        else return nDataParse().quantity
     };
     
     const itemName = () => {
@@ -54,8 +44,8 @@ const GoodsTable = ({nexusData}) => {
                 " " 
             };
             return lastScannedNObj.scannedAt
-        }
-    } 
+        };
+    };
 
     const highestWeekBuyout = () => {
         if(nexusData.data.data.length === 0) return;
@@ -63,11 +53,13 @@ const GoodsTable = ({nexusData}) => {
             const maxMinBuyout = nexusData.data.data.reduce((max,obj) => {
                 return obj.minBuyout > max.minBuyout? obj:max
             })
-            return maxMinBuyout.minBuyout/10000 +"g " + new Date(maxMinBuyout.scannedAt).toString().split(" ")[0] +
-            " " +
-            new Date(maxMinBuyout.scannedAt).toString().split(" ")[4] + " "
-        }
-    }
+        const highestWeekBuy = maxMinBuyout.minBuyout/10000 
+            + "g " + new Date(maxMinBuyout.scannedAt).toString().split(" ")[0] 
+            + " " + new Date(maxMinBuyout.scannedAt).toString().split(" ")[4] 
+            + " "
+        return highestWeekBuy
+        };
+    };
 
     const lowestWeekBuyout = () => {
         if(nexusData.data.data.length === 0) return;
@@ -75,22 +67,22 @@ const GoodsTable = ({nexusData}) => {
             const minMinBuyout = nexusData.data.data.reduce((min,obj) => {
                 return obj.minBuyout < min.minBuyout? obj:min
             })
-            return minMinBuyout.minBuyout/10000 +"g " + new Date(minMinBuyout.scannedAt).toString().split(" ")[0] +
-            " " +
-            new Date(minMinBuyout.scannedAt).toString().split(" ")[4] + " "
-        }
-    }
+        const lowestWeekBuy = minMinBuyout.minBuyout/10000
+            + "g " + new Date(minMinBuyout.scannedAt).toString().split(" ")[0] 
+            + " " + new Date(minMinBuyout.scannedAt).toString().split(" ")[4] 
+            + " "
+        return lowestWeekBuy
+        };
+    };
 
     return(
         <Container>
             <Card>
-                <Card.Title>Current Week Data</Card.Title>
-                <Card.Body>{seeData()}</Card.Body>
+                <Card.Title>Previous Week Up To Today</Card.Title>
             </Card>
             <Table striped bordered hover size="sm">
                 <thead>
                     <tr>
-                        
                         <th>Item Name</th>
                         <th>Current Quantity</th>
                         <th>Current Minimum Buyout</th>
@@ -113,7 +105,7 @@ const GoodsTable = ({nexusData}) => {
                 </tbody>
             </Table>
         </Container>
-    )
-}
+    );
+};
 
-export default GoodsTable
+export default GoodsTable;

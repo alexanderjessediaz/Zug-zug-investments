@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import FactionSelect from './Filters/FactionSelect.js';
 import ServerSelect from './Filters/ServerSelect.js';
+
 import { Button, FormControl, Dropdown} from 'react-bootstrap';
 import './QuerySearchStyles.css';
 
@@ -14,7 +15,6 @@ const QuerySearch = ({
     nexusData
 }) => {
     
-    
     const [serverQueryString, setServerQueryString] = useState('');
     
     const setUserServer = (e) => {
@@ -27,10 +27,8 @@ const QuerySearch = ({
         setFactionQueryString(e);
     };
     
-    
     const [searchInput, setSearchInput] = useState('')
 
-    
     const handleChange = (e) => {
         updateSearchItem(e.target.value)
         setSearchInput(e.target.value)
@@ -44,7 +42,6 @@ const QuerySearch = ({
     const handleSelect = (e) => {
         searchResultItem(e)
     }
-    
     
     const searchResults = () => {
         if (!userSearchResults.data) return;
@@ -103,7 +100,6 @@ const QuerySearch = ({
       },
     );
                           
-    
     return (
         <>
             <ServerSelect updateServerString={updateServerString} setUserServer={setUserServer}/>

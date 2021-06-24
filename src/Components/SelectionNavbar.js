@@ -1,8 +1,8 @@
 import React from 'react';
-import { Navbar } from 'react-bootstrap';
 import QuerySearch from './Query/QuerySearch.js';
-
 import ZugZugLogo from '../Images/ZugZugLogo.png';
+
+import { Navbar } from 'react-bootstrap';
 
 
  const SelectionNavbar = ({

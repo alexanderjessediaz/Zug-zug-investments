@@ -29,7 +29,6 @@ class GoodsGraph extends Component {
         }
     };
   
-
     getChartData = canvas => {
         if(!this.props.nexusData.data) return;
         else {
@@ -56,12 +55,12 @@ class GoodsGraph extends Component {
     };
 
     createItemPriceData = () => {
-        if(!this.props.nexusData.data){
-            return;
-        } else {
-        return this.props.nexusData.data.data.map(price => {
-            return price.marketValue /10000;
-        })};
+        if(!this.props.nexusData.data) return; 
+        else{
+            return this.props.nexusData.data.data.map(price => {
+                return price.marketValue /10000;
+            });
+        };
       };
 
     createItemPriceLabels = () => {
@@ -76,18 +75,14 @@ class GoodsGraph extends Component {
                     " " 
                 };
             return dateAndTimeScanned.scannedAt;
-            })
+            });
         };
       };
 
-      showCurrentServerandFactionName = () => {
-          if (!this.props.nexusData.data) return;
-          else {
-             return this.props.nexusData.data.slug
-          } 
-      }
-
-      // width: 750, height: 400
+    showCurrentServerandFactionName = () => {
+        if (!this.props.nexusData.data) return;
+        else return this.props.nexusData.data.slug;
+    };
     
     render(){
         return (
@@ -105,8 +100,7 @@ class GoodsGraph extends Component {
                         <div className="media" >
                             <div className="media-body" >
                                 <div style={{position: "relative", width: "75%", height: "50%", margin:"auto"}}>
-                                    <Line 
-                                        options={{
+                                    <Line options={{
                                             responsive: true
                                         }}
                                         data={this.getChartData}
@@ -119,6 +113,6 @@ class GoodsGraph extends Component {
                 </Jumbotron>
             </Container>
         );
-    }
+    };
 };
 export default GoodsGraph;

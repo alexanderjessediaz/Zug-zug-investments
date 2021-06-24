@@ -4,18 +4,13 @@ import { Dropdown } from 'react-bootstrap';
  const FactionSelect = ({ updateFactionString, setUserFaction }) => {
 
     const [selectedFaction, setSelectedFaction] = useState('');
-
     const handleSelect = (e) => {
         setSelectedFaction(e);
         updateFactionString(e);
         setUserFaction(e);
     };
-    
 
     return (
-        // style match color match logo
-        // grey lighter
-        // h1 of logo text styled
         <Dropdown onSelect={handleSelect} >
             <Dropdown.Toggle variant="outline-success" id="dropdown-basic">
                 {selectedFaction === '' ? "Choose Faction":selectedFaction}
