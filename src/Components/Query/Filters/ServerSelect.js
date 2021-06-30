@@ -63,7 +63,8 @@ const ServerSelect = ({ updateServerString, setUserServer }) => {
         <FormControl
           autoFocus
           className="mx-3 my-2 w-auto"
-          placeholder="Type to filter..."
+          placeholder="Type to filter servers"
+          label="Type to filter servers"
           onChange={(e) => setValue(e.target.value)}
           value={value}
         />

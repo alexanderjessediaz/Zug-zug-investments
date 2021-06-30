@@ -7,6 +7,12 @@
 
 #welcome-card {
     text-align: center;
+    color: rgb(15, 74, 15);
+}
+
+#welcome-card-header {
+    font-weight: bold;
+    font-size: x-large;
 }
 
 #zugzug-logo {
@@ -14,4 +20,32 @@
     margin-left: auto;
     margin-right: auto;
     width: 15%;
+}
+
+#news-cards {
+    color: rgb(15, 74, 15);
+}
+
+#news-header-card {
+    text-align: center;
+    color: black;
+}
+
+#news-header-card-text {
+    font-weight: bold;
+}
+
+#news-anchor-tag {
+    color: rgb(15, 74, 15);
+}
+
+.news-card-header {
+    font-weight: bold;
+    text-align: center;
+}
+
+.news-content {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }

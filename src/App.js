@@ -61,6 +61,19 @@ const App = () => {
     };
   },[searchItemString]);
   
+  const [nexusNews, setNexusNews] = useState([])
+  useEffect(() => {
+    async function newsFetch(){
+      try {
+        await axios.get('http://localhost:5555/News')
+        .then((response) => setNexusNews(response))
+      } catch (error) {
+        console.error(error)
+      }
+    }
+    newsFetch();
+  },[])
+  
     return (
       <div className="App">
           <SelectionNavbar
@@ -74,6 +87,7 @@ const App = () => {
             />
           <GoodsContainer 
             nexusData={nexusData}
+            nexusNews={nexusNews}
           />
         </div>
     );

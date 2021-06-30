@@ -4,7 +4,6 @@ import ZugZugLogo from '../Images/ZugZugLogo.png';
 
 import { Navbar } from 'react-bootstrap';
 
-
  const SelectionNavbar = ({
     updateServerString,
     updateFactionString,

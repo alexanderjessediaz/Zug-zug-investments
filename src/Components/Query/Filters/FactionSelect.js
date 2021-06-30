@@ -12,7 +12,7 @@ import { Dropdown } from 'react-bootstrap';
 
     return (
         <Dropdown onSelect={handleSelect} >
-            <Dropdown.Toggle variant="outline-success" id="dropdown-basic">
+            <Dropdown.Toggle variant="warning" id="dropdown-basic">
                 {selectedFaction === '' ? "Choose Faction":selectedFaction}
             </Dropdown.Toggle>
             <Dropdown.Menu >
