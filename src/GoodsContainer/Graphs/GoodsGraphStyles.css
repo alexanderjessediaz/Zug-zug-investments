@@ -3,6 +3,10 @@
     text-align: center;
 }
 
+#card-graph-head {
+   color: rgb(15, 74, 15); 
+}
+
 #card-graph-head-title{
     text-align: center;
 }
@@ -18,8 +22,10 @@
 
 #card-graph-footer-title{
     text-align: center;
+    color: rgb(15, 74, 15);
 }
 
 #card-graph-footer-text{
     text-align: center;
+    color: rgb(15, 74, 15);
 }

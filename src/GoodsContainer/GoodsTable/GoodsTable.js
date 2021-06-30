@@ -1,4 +1,5 @@
 import React from 'react';
+import './GoodsTableStyles.css';
 
 import { Table, Container, Card } from 'react-bootstrap';
 
@@ -78,9 +79,9 @@ const GoodsTable = ({nexusData}) => {
     return(
         <Container>
             <Card>
-                <Card.Title>Previous Week Up To Today</Card.Title>
+                <Card.Title id="card-table-title">Previous Week Up To Today</Card.Title>
             </Card>
-            <Table striped bordered hover size="sm">
+            <Table id="goods-table" striped bordered hover size="sm">
                 <thead>
                     <tr>
                         <th>Item Name</th>

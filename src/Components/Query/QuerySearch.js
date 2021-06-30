@@ -117,7 +117,7 @@ const QuerySearch = ({
             {
                 serverQueryString === "" || factionQueryString === "" || searchInput.length < 2 ?
                 <Button disabled id="disabledSearchBtn" variant="secondary">Search</Button>:
-                <Button id="searchBtn" onClick={handleClick} variant="outline-success">Search</Button>
+                <Button id="searchBtn" onClick={handleClick} variant="warning">Search</Button>
             }
         </>
     )
