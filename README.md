@@ -10,12 +10,15 @@ How to use: Simply select: The server you play on, the faction you belong to, an
 Video Demo:
 https://youtu.be/PRiC3jeKCxk
 
+We're live! Website URL:https://zugzug-inc.netlify.app/
+
 Technologies used:
 
 frontend:
 1. -React
 2. -Bootstrap
 3. -Chartjs
+4. -axios
 
 backend:
 1. -Node.js
