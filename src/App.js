@@ -65,7 +65,7 @@ const App = () => {
   useEffect(() => {
     async function newsFetch(){
       try {
-        await axios.get('http://localhost:5555/News')
+        await axios.get('https://zug-zug-backend.herokuapp.com/News')
         .then((response) => setNexusNews(response))
       } catch (error) {
         console.error(error)
