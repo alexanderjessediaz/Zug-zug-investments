@@ -7,9 +7,7 @@ import './GoodsContainerStyles.css'
 import { Container, Card, CardGroup } from 'react-bootstrap';
 
 const GoodsContainer = ({ nexusData, nexusNews }) => {
-    const seeData = () => {
-        console.log(nexusNews)
-    }
+  
     const newsData = () => {
         if (!nexusNews.data) return;
         else return nexusNews.data.map((newsObj, i) => {
@@ -17,7 +15,7 @@ const GoodsContainer = ({ nexusData, nexusNews }) => {
                 <Card key={i} id="news-cards" bg={"light"}>
                     <Card.Body>
                         <Card.Header className="news-card-header">{newsObj.categories[0]}</Card.Header>
-                        <Card.Title>{newsObj.title}</Card.Title>
+                        <Card.Title className="news-article-title">{newsObj.title}</Card.Title>
                         <Card.Text className="news-content">
                             {newsObj.content}
                         </Card.Text>
@@ -36,7 +34,7 @@ const GoodsContainer = ({ nexusData, nexusNews }) => {
         <Container id="goods-main-container" fluid="xl">        
             {
                 !nexusData.data ? 
-                    <Container id="welcome-card-container" fluid="lg">
+                    <Container id="welcome-card-container" fluid="xl">
                         <Card id="welcome-card" bg={"light"}>
                             <h1 id="welcome-card-header" >ZugZug Inc.</h1>
                             <Card.Img id="zugzug-logo" variant="top" src={ZugZugLogo} alt="orc peon on a black backdrop. Text: Me Gold You"/>
@@ -51,8 +49,7 @@ const GoodsContainer = ({ nexusData, nexusNews }) => {
                         <Card id="news-header-card" bg={"warning"} border="dark">
                             <Card.Body id="news-header-card-text">World of Warcraft Classic News</Card.Body>
                         </Card>
-                        <CardGroup >
-                            {seeData()}
+                        <CardGroup id="card-group">
                             {newsData()}
                         </CardGroup>
                     </Container>

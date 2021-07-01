@@ -24,11 +24,16 @@
 
 #news-cards {
     color: rgb(15, 74, 15);
+    
+}
+#card-group {
+    margin-top: 2rem;
 }
 
 #news-header-card {
     text-align: center;
     color: black;
+    
 }
 
 #news-header-card-text {
@@ -44,8 +49,14 @@
     text-align: center;
 }
 
+.news-article-title {
+    margin-top: 1.0rem;
+}
+
 .news-content {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
 }
