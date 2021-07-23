@@ -105,7 +105,9 @@ const App = () => {
             togglePriceSearch={togglePriceSearch}
             updateSearchItem={updateSearchItem}
             searchResultItem={searchResultItem}
+            setSearchItemString={setSearchItemString}
             userSearchResults={userSearchResults}
+            searchItemResults={searchItemResults}
             isItemSearchLoading={isItemSearchLoading}
             nexusData={nexusData}
             />
@@ -114,6 +116,10 @@ const App = () => {
             isPriceLoading={isPriceLoading}
             nexusData={nexusData}
             nexusNews={nexusNews}
+            serverQueryString={serverQueryString}
+            factionQueryString={factionQueryString}
+            priceQueryBool={priceQueryBool}
+            searchItemResults={searchItemResults}
           />
         </div>
     );

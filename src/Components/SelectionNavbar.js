@@ -1,20 +1,25 @@
-import React from 'react';
+import React, {useState} from 'react';
 import QuerySearch from './Query/QuerySearch.js';
 import ZugZugLogo from '../Images/ZugZugLogo.png';
 
 import { Navbar } from 'react-bootstrap';
+import NexusDataLoader from '../Components/Loaders/NexusDataLoader.js';
 
  const SelectionNavbar = ({
     updateServerString,
     updateFactionString,
     togglePriceSearch,
+    setSearchItemString,
     updateSearchItem,
     userSearchResults,
     searchResultItem,
+    searchItemResults,
     isItemSearchLoading,
     nexusData
    
 }) =>{
+
+  const [loadingSearch, setLoadingSearch] = useState(false)
    
     return (
         <header>
@@ -27,17 +32,21 @@ import { Navbar } from 'react-bootstrap';
                 alt="orc peon on a black backdrop. Text: Me Gold You"
               />
             </Navbar.Brand>
+            { loadingSearch && !nexusData.data ? <NexusDataLoader/>: null}
             <QuerySearch 
+              setLoadingSearch={setLoadingSearch}
               updateServerString={updateServerString}
               updateFactionString={updateFactionString}
               togglePriceSearch={togglePriceSearch}
+              setSearchItemString={setSearchItemString}
               updateSearchItem={updateSearchItem}
               userSearchResults={userSearchResults}
               searchResultItem={searchResultItem}
+              searchItemResults={searchItemResults}
               isItemSearchLoading={isItemSearchLoading}
               nexusData={nexusData}
             />
-            </Navbar>
+          </Navbar>
         </header>
     )
 } 

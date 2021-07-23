@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import FactionSelect from './Filters/FactionSelect.js';
 import ServerSelect from './Filters/ServerSelect.js';
-import ItemSearchLoader from '../ItemSearchLoader';
+import ItemSearchLoader from '../Loaders/ItemSearchLoader';
 
 import { Button, FormControl, Dropdown} from 'react-bootstrap';
 import './QuerySearchStyles.css';
@@ -13,7 +13,9 @@ const QuerySearch = ({
     updateSearchItem,
     userSearchResults,
     searchResultItem,
+    searchItemResults,
     isItemSearchLoading,
+    setLoadingSearch,
     nexusData
 }) => {
     
@@ -34,11 +36,15 @@ const QuerySearch = ({
     const handleChange = (e) => {
         updateSearchItem(e.target.value)
         setSearchInput(e.target.value)
+        
     }
     
     const handleClick = (e) => {
         e.preventDefault();
         togglePriceSearch(true)
+        !nexusData.data || searchItemResults.length < 1?
+        setLoadingSearch(true):
+        setLoadingSearch(false)
     };
 
     const handleSelect = (e) => {
@@ -105,10 +111,11 @@ const QuerySearch = ({
                           
     return (
         <>
+        
             <ServerSelect updateServerString={updateServerString} setUserServer={setUserServer}/>
             <FactionSelect updateFactionString={updateFactionString} setUserFaction={setUserFaction}/>
             {
-                <Dropdown onSelect={handleSelect} >
+                <Dropdown onSelect={handleSelect}>
                   { isItemSearchLoading ? <ItemSearchLoader/> : null }
                   <Dropdown.Toggle as={CustomToggle} id="dropdown-custom-components">
                     {nexusData.length === 0? "Choose Item": nexusData.data.name}
@@ -119,7 +126,7 @@ const QuerySearch = ({
               </Dropdown>
             }
             {
-                serverQueryString === "" || factionQueryString === "" || searchInput.length < 2 ?
+                serverQueryString === "" || factionQueryString === "" || searchItemResults.length < 1 ?
                 <Button disabled id="disabledSearchBtn" variant="secondary">Awaiting selections</Button>:
                 <Button id="searchBtn" onClick={handleClick} variant="warning">Search</Button>
             }

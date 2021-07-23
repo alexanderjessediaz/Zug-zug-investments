@@ -2,12 +2,17 @@ import React from 'react';
 import GoodsGraph from './Graphs/GoodsGraph.js';
 import GoodsTable from './GoodsTable/GoodsTable.js';
 import ZugZugLogo from '../Images/ZugZugLogo.png';
-import Loader from '../Components/Loader.js';
+import Loader from '../Components/Loaders/Loader.js';
 
 import './GoodsContainerStyles.css'
 import { Container, Card, CardGroup } from 'react-bootstrap';
 
-const GoodsContainer = ({ nexusData, nexusNews, isNewsLoading, isPriceLoading }) => {
+const GoodsContainer = ({
+    nexusData,
+    nexusNews, 
+    isNewsLoading, 
+    isPriceLoading,
+}) => {
   
     const newsData = () => {
         if (!nexusNews.data) return;

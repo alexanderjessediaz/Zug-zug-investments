@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import { Dropdown, FormControl } from 'react-bootstrap';
-import Loader from '../../Loader';
+import Loader from '../../Loaders/Loader';
 import './ServerSelectStyles.css'
 
 const ServerSelect = ({ updateServerString, setUserServer }) => {
