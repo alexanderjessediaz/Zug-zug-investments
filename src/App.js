@@ -61,8 +61,7 @@ const App = () => {
                 )
                 .then((response) => {
                   setUserSearchResults(response)
-                setLoading(false)
-                console.log(response)
+                  setLoading(false)
               } )
             } catch (error) {
               console.error(error)
@@ -81,7 +80,10 @@ const App = () => {
           'http://localhost:5555/News'
           
           )
-        .then((response) => setNexusNews(response))
+        .then((response) => {
+          setNexusNews(response)
+          setLoading(false)
+        } )
       } catch (error) {
         console.error(error)
       }
@@ -103,6 +105,7 @@ const App = () => {
             />
           <GoodsContainer 
             nexusData={nexusData}
+            isLoading={isLoading}
             nexusNews={nexusNews}
           />
         </div>

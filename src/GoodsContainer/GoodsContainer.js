@@ -2,11 +2,12 @@ import React from 'react';
 import GoodsGraph from './Graphs/GoodsGraph.js';
 import GoodsTable from './GoodsTable/GoodsTable.js';
 import ZugZugLogo from '../Images/ZugZugLogo.png';
+import Loader from '../Components/Loader.js';
 
 import './GoodsContainerStyles.css'
 import { Container, Card, CardGroup } from 'react-bootstrap';
 
-const GoodsContainer = ({ nexusData, nexusNews }) => {
+const GoodsContainer = ({ nexusData, nexusNews, isLoading }) => {
   
     const newsData = () => {
         if (!nexusNews.data) return;
@@ -50,10 +51,11 @@ const GoodsContainer = ({ nexusData, nexusNews }) => {
                             <Card.Body id="news-header-card-text">World of Warcraft Classic News</Card.Body>
                         </Card>
                         <CardGroup id="card-group">
-                            {newsData()}
+                            {isLoading ? <Loader/> : newsData()}
                         </CardGroup>
                     </Container>
-                :<Container id="goods-graph-table-container">
+                :
+                <Container>
                     <GoodsGraph nexusData={nexusData}/>
                     <GoodsTable nexusData={nexusData}/>
                 </Container>
