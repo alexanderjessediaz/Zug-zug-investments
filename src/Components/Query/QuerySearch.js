@@ -120,7 +120,7 @@ const QuerySearch = ({
             }
             {
                 serverQueryString === "" || factionQueryString === "" || searchInput.length < 2 ?
-                <Button disabled id="disabledSearchBtn" variant="secondary">Search</Button>:
+                <Button disabled id="disabledSearchBtn" variant="secondary">Awaiting selections</Button>:
                 <Button id="searchBtn" onClick={handleClick} variant="warning">Search</Button>
             }
         </>
