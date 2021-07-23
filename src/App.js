@@ -24,40 +24,51 @@ const App = () => {
   const [priceQueryBool, setPriceQueryBool] = useState(false);
   const togglePriceSearch = () => {setPriceQueryBool(true)};
 
+  
   const [nexusData, setNexusData] = useState([]);
   useEffect(() => {
-      if(serverQueryString === "" || factionQueryString === "" || searchItemResults === "" || priceQueryBool === false ){
-        return;
-      } else {
-          async function getNexusPriceQuery(){
-            try {
-              await axios.get(
-                `https://zug-zug-backend.herokuapp.com/ItemPrice?server=${serverQueryString}&faction=${factionQueryString}&item=${searchItemResults}`
-              )
-              .then((response) => {
-                setNexusData(response)
-              })
-            } catch (error) {
-                console.error("Error:", error);
-              }};
+    if(serverQueryString === "" || factionQueryString === "" || searchItemResults === "" || priceQueryBool === false ){
+      return;
+    } else {
+      async function getNexusPriceQuery(){
+        try {
+          await axios.get(
+            // `https://zug-zug-backend.herokuapp.com/ItemPrice?server=${serverQueryString}&faction=${factionQueryString}&item=${searchItemResults}`
+            `http://localhost:5555/ItemPrice?server=${serverQueryString}&faction=${factionQueryString}&item=${searchItemResults}`
+            )
+            .then((response) => {
+              setNexusData(response)
+            })
+          } catch (error) {
+            console.error("Error:", error);
+          }};
           getNexusPriceQuery();
         };
-  },[serverQueryString, factionQueryString, priceQueryBool, searchItemResults]);
-        
-  const [userSearchResults, setUserSearchResults] = useState([]);
-
-  useEffect(() => {
-    if (searchItemString.length < 2 || searchItemString.length > 50) return;
-    else {
-      async function itemSearch(){
-          try {
-              await axios.get(`https://zug-zug-backend.herokuapp.com/ItemSearch?itemSearch=${searchItemString}`)
-              .then((response) => setUserSearchResults(response))
-          } catch (error) {
+      },[serverQueryString, factionQueryString, priceQueryBool, searchItemResults]);
+      
+      const [userSearchResults, setUserSearchResults] = useState([]);
+      const [isLoading, setLoading] = useState(true);
+      
+      useEffect(() => {
+        if (searchItemString.length < 2 || searchItemString.length > 50) return;
+        else {
+          async function itemSearch(){
+            try {
+              await axios.get(
+                // `https://zug-zug-backend.herokuapp.com/ItemSearch?itemSearch=${searchItemString}`
+                
+                `http://localhost:5555/ItemSearch?itemSearch=${searchItemString}`
+                )
+                .then((response) => {
+                  setUserSearchResults(response)
+                setLoading(false)
+                console.log(response)
+              } )
+            } catch (error) {
               console.error(error)
+            }
           }
-      }
-      itemSearch();
+          itemSearch();
     };
   },[searchItemString]);
   
@@ -65,7 +76,11 @@ const App = () => {
   useEffect(() => {
     async function newsFetch(){
       try {
-        await axios.get('https://zug-zug-backend.herokuapp.com/News')
+        await axios.get(
+          // 'https://zug-zug-backend.herokuapp.com/News'
+          'http://localhost:5555/News'
+          
+          )
         .then((response) => setNexusNews(response))
       } catch (error) {
         console.error(error)
@@ -83,6 +98,7 @@ const App = () => {
             updateSearchItem={updateSearchItem}
             searchResultItem={searchResultItem}
             userSearchResults={userSearchResults}
+            isLoading={isLoading}
             nexusData={nexusData}
             />
           <GoodsContainer 

@@ -1,8 +1,9 @@
 import React, {useState} from 'react';
 import FactionSelect from './Filters/FactionSelect.js';
 import ServerSelect from './Filters/ServerSelect.js';
+import Loader from '../Loader.js'
 
-import { Button, FormControl, Dropdown} from 'react-bootstrap';
+import { Button, FormControl, Dropdown, DropdownButton} from 'react-bootstrap';
 import './QuerySearchStyles.css';
 
 const QuerySearch = ({
@@ -12,6 +13,7 @@ const QuerySearch = ({
     updateSearchItem,
     userSearchResults,
     searchResultItem,
+    isLoading,
     nexusData
 }) => {
     
@@ -44,9 +46,10 @@ const QuerySearch = ({
     }
     
     const searchResults = () => {
-        if (!userSearchResults.data) return;
-        else {
-            return userSearchResults.data.map((result, i) => {
+    
+      if(!userSearchResults.data) return;
+      else {
+        return userSearchResults.data.map((result, i) => {
             return <Dropdown.Item
                 eventKey={result.itemId}
                 key={i}
@@ -90,7 +93,7 @@ const QuerySearch = ({
               value={searchInput}
             />
             <ul className="list-unstyled" id="dropdown-menu">
-              {React.Children.toArray(children).filter(
+              { React.Children.toArray(children).filter(
                 (child) =>
                   !searchInput || child.props.children.toLowerCase().startsWith(searchInput),
               )}
@@ -106,12 +109,13 @@ const QuerySearch = ({
             <FactionSelect updateFactionString={updateFactionString} setUserFaction={setUserFaction}/>
             {
                 <Dropdown onSelect={handleSelect} >
-                <Dropdown.Toggle as={CustomToggle} id="dropdown-custom-components">
-                  {nexusData.length === 0? "Choose Item": nexusData.data.name}
-                </Dropdown.Toggle>
-                <Dropdown.Menu as={CustomMenu} className="dropdown-menu-show">
-                  {searchResults()}
-                </Dropdown.Menu>
+                  { isLoading ? <Loader/> : null }
+                  <Dropdown.Toggle as={CustomToggle} id="dropdown-custom-components">
+                    {nexusData.length === 0? "Choose Item": nexusData.data.name}
+                  </Dropdown.Toggle>
+                  <Dropdown.Menu as={CustomMenu} className="dropdown-menu-show">
+                    {searchResults()}
+                  </Dropdown.Menu>
               </Dropdown>
             }
             {
