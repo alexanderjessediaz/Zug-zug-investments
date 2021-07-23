@@ -11,7 +11,7 @@ import { Navbar } from 'react-bootstrap';
     updateSearchItem,
     userSearchResults,
     searchResultItem,
-    isLoading,
+    isItemSearchLoading,
     nexusData
    
 }) =>{
@@ -34,7 +34,7 @@ import { Navbar } from 'react-bootstrap';
               updateSearchItem={updateSearchItem}
               userSearchResults={userSearchResults}
               searchResultItem={searchResultItem}
-              isLoading={isLoading}
+              isItemSearchLoading={isItemSearchLoading}
               nexusData={nexusData}
             />
             </Navbar>

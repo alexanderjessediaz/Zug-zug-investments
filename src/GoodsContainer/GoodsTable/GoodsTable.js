@@ -1,9 +1,10 @@
 import React from 'react';
 import './GoodsTableStyles.css';
+import Loader from '../../Components/Loader.js';
 
 import { Table, Container, Card } from 'react-bootstrap';
 
-const GoodsTable = ({nexusData}) => {
+const GoodsTable = ({nexusData, isPriceLoading}) => {
 
     const nDataParse = () => {
         if(nexusData.data.data.length === 0) return;
@@ -78,6 +79,7 @@ const GoodsTable = ({nexusData}) => {
 
     return(
         <Container>
+            {isPriceLoading ? <Loader/> : null}
             <Card variant="warning">
                 <Card.Title id="card-table-title">Previous Week Up To Today</Card.Title>
             </Card>

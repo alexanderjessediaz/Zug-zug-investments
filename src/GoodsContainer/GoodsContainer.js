@@ -7,7 +7,7 @@ import Loader from '../Components/Loader.js';
 import './GoodsContainerStyles.css'
 import { Container, Card, CardGroup } from 'react-bootstrap';
 
-const GoodsContainer = ({ nexusData, nexusNews, isLoading }) => {
+const GoodsContainer = ({ nexusData, nexusNews, isNewsLoading, isPriceLoading }) => {
   
     const newsData = () => {
         if (!nexusNews.data) return;
@@ -51,13 +51,13 @@ const GoodsContainer = ({ nexusData, nexusNews, isLoading }) => {
                             <Card.Body id="news-header-card-text">World of Warcraft Classic News</Card.Body>
                         </Card>
                         <CardGroup id="card-group">
-                            {isLoading ? <Loader/> : newsData()}
+                            {isNewsLoading ? <Loader/> : newsData()}
                         </CardGroup>
                     </Container>
                 :
                 <Container>
-                    <GoodsGraph nexusData={nexusData}/>
-                    <GoodsTable nexusData={nexusData}/>
+                    <GoodsGraph nexusData={nexusData} isPriceLoading={isPriceLoading}/>
+                    <GoodsTable nexusData={nexusData} isPriceLoading={isPriceLoading}/>
                 </Container>
             }
         </Container>

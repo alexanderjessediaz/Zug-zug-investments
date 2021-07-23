@@ -25,7 +25,10 @@ const App = () => {
   const togglePriceSearch = () => {setPriceQueryBool(true)};
 
   
+
   const [nexusData, setNexusData] = useState([]);
+  const [isPriceLoading, setIsPriceLoading] = useState(true);
+
   useEffect(() => {
     if(serverQueryString === "" || factionQueryString === "" || searchItemResults === "" || priceQueryBool === false ){
       return;
@@ -37,6 +40,7 @@ const App = () => {
             `http://localhost:5555/ItemPrice?server=${serverQueryString}&faction=${factionQueryString}&item=${searchItemResults}`
             )
             .then((response) => {
+              setIsPriceLoading(false)
               setNexusData(response)
             })
           } catch (error) {
@@ -47,8 +51,8 @@ const App = () => {
       },[serverQueryString, factionQueryString, priceQueryBool, searchItemResults]);
       
       const [userSearchResults, setUserSearchResults] = useState([]);
-      const [isLoading, setLoading] = useState(true);
-      
+      const [isItemSearchLoading, setIsItemSearchLoading] = useState(true);
+
       useEffect(() => {
         if (searchItemString.length < 2 || searchItemString.length > 50) return;
         else {
@@ -61,7 +65,7 @@ const App = () => {
                 )
                 .then((response) => {
                   setUserSearchResults(response)
-                  setLoading(false)
+                  setIsItemSearchLoading(false)
               } )
             } catch (error) {
               console.error(error)
@@ -70,8 +74,10 @@ const App = () => {
           itemSearch();
     };
   },[searchItemString]);
+
   
-  const [nexusNews, setNexusNews] = useState([])
+  const [nexusNews, setNexusNews] = useState([]);
+  const [isNewsLoading, setIsNewsLoading] = useState(true);
   useEffect(() => {
     async function newsFetch(){
       try {
@@ -82,7 +88,7 @@ const App = () => {
           )
         .then((response) => {
           setNexusNews(response)
-          setLoading(false)
+          setIsNewsLoading(false)
         } )
       } catch (error) {
         console.error(error)
@@ -100,12 +106,13 @@ const App = () => {
             updateSearchItem={updateSearchItem}
             searchResultItem={searchResultItem}
             userSearchResults={userSearchResults}
-            isLoading={isLoading}
+            isItemSearchLoading={isItemSearchLoading}
             nexusData={nexusData}
             />
           <GoodsContainer 
+            isNewsLoading={isNewsLoading}
+            isPriceLoading={isPriceLoading}
             nexusData={nexusData}
-            isLoading={isLoading}
             nexusNews={nexusNews}
           />
         </div>

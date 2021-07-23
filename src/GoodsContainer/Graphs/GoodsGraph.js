@@ -1,6 +1,7 @@
 import React, {Component}  from 'react';
 import { Jumbotron, Container, Card } from 'react-bootstrap';
 import { Line } from 'react-chartjs-2';
+import Loader from '../../Components/Loader';
 import './GoodsGraphStyles.css';
 
 class GoodsGraph extends Component {
@@ -17,6 +18,8 @@ class GoodsGraph extends Component {
             ]
         }
     };
+
+   
 
     setGradientColor = (canvas, color) => {
         if(!this.props.nexusData) return;
@@ -87,6 +90,7 @@ class GoodsGraph extends Component {
     render(){
         return (
             <Container fluid>
+                {this.props.isPriceLoading ? <Loader/>: null}
                 <Jumbotron fluid>
                         <Card id="card-graph-head">
                             <Card.Header id="card-graph-header">Current Server and Faction:</Card.Header>

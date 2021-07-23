@@ -1,10 +1,12 @@
 import React, {useState, useEffect} from 'react';
 import { Dropdown, FormControl } from 'react-bootstrap';
+import Loader from '../../Loader';
 import './ServerSelectStyles.css'
 
 const ServerSelect = ({ updateServerString, setUserServer }) => {
 
   const [wowServerNames, setWowServerNames] = useState([]);
+  const [isServersLoading, setIsServersLoading] = useState(true)
 
   useEffect(() => {
     fetch(
@@ -14,6 +16,7 @@ const ServerSelect = ({ updateServerString, setUserServer }) => {
        {method: "GET"})
       .then((response) => response.json())
         .then((serverData => {
+          setIsServersLoading(false)
           setWowServerNames(serverData.serverNames.map((server) => {
           return server.name.split('').filter(char => char !== "'").join('')
             }))
@@ -85,6 +88,7 @@ const ServerSelect = ({ updateServerString, setUserServer }) => {
   
   return (
     <Dropdown onSelect={handleSelect} >
+      {isServersLoading? <Loader/>: null}
       <Dropdown.Toggle as={CustomToggle} id="dropdown-custom-components">
         {selectedServer === '' ? "Choose Server":selectedServer}
       </Dropdown.Toggle>
