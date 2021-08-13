@@ -38,7 +38,7 @@ import NexusDataLoader from '../Components/Loaders/NexusDataLoader.js';
               updateServerString={updateServerString}
               updateFactionString={updateFactionString}
               togglePriceSearch={togglePriceSearch}
-              setSearchItemString={setSearchItemString}
+              // setSearchItemString={setSearchItemString}
               updateSearchItem={updateSearchItem}
               userSearchResults={userSearchResults}
               searchResultItem={searchResultItem}

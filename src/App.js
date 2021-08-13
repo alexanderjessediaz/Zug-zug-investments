@@ -105,7 +105,7 @@ const App = () => {
             togglePriceSearch={togglePriceSearch}
             updateSearchItem={updateSearchItem}
             searchResultItem={searchResultItem}
-            setSearchItemString={setSearchItemString}
+            // setSearchItemString={setSearchItemString}
             userSearchResults={userSearchResults}
             searchItemResults={searchItemResults}
             isItemSearchLoading={isItemSearchLoading}

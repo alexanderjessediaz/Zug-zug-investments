@@ -16,7 +16,8 @@ const QuerySearch = ({
     searchItemResults,
     isItemSearchLoading,
     setLoadingSearch,
-    nexusData
+    nexusData,
+   
 }) => {
     
     const [serverQueryString, setServerQueryString] = useState('');
@@ -37,19 +38,19 @@ const QuerySearch = ({
         updateSearchItem(e.target.value)
         setSearchInput(e.target.value)
         
-    }
+    };
     
     const handleClick = (e) => {
         e.preventDefault();
-        togglePriceSearch(true)
-        !nexusData.data || searchItemResults.length < 1?
-        setLoadingSearch(true):
-        setLoadingSearch(false)
+        togglePriceSearch(true);
+        !nexusData.data || searchItemResults.length < 1 ? setLoadingSearch(true) : setLoadingSearch(false)
     };
 
     const handleSelect = (e) => {
         searchResultItem(e)
     }
+
+
     
     const searchResults = () => {
     
@@ -122,6 +123,7 @@ const QuerySearch = ({
                   </Dropdown.Toggle>
                   <Dropdown.Menu as={CustomMenu} className="dropdown-menu-show">
                     {searchResults()}
+                    
                   </Dropdown.Menu>
               </Dropdown>
             }
