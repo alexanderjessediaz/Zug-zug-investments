@@ -12,8 +12,8 @@ import NexusDataLoader from '../Components/Loaders/NexusDataLoader.js';
     setSearchItemString,
     updateSearchItem,
     userSearchResults,
-    searchResultItem,
-    searchItemResults,
+    searchResultId,
+    searchItemId,
     isItemSearchLoading,
     nexusData
    
@@ -38,11 +38,11 @@ import NexusDataLoader from '../Components/Loaders/NexusDataLoader.js';
               updateServerString={updateServerString}
               updateFactionString={updateFactionString}
               togglePriceSearch={togglePriceSearch}
-              // setSearchItemString={setSearchItemString}
+              setSearchItemString={setSearchItemString}
               updateSearchItem={updateSearchItem}
               userSearchResults={userSearchResults}
-              searchResultItem={searchResultItem}
-              searchItemResults={searchItemResults}
+              searchResultId={searchResultId}
+              searchItemId={searchItemId}
               isItemSearchLoading={isItemSearchLoading}
               nexusData={nexusData}
             />

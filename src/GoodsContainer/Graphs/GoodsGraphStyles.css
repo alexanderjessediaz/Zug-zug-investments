@@ -1,17 +1,24 @@
-
-#card-graph-header{
-    text-align: center;
-}
-
-#card-graph-head {
+#graph-card-head {
    color: rgb(15, 74, 15); 
+   margin: -4rem 0rem 0rem 0rem;
 }
 
-#card-graph-head-title{
+#graph-card-header{
     text-align: center;
 }
 
-#card-graph-head-text{
+
+#graph-card-item-name {
+    text-align: center;
+    font-size: large;
+    font-weight: bold;
+}
+
+#graph-card-head-title{
+    text-align: center;
+}
+
+#graph-card-head-text{
     text-align: center;
 }
 
@@ -20,12 +27,12 @@
 }
 
 
-#card-graph-footer-title{
+#graph-card-footer-title{
     text-align: center;
     color: rgb(15, 74, 15);
 }
 
-#card-graph-footer-text{
+#graph-card-footer-text{
     text-align: center;
     color: rgb(15, 74, 15);
 }

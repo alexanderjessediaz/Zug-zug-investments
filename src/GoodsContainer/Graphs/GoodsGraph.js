@@ -86,19 +86,26 @@ class GoodsGraph extends Component {
         if (!this.props.nexusData.data) return;
         else return this.props.nexusData.data.slug;
     };
+
+    displayItemName = () => {
+        if (!this.props.nexusData.data) return;
+        else return this.props.nexusData.data.name 
+        
+    }
     
     render(){
         return (
             <Container fluid>
                 {this.props.isPriceLoading ? <Loader/>: null}
                 <Jumbotron fluid>
-                        <Card id="card-graph-head">
-                            <Card.Header id="card-graph-header">Current Server and Faction:</Card.Header>
-                            <Card.Title id="card-graph-head-title">
+                        <Card id="graph-card-head">
+                            <Card.Header id="graph-card-header">Server and Faction:</Card.Header>
+                            <Card.Title id="graph-card-head-title">
                                 {this.showCurrentServerandFactionName()}
                             </Card.Title>
                             <Card.Body>
-                                <Card.Text id="card-graph-head-text">Change the Server, Faction, or Item to update the search</Card.Text>
+                                <Card.Text id="graph-card-head-text">* Change the Server, Faction, or Item to update the search</Card.Text>
+                                <Card.Text id="graph-card-item-name">{"Search Results For: " + this.displayItemName()}</Card.Text>
                             </Card.Body>
                         </Card>
                         <div className="media" >
@@ -109,8 +116,8 @@ class GoodsGraph extends Component {
                                         }}
                                         data={this.getChartData}
                                     />
-                                    <h5 id="card-graph-footer-title">Previous Week</h5>
-                                    <h6 id="card-graph-footer-text">displayed prices in gold</h6>
+                                    <h5 id="graph-card-footer-title">Previous Week</h5>
+                                    <h6 id="graph-card-footer-text">displayed prices in gold</h6>
                                 </div>
                             </div>
                         </div>

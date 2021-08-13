@@ -12,12 +12,11 @@ const QuerySearch = ({
     togglePriceSearch,
     updateSearchItem,
     userSearchResults,
-    searchResultItem,
-    searchItemResults,
+    searchResultId,
+    searchItemId,
     isItemSearchLoading,
-    setLoadingSearch,
-    nexusData,
-   
+    nexusData
+    
 }) => {
     
     const [serverQueryString, setServerQueryString] = useState('');
@@ -33,6 +32,7 @@ const QuerySearch = ({
     };
     
     const [searchInput, setSearchInput] = useState('')
+    const [searchItemDisplay, setSearchItemDisplay] = useState('')
 
     const handleChange = (e) => {
         updateSearchItem(e.target.value)
@@ -43,17 +43,15 @@ const QuerySearch = ({
     const handleClick = (e) => {
         e.preventDefault();
         togglePriceSearch(true);
-        !nexusData.data || searchItemResults.length < 1 ? setLoadingSearch(true) : setLoadingSearch(false)
     };
 
+
     const handleSelect = (e) => {
-        searchResultItem(e)
+      searchResultId(e)
+      setSearchItemDisplay(e)
     }
-
-
     
     const searchResults = () => {
-    
       if(!userSearchResults.data) return;
       else {
         return userSearchResults.data.map((result, i) => {
@@ -81,7 +79,7 @@ const QuerySearch = ({
         </a>
       ));
       
-      const CustomMenu = React.forwardRef(
+    const CustomMenu = React.forwardRef(
         ({ children, style, className, 'aria-labelledby': labeledBy }, ref) => {
     
         return (
@@ -119,16 +117,16 @@ const QuerySearch = ({
                 <Dropdown onSelect={handleSelect}>
                   { isItemSearchLoading ? <ItemSearchLoader/> : null }
                   <Dropdown.Toggle as={CustomToggle} id="dropdown-custom-components">
-                    {nexusData.length === 0? "Choose Item": nexusData.data.name}
+                    {nexusData.length === 0 && searchItemId.length < 1? "Choose Item": "Item ID: " + searchItemDisplay}
                   </Dropdown.Toggle>
                   <Dropdown.Menu as={CustomMenu} className="dropdown-menu-show">
                     {searchResults()}
-                    
                   </Dropdown.Menu>
               </Dropdown>
             }
+            
             {
-                serverQueryString === "" || factionQueryString === "" || searchItemResults.length < 1 ?
+                serverQueryString === "" || factionQueryString === "" || searchItemId.length < 1 ?
                 <Button disabled id="disabledSearchBtn" variant="secondary">Awaiting selections</Button>:
                 <Button id="searchBtn" onClick={handleClick} variant="warning">Search</Button>
             }

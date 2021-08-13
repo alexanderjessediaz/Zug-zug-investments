@@ -18,8 +18,8 @@ const App = () => {
 
   const updateSearchItem = (e) => {setSearchItemString(e);};
 
-  const [searchItemResults, setSearchItemResults] = useState('')
-  const searchResultItem = (e) => {setSearchItemResults(e)}
+  const [searchItemId, setSearchItemId] = useState('')
+  const searchResultId = (e) => {setSearchItemId(e)}
 
   const [priceQueryBool, setPriceQueryBool] = useState(false);
   const togglePriceSearch = () => {setPriceQueryBool(true)};
@@ -30,14 +30,14 @@ const App = () => {
   const [isPriceLoading, setIsPriceLoading] = useState(true);
 
   useEffect(() => {
-    if(serverQueryString === "" || factionQueryString === "" || searchItemResults === "" || priceQueryBool === false ){
+    if(serverQueryString === "" || factionQueryString === "" || searchItemId === "" || priceQueryBool === false ){
       return;
     } else {
       async function getNexusPriceQuery(){
         try {
           await axios.get(
-            // `https://zug-zug-backend.herokuapp.com/ItemPrice?server=${serverQueryString}&faction=${factionQueryString}&item=${searchItemResults}`
-            `http://localhost:5555/ItemPrice?server=${serverQueryString}&faction=${factionQueryString}&item=${searchItemResults}`
+            // `https://zug-zug-backend.herokuapp.com/ItemPrice?server=${serverQueryString}&faction=${factionQueryString}&item=${searchItemId}`
+            `http://localhost:5555/ItemPrice?server=${serverQueryString}&faction=${factionQueryString}&item=${searchItemId}`
             )
             .then((response) => {
               setIsPriceLoading(false)
@@ -48,7 +48,7 @@ const App = () => {
           }};
           getNexusPriceQuery();
         };
-      },[serverQueryString, factionQueryString, priceQueryBool, searchItemResults]);
+      },[serverQueryString, factionQueryString, priceQueryBool, searchItemId]);
       
       const [userSearchResults, setUserSearchResults] = useState([]);
       const [isItemSearchLoading, setIsItemSearchLoading] = useState(true);
@@ -104,10 +104,10 @@ const App = () => {
             updateFactionString={updateFactionString}
             togglePriceSearch={togglePriceSearch}
             updateSearchItem={updateSearchItem}
-            searchResultItem={searchResultItem}
-            // setSearchItemString={setSearchItemString}
+            searchResultId={searchResultId}
+            setSearchItemString={setSearchItemString}
             userSearchResults={userSearchResults}
-            searchItemResults={searchItemResults}
+            searchItemId={searchItemId}
             isItemSearchLoading={isItemSearchLoading}
             nexusData={nexusData}
             />
@@ -118,8 +118,8 @@ const App = () => {
             nexusNews={nexusNews}
             serverQueryString={serverQueryString}
             factionQueryString={factionQueryString}
-            priceQueryBool={priceQueryBool}
-            searchItemResults={searchItemResults}
+            
+            
           />
         </div>
     );

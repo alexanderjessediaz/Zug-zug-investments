@@ -14,7 +14,7 @@ const ItemSearchLoader = () => {
                     role="status"
                     aria-hidden="true"
                 />
-                <span className="visually-hidden">No item selected</span>
+                <span className="visually-hidden">No Item Searched</span>
             </Button>{' '}
         </>
     )
