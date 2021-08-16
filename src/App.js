@@ -36,8 +36,7 @@ const App = () => {
       async function getNexusPriceQuery(){
         try {
           await axios.get(
-            // `https://zug-zug-backend.herokuapp.com/ItemPrice?server=${serverQueryString}&faction=${factionQueryString}&item=${searchItemId}`
-            `http://localhost:5555/ItemPrice?server=${serverQueryString}&faction=${factionQueryString}&item=${searchItemId}`
+            `https://zug-zug-backend.herokuapp.com/ItemPrice?server=${serverQueryString}&faction=${factionQueryString}&item=${searchItemId}`
             )
             .then((response) => {
               setIsPriceLoading(false)
@@ -59,9 +58,7 @@ const App = () => {
           async function itemSearch(){
             try {
               await axios.get(
-                // `https://zug-zug-backend.herokuapp.com/ItemSearch?itemSearch=${searchItemString}`
-                
-                `http://localhost:5555/ItemSearch?itemSearch=${searchItemString}`
+                `https://zug-zug-backend.herokuapp.com/ItemSearch?itemSearch=${searchItemString}`
                 )
                 .then((response) => {
                   setUserSearchResults(response)
@@ -82,9 +79,7 @@ const App = () => {
     async function newsFetch(){
       try {
         await axios.get(
-          // 'https://zug-zug-backend.herokuapp.com/News'
-          'http://localhost:5555/News'
-          
+          'https://zug-zug-backend.herokuapp.com/News'
           )
         .then((response) => {
           setIsNewsLoading(false)
@@ -118,8 +113,6 @@ const App = () => {
             nexusNews={nexusNews}
             serverQueryString={serverQueryString}
             factionQueryString={factionQueryString}
-            
-            
           />
         </div>
     );
