@@ -80,7 +80,7 @@ const GoodsTable = ({nexusData, isPriceLoading}) => {
     return(
         <Container>
             {isPriceLoading ? <Loader/> : null}
-            <Card variant="warning">
+            <Card bg="warning">
                 <Card.Title id="card-table-title">Previous Week Up To Today</Card.Title>
             </Card>
             <Table id="goods-table" striped bordered hover size="sm">

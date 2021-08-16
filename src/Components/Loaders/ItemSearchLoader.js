@@ -1,4 +1,5 @@
 import React from 'react';
+import './ItemSearchLoader.css'
 
 import { Button, Spinner } from 'react-bootstrap';
 
@@ -6,7 +7,7 @@ const ItemSearchLoader = () => {
 
     return (
         <>
-            <Button variant="primary" disabled>
+            <Button variant="warning" disabled id="item-search-btn">
                 <Spinner
                     as="span"
                     animation="border"

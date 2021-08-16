@@ -87,8 +87,8 @@ const App = () => {
           
           )
         .then((response) => {
-          setNexusNews(response)
           setIsNewsLoading(false)
+          setNexusNews(response)
         } )
       } catch (error) {
         console.error(error)

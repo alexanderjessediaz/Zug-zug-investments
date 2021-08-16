@@ -37,9 +37,9 @@ const QuerySearch = ({
     const handleChange = (e) => {
         updateSearchItem(e.target.value)
         setSearchInput(e.target.value)
-        
     };
-    
+
+
     const handleClick = (e) => {
         e.preventDefault();
         togglePriceSearch(true);
@@ -115,19 +115,21 @@ const QuerySearch = ({
             <FactionSelect updateFactionString={updateFactionString} setUserFaction={setUserFaction}/>
             {
                 <Dropdown onSelect={handleSelect}>
-                  { isItemSearchLoading ? <ItemSearchLoader/> : null }
                   <Dropdown.Toggle as={CustomToggle} id="dropdown-custom-components">
                     {nexusData.length === 0 && searchItemId.length < 1? "Choose Item": "Item ID: " + searchItemDisplay}
                   </Dropdown.Toggle>
+                  { isItemSearchLoading ? <ItemSearchLoader/> : null }
                   <Dropdown.Menu as={CustomMenu} className="dropdown-menu-show">
                     {searchResults()}
                   </Dropdown.Menu>
               </Dropdown>
             }
+
+            {}
             
             {
                 serverQueryString === "" || factionQueryString === "" || searchItemId.length < 1 ?
-                <Button disabled id="disabledSearchBtn" variant="secondary">Awaiting selections</Button>:
+                <Button disabled variant="secondary">Please Select a Server, Faction, and Item</Button>:
                 <Button id="searchBtn" onClick={handleClick} variant="warning">Search</Button>
             }
         </>

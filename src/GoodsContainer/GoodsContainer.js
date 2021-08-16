@@ -47,9 +47,9 @@ const GoodsContainer = ({
                             <Card.Body>
                                 <Card.Title>Our Purpose:</Card.Title>
                                 <Card.Text>
-                                    Help players of World of Warcraft maximize their in game wealth through providing key information on real time in game prices
+                                    To help players of World of Warcraft maximize their in game wealth through providing key information on real time in game prices
                                 </Card.Text>
-                                <Card.Text>To see any in-game item data please select a server, faction, and item</Card.Text>
+                                
                             </Card.Body>
                         </Card>
                         <Card id="news-header-card" bg={"warning"} border="dark">

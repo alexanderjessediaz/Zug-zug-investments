@@ -18,7 +18,6 @@ class GoodsGraph extends Component {
             ]
         }
     };
-
    
 
     setGradientColor = (canvas, color) => {
@@ -68,7 +67,7 @@ class GoodsGraph extends Component {
 
     createItemPriceLabels = () => {
         if(!this.props.nexusData.data) return;
-        else {
+          else {
             return this.props.nexusData.data.data.map(priceObject => {
                 const dateAndTimeScanned = {
                     ...priceObject,
@@ -116,7 +115,7 @@ class GoodsGraph extends Component {
                 {this.props.isPriceLoading ? <Loader/>: null}
                 {this.noItemAvailable()}
                 <Jumbotron fluid>
-                        <Card id="graph-card-head">
+                        <Card id="graph-card-head" bg="warning">
                             <Card.Header id="graph-card-header">Server and Faction:</Card.Header>
                             <Card.Title id="graph-card-head-title">
                                 {this.showCurrentServerandFactionName()}
