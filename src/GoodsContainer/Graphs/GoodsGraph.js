@@ -1,5 +1,5 @@
 import React, {Component}  from 'react';
-import { Jumbotron, Container, Card } from 'react-bootstrap';
+import { Jumbotron, Container, Card, Alert} from 'react-bootstrap';
 import { Line } from 'react-chartjs-2';
 import Loader from '../../Components/Loaders/Loader';
 import './GoodsGraphStyles.css';
@@ -92,11 +92,29 @@ class GoodsGraph extends Component {
         else return this.props.nexusData.data.name 
         
     }
+
+    noItemAvailable = () => {
+        if (!this.props.nexusData.data) return;
+            if (this.props.nexusData.data.data.length === 0) {
+                
+                return (
+                <Alert variant="danger">
+                    <Alert.Heading>No item's found. Try searching for something else</Alert.Heading>
+                    <p>
+                        The specific item you were looking for does not exist on this auction house.
+                    </p>
+                </Alert>
+                );
+            }; 
+    };
+    
+    
     
     render(){
         return (
             <Container fluid>
                 {this.props.isPriceLoading ? <Loader/>: null}
+                {this.noItemAvailable()}
                 <Jumbotron fluid>
                         <Card id="graph-card-head">
                             <Card.Header id="graph-card-header">Server and Faction:</Card.Header>
@@ -125,5 +143,6 @@ class GoodsGraph extends Component {
             </Container>
         );
     };
-};
+}
+
 export default GoodsGraph;
