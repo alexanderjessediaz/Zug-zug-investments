@@ -19,7 +19,7 @@ import NexusDataLoader from '../Components/Loaders/NexusDataLoader.js';
    
 }) =>{
 
-  const [loadingSearch, setLoadingSearch] = useState(false)
+  const [loadingSearch, setLoadingSearch] = useState(false);
    
     return (
         <header>

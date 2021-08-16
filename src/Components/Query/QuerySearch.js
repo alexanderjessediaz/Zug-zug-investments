@@ -49,7 +49,7 @@ const QuerySearch = ({
     const handleSelect = (e) => {
       searchResultId(e)
       setSearchItemDisplay(e)
-    }
+    };
     
     const searchResults = () => {
       if(!userSearchResults.data) return;
@@ -62,7 +62,7 @@ const QuerySearch = ({
             >{result.name}</Dropdown.Item>
             })
         }
-    }
+    };
 
     const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
         <a
@@ -124,9 +124,6 @@ const QuerySearch = ({
                   </Dropdown.Menu>
               </Dropdown>
             }
-
-            {}
-            
             {
                 serverQueryString === "" || factionQueryString === "" || searchItemId.length < 1 ?
                 <Button disabled variant="secondary">Please Select a Server, Faction, and Item</Button>:

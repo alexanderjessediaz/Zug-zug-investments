@@ -33,7 +33,7 @@ const GoodsTable = ({nexusData, isPriceLoading}) => {
     const itemName = () => {
         if(!nexusData.data.name) return;
         else return nexusData.data.name
-    }
+    };
 
     const lastScanned = () => {
         if(nexusData.data.data.length === 0) return;
