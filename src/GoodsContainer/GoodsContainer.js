@@ -4,14 +4,14 @@ import GoodsTable from './GoodsTable/GoodsTable.js';
 import ZugZugLogo from '../Images/ZugZugLogo.png';
 import Loader from '../Components/Loaders/Loader.js';
 
-import './GoodsContainerStyles.css'
+import './GoodsContainerStyles.css';
 import { Container, Card, CardGroup } from 'react-bootstrap';
 
 const GoodsContainer = ({
     nexusData,
     nexusNews, 
     isNewsLoading, 
-    isPriceLoading,
+    isPriceLoading
 }) => {
   
     const newsData = () => {
@@ -34,7 +34,7 @@ const GoodsContainer = ({
                 </Card> 
             )
         })
-    }
+    };
     
     return (
         <Container id="goods-main-container" fluid="xl">        

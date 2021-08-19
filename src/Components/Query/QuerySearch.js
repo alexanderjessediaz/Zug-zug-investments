@@ -41,7 +41,7 @@ const QuerySearch = ({
         }
     };
 
-    const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
+    const ItemSearchToggle = React.forwardRef(({ children, onClick }, ref) => (
         <a
         id="item-search-toggle"
         href="https://zugzug-inc.netlify.app/"
@@ -56,7 +56,7 @@ const QuerySearch = ({
         </a>
       ));
       
-    const CustomMenu = React.forwardRef(
+    const ItemQueryMenu = React.forwardRef(
         ({ children, style, className, 'aria-labelledby': labeledBy }, ref) => {
     
         return (
@@ -89,11 +89,11 @@ const QuerySearch = ({
         <div id="filter-container">
             {
                 <Dropdown className="filter-btn" onSelect={handleSelect}>
-                  <Dropdown.Toggle as={CustomToggle} id="dropdown-custom-components">
+                  <Dropdown.Toggle as={ItemSearchToggle} id="dropdown-custom-components">
                     {nexusData.length === 0 && searchItemId.length < 1? "Choose Item": "Item ID: " + searchItemDisplay}
                   </Dropdown.Toggle>
                   { isItemSearchLoading ? <ItemSearchLoader/> : null }
-                  <Dropdown.Menu as={CustomMenu} className="dropdown-menu-show">
+                  <Dropdown.Menu as={ItemQueryMenu} className="dropdown-menu-show">
                     {searchResults()}
                   </Dropdown.Menu>
               </Dropdown>

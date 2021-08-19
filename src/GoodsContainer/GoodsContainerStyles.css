@@ -105,6 +105,11 @@
         height: 5%;
     }
 
+    #zug-zug-logo {
+        margin: 2rem 0 1rem 0 ;
+        width: 20rem;
+    }
+
     #news-cards {
         color: rgb(15, 74, 15); 
     }
@@ -129,6 +134,7 @@
     .news-card-header {
         font-weight: bold;
         text-align: center;
+        background-color: rgb(251 193 9);
     }
 
     .news-article-title {

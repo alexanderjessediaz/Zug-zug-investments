@@ -26,9 +26,6 @@ const App = () => {
 
   
 
-  const [nexusData, setNexusData] = useState([]);
-  const [isPriceLoading, setIsPriceLoading] = useState(true);
-
   useEffect(() => {
     if(serverQueryString === "" || factionQueryString === "" || searchItemId === "" || priceQueryBool === false ){
       return;
@@ -91,6 +88,9 @@ const App = () => {
     }
     newsFetch();
   },[])
+
+  const [nexusData, setNexusData] = useState([]);
+  const [isPriceLoading, setIsPriceLoading] = useState(true);
   
     return (
       <div className="App">

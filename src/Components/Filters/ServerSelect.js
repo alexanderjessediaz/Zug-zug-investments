@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import { Dropdown, FormControl } from 'react-bootstrap';
-import Loader from '../../Loaders/Loader';
+import Loader from '../Loaders/Loader.js'
 import './ServerSelectStyles.css'
 
 const ServerSelect = ({ updateServerString, setUserServer }) => {
@@ -38,7 +38,7 @@ const ServerSelect = ({ updateServerString, setUserServer }) => {
       </Dropdown.Item>
   );
 
-  const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
+  const ServerSelectToggle = React.forwardRef(({ children, onClick }, ref) => (
     <a
     id="server-toggle"
     href="https://zugzug-inc.netlify.app/"
@@ -53,7 +53,7 @@ const ServerSelect = ({ updateServerString, setUserServer }) => {
     </a>
   ));
   
-  const CustomMenu = React.forwardRef(
+  const ServerMenu = React.forwardRef(
     ({ children, style, className, 'aria-labelledby': labeledBy }, ref) => {
     const [value, setValue] = useState('');
 
@@ -86,10 +86,10 @@ const ServerSelect = ({ updateServerString, setUserServer }) => {
   return (
     <Dropdown onSelect={handleSelect} >
       {isServersLoading? <Loader/>: null}
-      <Dropdown.Toggle as={CustomToggle} id="dropdown-custom-components">
+      <Dropdown.Toggle as={ServerSelectToggle} id="dropdown-custom-components">
         {selectedServer === '' ? "Choose Server":selectedServer}
       </Dropdown.Toggle>
-      <Dropdown.Menu as={CustomMenu} className="dropdown-menu-show">
+      <Dropdown.Menu as={ServerMenu} className="dropdown-menu-show">
         {wowServerNames === undefined ? <Dropdown.Item>Loading...</Dropdown.Item>: serverNames}
       </Dropdown.Menu>
     </Dropdown>

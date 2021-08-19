@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import QuerySearch from './Query/QuerySearch.js';
 import ZugZugLogo from '../Images/ZugZugLogo.png';
-import FactionSelect from '../Components/Query/Filters/FactionSelect.js';
-import ServerSelect from '../Components/Query/Filters/ServerSelect.js';
+import FactionSelect from '../Components/Filters/FactionSelect.js';
+import ServerSelect from '../Components/Filters/ServerSelect.js';
 import './SelectionNavbar.css'
 
 import { Navbar, Button } from 'react-bootstrap';

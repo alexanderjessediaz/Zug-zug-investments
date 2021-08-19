@@ -108,7 +108,6 @@ class GoodsGraph extends Component {
     };
     
     
-    
     render(){
         return (
             <Container fluid>
@@ -142,6 +141,6 @@ class GoodsGraph extends Component {
             </Container>
         );
     };
-}
+};
 
 export default GoodsGraph;
