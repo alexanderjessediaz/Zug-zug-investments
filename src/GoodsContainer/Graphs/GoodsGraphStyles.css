@@ -1,38 +1,92 @@
-#graph-card-head {
-   color: rgb(15, 74, 15); 
-   margin: -4rem 0rem 0rem 0rem;
+@media only screen and (max-width: 768px) {
+
+    #graph-card-head {
+        color: rgb(15, 74, 15); 
+    }
+     
+    #graph-card-header{
+        text-align: center;
+    }
+     
+    #graph-card-item-name {
+        text-align: center;
+        font-size: large;
+        font-weight: bold;
+    }
+     
+    #graph-card-head-title{
+        text-align: center;
+    }
+     
+    #graph-card-head-text{
+        text-align: center;
+    }
+     
+    #graph-container{
+        margin: auto;
+    }
+    
+    #graph-card-footer-title{
+        text-align: center;
+        color: rgb(15, 74, 15);
+    }
+    
+    #graph-card-footer-text{
+        text-align: center;
+        color: rgb(15, 74, 15);
+    }
+
+    .jumbotron {
+        background-color: white;
+    }
+
+    .media {
+        display: none;
+    }
 }
 
-#graph-card-header{
-    text-align: center;
+@media only screen and (min-width: 600px) {
+    #graph-card-head {
+        color: rgb(15, 74, 15); 
+        margin: -4rem 0rem 0rem 0rem;
+     }
+     
+     #graph-card-header{
+         text-align: center;
+     }
+     
+     
+     #graph-card-item-name {
+         text-align: center;
+         font-size: large;
+         font-weight: bold;
+     }
+     
+     #graph-card-head-title{
+         text-align: center;
+     }
+     
+     #graph-card-head-text{
+         text-align: center;
+     }
+     
+     #graph-container{
+         margin: auto;
+     }
+     
+     
+     #graph-card-footer-title{
+         text-align: center;
+         color: rgb(15, 74, 15);
+     }
+     
+     #graph-card-footer-text{
+         text-align: center;
+         color: rgb(15, 74, 15);
+     }
+
+     .jumbotron {
+        background-color: white;
+    }
 }
 
-
-#graph-card-item-name {
-    text-align: center;
-    font-size: large;
-    font-weight: bold;
-}
-
-#graph-card-head-title{
-    text-align: center;
-}
-
-#graph-card-head-text{
-    text-align: center;
-}
-
-#graph-container{
-    margin: auto;
-}
-
-
-#graph-card-footer-title{
-    text-align: center;
-    color: rgb(15, 74, 15);
-}
-
-#graph-card-footer-text{
-    text-align: center;
-    color: rgb(15, 74, 15);
-}

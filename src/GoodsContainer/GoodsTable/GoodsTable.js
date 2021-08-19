@@ -85,7 +85,7 @@ const GoodsTable = ({nexusData, isPriceLoading}) => {
             </Card>
             <Table id="goods-table" striped bordered hover size="sm">
                 <thead>
-                    <tr>
+                    <tr className="goods-table-row">
                         <th>Item Name</th>
                         <th>Current Quantity</th>
                         <th>Current Minimum Buyout</th>
@@ -96,7 +96,7 @@ const GoodsTable = ({nexusData, isPriceLoading}) => {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                    <tr className="goods-table-row">
                         <td>{itemName()}</td>
                         <td>{itemQuantity()}</td>
                         <td>{itemMinBuyout()}</td>
