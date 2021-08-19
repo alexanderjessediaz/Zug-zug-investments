@@ -10,10 +10,7 @@ const ServerSelect = ({ updateServerString, setUserServer }) => {
 
   useEffect(() => {
     fetch(
-      // "https://zug-zug-backend.herokuapp.com/Servers"
-      "http://localhost:5555/Servers"
-      ,
-       {method: "GET"})
+      "https://zug-zug-backend.herokuapp.com/Servers",{method: "GET"})
       .then((response) => response.json())
         .then((serverData => {
           setIsServersLoading(false)

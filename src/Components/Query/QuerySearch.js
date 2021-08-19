@@ -1,15 +1,12 @@
 import React, {useState} from 'react';
-import FactionSelect from './Filters/FactionSelect.js';
-import ServerSelect from './Filters/ServerSelect.js';
+// import FactionSelect from './Filters/FactionSelect.js';
+// import ServerSelect from './Filters/ServerSelect.js';
 import ItemSearchLoader from '../Loaders/ItemSearchLoader';
 
-import { Button, FormControl, Dropdown} from 'react-bootstrap';
+import {  FormControl, Dropdown} from 'react-bootstrap';
 import './QuerySearchStyles.css';
 
 const QuerySearch = ({
-    updateServerString,
-    updateFactionString,
-    togglePriceSearch,
     updateSearchItem,
     userSearchResults,
     searchResultId,
@@ -19,17 +16,17 @@ const QuerySearch = ({
     
 }) => {
     
-    const [serverQueryString, setServerQueryString] = useState('');
+    // const [serverQueryString, setServerQueryString] = useState('');
     
-    const setUserServer = (e) => {
-        setServerQueryString(e);
-    };
+    // const setUserServer = (e) => {
+    //     setServerQueryString(e);
+    // };
     
-    const [factionQueryString, setFactionQueryString] = useState('');
+    // const [factionQueryString, setFactionQueryString] = useState('');
 
-    const setUserFaction = (e) => {
-        setFactionQueryString(e);
-    };
+    // const setUserFaction = (e) => {
+    //     setFactionQueryString(e);
+    // };
     
     const [searchInput, setSearchInput] = useState('')
     const [searchItemDisplay, setSearchItemDisplay] = useState('')
@@ -40,10 +37,10 @@ const QuerySearch = ({
     };
 
 
-    const handleClick = (e) => {
-        e.preventDefault();
-        togglePriceSearch(true);
-    };
+    // const handleClick = (e) => {
+    //     e.preventDefault();
+    //     togglePriceSearch(true);
+    // };
 
 
     const handleSelect = (e) => {
@@ -109,12 +106,9 @@ const QuerySearch = ({
     );
                           
     return (
-        <>
-        
-            <ServerSelect updateServerString={updateServerString} setUserServer={setUserServer}/>
-            <FactionSelect updateFactionString={updateFactionString} setUserFaction={setUserFaction}/>
+        <div id="filter-container">
             {
-                <Dropdown onSelect={handleSelect}>
+                <Dropdown className="filter-btn" onSelect={handleSelect}>
                   <Dropdown.Toggle as={CustomToggle} id="dropdown-custom-components">
                     {nexusData.length === 0 && searchItemId.length < 1? "Choose Item": "Item ID: " + searchItemDisplay}
                   </Dropdown.Toggle>
@@ -124,12 +118,7 @@ const QuerySearch = ({
                   </Dropdown.Menu>
               </Dropdown>
             }
-            {
-                serverQueryString === "" || factionQueryString === "" || searchItemId.length < 1 ?
-                <Button disabled variant="secondary">Please Select a Server, Faction, and Item</Button>:
-                <Button id="searchBtn" onClick={handleClick} variant="warning">Search</Button>
-            }
-        </>
+        </div>
     )
 };
 
