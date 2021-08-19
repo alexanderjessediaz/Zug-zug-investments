@@ -43,12 +43,11 @@ const handleClick = (e) => {
    
     return (
         
-          <Navbar id="nav-header" className="justify-content-between" bg="light" expand="lg">
-            <Navbar.Brand id="zug-zug-logo" href="https://zugzug-inc.netlify.app/">
+          <Navbar id="nav-header" bg="light" expand="lg">
+            <Navbar.Brand href="https://zugzug-inc.netlify.app/">
               <img 
+                id="zug-zug-logo-nav"
                 src={ZugZugLogo}
-                width="50"
-                height="5%"
                 alt="orc peon on a black backdrop. Text: Me Gold You"
               />
             </Navbar.Brand>

@@ -43,7 +43,14 @@ const GoodsContainer = ({
                     <Container id="welcome-card-container" fluid="xl">
                         <Card id="welcome-card" bg={"light"}>
                             <h1 id="welcome-card-header" >ZugZug Inc.</h1>
-                            <Card.Img id="zugzug-logo" variant="top" src={ZugZugLogo} alt="orc peon on a black backdrop. Text: Me Gold You"/>
+                            <div id="welcome-img-wrapper">
+                                <Card.Img 
+                                    id="zug-zug-logo" 
+                                    variant="top" 
+                                    src={ZugZugLogo} 
+                                    alt="orc peon on a black backdrop. Text: Me Gold You"
+                                />
+                            </div>
                             <Card.Body>
                                 <Card.Title>Our Purpose:</Card.Title>
                                 <Card.Text>

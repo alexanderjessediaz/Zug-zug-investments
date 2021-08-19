@@ -1,75 +1,145 @@
 @import url('https://fonts.googleapis.com/css2?family=Hanalei+Fill&display=swap');
 
 @media only screen and (max-width: 768px) {
+
+    #goods-container{
+        margin-top: 5%;
+        margin-bottom: 5%;
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+
+    #welcome-card {
+        text-align: center;
+        color: rgb(15, 74, 15);
+    }
+
+    #welcome-card-header {
+        font-family: 'Hanalei Fill', cursive;
+        letter-spacing: .05rem;
+        font-size: x-large;
+        font-weight: 200;
+    }
+
+    #zug-zug-logo-nav {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50px;
+        height: 5%;
+    }
+
+    #zug-zug-logo {
+        width: 10rem;
+    }
+
+    #news-cards {
+        color: rgb(15, 74, 15); 
+    }
+
     
-}
-
-#goods-main-container{
-    font-family: 'Hanalei Fill', cursive;
-    letter-spacing: .05rem;
-    font-size: x-large;
-    font-weight: 200;
-}
-
-#goods-container{
-    margin-top: 5%;
-    margin-bottom: 5%;
-    margin-left: 10%;
-    margin-right: 10%;
-}
-
-#welcome-card {
-    text-align: center;
-    color: rgb(15, 74, 15);
-}
-
-#welcome-card-header {
-    font-weight: bold;
-    font-size: x-large;
-}
-
-#zugzug-logo {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 15%;
-}
-
-#news-cards {
-    color: rgb(15, 74, 15);
+    #news-header-card-text {
+        font-weight: bold;
+    }
     
-}
-#card-group {
-    margin-top: 1.5rem;
-}
-
-#news-header-card {
-    text-align: center;
-    color: black;
+    #news-anchor-tag {
+        color: rgb(15, 74, 15);
+    }
     
+    .news-card-header {
+        font-weight: bold;
+        text-align: left;
+        border-bottom: none;
+        background-color: rgb(251 193 9);
+    }
+
+    .card-body {
+        padding: 1rem;
+    }
+    
+    .news-article-title {
+        margin-top: 1.0rem;
+    }
+
+    .news-content {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin-bottom: 2rem;
+        margin-top: 2rem;
+    }
+
 }
 
-#news-header-card-text {
-    font-weight: bold;
-}
+@media only screen and (min-width: 600px) {
 
-#news-anchor-tag {
-    color: rgb(15, 74, 15);
-}
+    #goods-container{
+        margin-top: 5%;
+        margin-bottom: 5%;
+        margin-left: 10%;
+        margin-right: 10%;
+    }
 
-.news-card-header {
-    font-weight: bold;
-    text-align: center;
-}
+    #welcome-card {
+        text-align: center;
+        color: rgb(15, 74, 15);
+    }
 
-.news-article-title {
-    margin-top: 1.0rem;
-}
+    .card-img-top {
+        justify-content: center;
+        width: 25%;
+    }
 
-.news-content {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    margin-bottom: 2rem;
-    margin-top: 2rem;
+    #welcome-card-header {
+        font-family: 'Hanalei Fill', cursive;
+        letter-spacing: .05rem;
+        font-size: x-large;
+        font-weight: 200;
+    }
+
+    #zug-zug-logo-nav {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 2rem;
+        height: 5%;
+    }
+
+    #news-cards {
+        color: rgb(15, 74, 15); 
+    }
+
+    #card-group {
+        margin-top: 1.5rem;
+    }
+
+    #news-header-card {
+        text-align: center;
+        color: black;
+    }
+
+    #news-header-card-text {
+        font-weight: bold;
+    }
+
+    #news-anchor-tag {
+        color: rgb(15, 74, 15);
+    }
+
+    .news-card-header {
+        font-weight: bold;
+        text-align: center;
+    }
+
+    .news-article-title {
+        margin-top: 1.0rem;
+    }
+
+    .news-content {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin-bottom: 2rem;
+        margin-top: 2rem;
+    }
 }

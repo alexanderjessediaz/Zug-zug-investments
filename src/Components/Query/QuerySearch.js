@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
-// import FactionSelect from './Filters/FactionSelect.js';
-// import ServerSelect from './Filters/ServerSelect.js';
+
 import ItemSearchLoader from '../Loaders/ItemSearchLoader';
 
 import {  FormControl, Dropdown} from 'react-bootstrap';
@@ -16,18 +15,6 @@ const QuerySearch = ({
     
 }) => {
     
-    // const [serverQueryString, setServerQueryString] = useState('');
-    
-    // const setUserServer = (e) => {
-    //     setServerQueryString(e);
-    // };
-    
-    // const [factionQueryString, setFactionQueryString] = useState('');
-
-    // const setUserFaction = (e) => {
-    //     setFactionQueryString(e);
-    // };
-    
     const [searchInput, setSearchInput] = useState('')
     const [searchItemDisplay, setSearchItemDisplay] = useState('')
 
@@ -35,13 +22,6 @@ const QuerySearch = ({
         updateSearchItem(e.target.value)
         setSearchInput(e.target.value)
     };
-
-
-    // const handleClick = (e) => {
-    //     e.preventDefault();
-    //     togglePriceSearch(true);
-    // };
-
 
     const handleSelect = (e) => {
       searchResultId(e)

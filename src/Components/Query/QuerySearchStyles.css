@@ -1,15 +1,3 @@
-@media only screen and (max-width: 768px) {
-    #filter-container {
-        display: grid;
-        grid-template-columns: repeat(1, 1fr);
-    }
-
-    .filter-btn {
-        width: 6rem;
-        height: 6rem;
-    }
-}
 #item-search-toggle{
     color: rgb(15, 74, 15);
-    margin-right: 2rem;
 }
