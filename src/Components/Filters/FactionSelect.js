@@ -70,8 +70,6 @@ import { Dropdown, FormControl } from 'react-bootstrap';
                 {selectedFaction === '' ? "Choose Faction":selectedFaction}
             </Dropdown.Toggle>
             <Dropdown.Menu as={FactionMenu}>
-                {/* <Dropdown.Item eventKey="horde">Horde</Dropdown.Item>
-                <Dropdown.Item eventKey="alliance" >Alliance</Dropdown.Item> */}
                 {factionNames}
             </Dropdown.Menu>
         </Dropdown>

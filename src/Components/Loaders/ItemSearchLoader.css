@@ -1,8 +1,0 @@
-@media only screen and (max-width: 768px) {
-    #item-search-btn {
-        display: none;
-    }    
-}
-#item-search-btn {
-    opacity: 25%;
-}

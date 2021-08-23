@@ -1,7 +1,4 @@
 import React, {useState} from 'react';
-
-import ItemSearchLoader from '../Loaders/ItemSearchLoader';
-
 import {  FormControl, Dropdown} from 'react-bootstrap';
 import './QuerySearchStyles.css';
 
@@ -10,7 +7,6 @@ const QuerySearch = ({
     userSearchResults,
     searchResultId,
     searchItemId,
-    isItemSearchLoading,
     nexusData
     
 }) => {
@@ -92,7 +88,6 @@ const QuerySearch = ({
                   <Dropdown.Toggle as={ItemSearchToggle} id="dropdown-custom-components">
                     {nexusData.length === 0 && searchItemId.length < 1? "Choose Item": "Item ID: " + searchItemDisplay}
                   </Dropdown.Toggle>
-                  { isItemSearchLoading ? <ItemSearchLoader/> : null }
                   <Dropdown.Menu as={ItemQueryMenu} className="dropdown-menu-show">
                     {searchResults()}
                   </Dropdown.Menu>

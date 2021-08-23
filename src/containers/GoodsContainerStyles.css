@@ -50,7 +50,7 @@
         font-weight: bold;
         text-align: left;
         border-bottom: none;
-        background-color: rgb(251 193 9);
+        background-color: rgb(187, 187, 187);
     }
 
     .card-body {
@@ -134,7 +134,7 @@
     .news-card-header {
         font-weight: bold;
         text-align: center;
-        background-color: rgb(251 193 9);
+        background-color: rgb(187, 187, 187);
     }
 
     .news-article-title {
