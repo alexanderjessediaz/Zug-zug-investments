@@ -1,7 +1,7 @@
 import React, {Component}  from 'react';
 import { Jumbotron, Container, Card, Alert} from 'react-bootstrap';
 import { Line } from 'react-chartjs-2';
-import Loader from '../../Components/Loaders/Loader';
+import Loader from '../../components/Loaders/Loader';
 import './GoodsGraphStyles.css';
 
 class GoodsGraph extends Component {
