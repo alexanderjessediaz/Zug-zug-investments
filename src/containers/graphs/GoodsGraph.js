@@ -83,7 +83,14 @@ class GoodsGraph extends Component {
 
     showCurrentServerandFactionName = () => {
         if (!this.props.nexusData.data) return;
-        else return this.props.nexusData.data.slug;
+        else {
+            const parsedSandFName = this.props.nexusData.data.slug.replace("-", " ").split(" ")
+
+            for (let i=0;i<parsedSandFName.length; i++) {
+                parsedSandFName[i] = parsedSandFName[i][0].toUpperCase() + parsedSandFName[i].substr(1);
+            }
+            return parsedSandFName.join(" ");
+        } 
     };
 
     displayItemName = () => {
