@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Hanalei+Fill&display=swap');
 @media only screen and (max-width: 768px) {
 
     #graph-card-head {
@@ -15,6 +16,8 @@
     }
      
     #graph-card-head-title{
+        font-family: 'Hanalei Fill', cursive;
+        letter-spacing: .1rem;
         text-align: center;
     }
      
@@ -52,37 +55,39 @@
      }
      
      #graph-card-header{
-         text-align: center;
+        text-align: center;
      }
      
      
      #graph-card-item-name {
-         text-align: center;
-         font-size: large;
-         font-weight: bold;
+        text-align: center;
+        font-size: large;
+        font-weight: bold;
      }
      
      #graph-card-head-title{
-         text-align: center;
+        font-family: 'Hanalei Fill', cursive;
+        letter-spacing: .1rem;
+        text-align: center;
      }
      
      #graph-card-head-text{
-         text-align: center;
+        text-align: center;
      }
      
      #graph-container{
-         margin: auto;
+        margin: auto;
      }
      
      
      #graph-card-footer-title{
-         text-align: center;
-         color: rgb(15, 74, 15);
+        text-align: center;
+        color: rgb(15, 74, 15);
      }
      
      #graph-card-footer-text{
-         text-align: center;
-         color: rgb(15, 74, 15);
+        text-align: center;
+        color: rgb(15, 74, 15);
      }
 
      .jumbotron {
