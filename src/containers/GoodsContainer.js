@@ -1,8 +1,8 @@
 import React from 'react';
-import GoodsGraph from './graphs/GoodsGraph.js';
-import GoodsTable from './tables/GoodsTable.js';
-import ZugZugLogo from '../images/ZugZugLogo.png';
-import Loader from '../components/Loaders/Loader.js';
+import GoodsGraph from './graphs/GoodsGraph';
+import GoodsTable from './tables/GoodsTable';
+import ZugZugLogo from '../Images/ZugZugLogo.png';
+import Loader from '../Components/Loaders/Loader.js';
 
 import './GoodsContainerStyles.css';
 import { Container, Card, CardGroup } from 'react-bootstrap';

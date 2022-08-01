@@ -1,12 +1,12 @@
 import React, {useState} from 'react';
-import QuerySearch from './Query/QuerySearch.js';
-import ZugZugLogo from '../images/ZugZugLogo.png';
-import FactionSelect from './Filters/FactionSelect.js';
-import ServerSelect from './Filters/ServerSelect.js';
+import QuerySearch from './Query/QuerySearch';
+import ZugZugLogo from '../Images/ZugZugLogo.png';
+import FactionSelect from './Filters/FactionSelect';
+import ServerSelect from './Filters/ServerSelect';
 import './SelectionNavbar.css';
 
 import { Navbar, Button } from 'react-bootstrap';
-import NexusDataLoader from './Loaders/NexusDataLoader.js';
+import NexusDataLoader from './Loaders/NexusDataLoader';
 
  const SelectionNavbar = ({
     updateServerString,

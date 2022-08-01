@@ -1,6 +1,6 @@
 import React from 'react';
 import './GoodsTableStyles.css';
-import Loader from '../../components/Loaders/Loader.js';
+import Loader from '../../Components/Loaders/Loader';
 
 import { Table, Container, Card } from 'react-bootstrap';
 
